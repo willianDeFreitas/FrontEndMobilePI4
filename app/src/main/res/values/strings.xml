@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">CrudDeUsuarios</string>
+    <string name="action_settings">Settings</string>
+    <string name="login">Login</string>
+    <string name="senha">Senha</string>
+    <string name="email">Email</string>
+    <string name="Quantidade">Quantidade</string>
+    <string name="cliente">Cliente</string>
+    <string name="Valor_venda">Valor da venda</string>
+</resources>
