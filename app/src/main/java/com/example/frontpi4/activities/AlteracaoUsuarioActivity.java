@@ -1,4 +1,4 @@
-package com.example.cruddeusuarios.activities;
+package com.example.frontpi4.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -11,9 +11,9 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.cruddeusuarios.R;
-import com.example.cruddeusuarios.dto.DtoUser;
-import com.example.cruddeusuarios.services.RetrofitService;
+import com.example.frontpi4.R;
+import com.example.frontpi4.dto.UsuarioDTO;
+import com.example.frontpi4.services.RetrofitService;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -30,39 +30,37 @@ public class AlteracaoUsuarioActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_alteracao_usuario);
+
         Intent intent = getIntent();
+
         id = intent.getIntExtra("id", -1);
         String nome = intent.getStringExtra("nome");
         String email = intent.getStringExtra("email");
-        String telefone = intent.getStringExtra("tel");
 
         et_email = findViewById(R.id.et_altera_usuario_email);
         et_nome = findViewById(R.id.et_altera_usuario_nome);
-        et_telefone = findViewById(R.id.et_altera_usuario_telefone);
 
         et_email.setText(email);
         et_nome.setText(nome);
-        et_telefone.setText(telefone);
     }
 
     public void alterar(View view) {
         String nome = ((EditText)findViewById(R.id.et_altera_usuario_nome)).getText().toString();
-        String telefone = ((EditText)findViewById(R.id.et_altera_usuario_telefone)).getText().toString();
         String email = ((EditText)findViewById(R.id.et_altera_usuario_email)).getText().toString();
         String senha = ((EditText)findViewById(R.id.et_altera_usuario_password)).getText().toString();
 
-        DtoUser dtoUser;
+        UsuarioDTO usuarioDTO;
 
         if ( senha.isEmpty()){
-            dtoUser = new DtoUser(email, nome, telefone);
+            usuarioDTO = new UsuarioDTO(email, nome);
         } else {
-            dtoUser = new DtoUser(email,nome,senha, telefone);
+            usuarioDTO = new UsuarioDTO(email,nome,senha);
         }
         String token = getToken();
 
-        RetrofitService.getServico().alteraUsuario(dtoUser, id, "Bearer "+token).enqueue(new Callback<DtoUser>() {
+        RetrofitService.getServico().alteraUsuario(usuarioDTO, id, "Bearer "+token).enqueue(new Callback<UsuarioDTO>() {
             @Override
-            public void onResponse(Call<DtoUser> call, Response<DtoUser> response) {
+            public void onResponse(Call<UsuarioDTO> call, Response<UsuarioDTO> response) {
                 if(response.code() == 200){
                     Toast.makeText(AlteracaoUsuarioActivity.this, "Usuário alterado com sucesso", Toast.LENGTH_LONG).show();
                     startActivity(new Intent(AlteracaoUsuarioActivity.this, ListaUsuariosActivity.class));
@@ -73,7 +71,7 @@ public class AlteracaoUsuarioActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<DtoUser> call, Throwable t) {
+            public void onFailure(Call<UsuarioDTO> call, Throwable t) {
                 Log.d(TAG, "onFailure: " + t.getMessage());
             }
         });

@@ -1,9 +1,9 @@
-package com.example.cruddeusuarios.activities;
+package com.example.frontpi4.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
 
-import com.example.cruddeusuarios.R;
+import com.example.frontpi4.R;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;

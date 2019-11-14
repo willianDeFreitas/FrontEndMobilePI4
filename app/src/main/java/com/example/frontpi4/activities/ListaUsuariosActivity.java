@@ -1,4 +1,4 @@
-package com.example.cruddeusuarios.activities;
+package com.example.frontpi4.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.ItemTouchHelper;
@@ -10,11 +10,11 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 
-import com.example.cruddeusuarios.R;
-import com.example.cruddeusuarios.dto.DtoUser;
-import com.example.cruddeusuarios.helpers.SwipeToDeleteCallback;
-import com.example.cruddeusuarios.helpers.UsuarioAdapter;
-import com.example.cruddeusuarios.services.RetrofitService;
+import com.example.frontpi4.R;
+import com.example.frontpi4.dto.UsuarioDTO;
+import com.example.frontpi4.helpers.SwipeToDeleteCallback;
+import com.example.frontpi4.helpers.UsuarioAdapter;
+import com.example.frontpi4.services.RetrofitService;
 
 import java.util.List;
 
@@ -33,13 +33,12 @@ public class ListaUsuariosActivity extends AppCompatActivity {
         buscaDados();
     }
 
-    private void preencheRecyclerview(List<DtoUser> lista){
+    private void preencheRecyclerview(List<UsuarioDTO> lista){
         RecyclerView mRecyclerView = findViewById(R.id.rv_todos_usuarios);
         UsuarioAdapter mAdapter = new UsuarioAdapter(this, lista);
         mRecyclerView.setAdapter(mAdapter);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-        ItemTouchHelper itemTouchHelper = new
-                ItemTouchHelper(new SwipeToDeleteCallback(mAdapter));
+        ItemTouchHelper itemTouchHelper = new ItemTouchHelper(new SwipeToDeleteCallback(mAdapter));
         itemTouchHelper.attachToRecyclerView(mRecyclerView);
     }
 
@@ -49,11 +48,11 @@ public class ListaUsuariosActivity extends AppCompatActivity {
         String token = sp.getString("token",null);
         //#
 
-        RetrofitService.getServico().todosUsuarios("Bearer "+token).enqueue(new Callback<List<DtoUser>>() {
+        RetrofitService.getServico().todosUsuarios("Bearer "+token).enqueue(new Callback<List<UsuarioDTO>>() {
             @Override
-            public void onResponse(Call<List<DtoUser>> call, Response<List<DtoUser>> response) {
+            public void onResponse(Call<List<UsuarioDTO>> call, Response<List<UsuarioDTO>> response) {
                 if (response.isSuccessful()) {
-                    List<DtoUser> lista = response.body();
+                    List<UsuarioDTO> lista = response.body();
                     preencheRecyclerview(lista);
                 } else {
                     startActivity(new Intent(ListaUsuariosActivity.this, LoginActivity.class));
@@ -62,7 +61,7 @@ public class ListaUsuariosActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<List<DtoUser>> call, Throwable t) {
+            public void onFailure(Call<List<UsuarioDTO>> call, Throwable t) {
                 Log.d(TAG, "onFailure: " + t.getMessage());
             }
         });

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.cruddeusuarios">
+    package="com.example.frontpi4">
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
@@ -13,41 +13,41 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".activities.CadastroPedidoDeVendaActivity"></activity>
+        <activity android:name="com.example.frontpi4.activities.CadastroPedidoDeVendaActivity"></activity>
         <activity
-            android:name=".activities.AlteracaoUsuarioActivity"
+            android:name="com.example.frontpi4.activities.AlteracaoUsuarioActivity"
             android:label="Alterar de usuário"
-            android:parentActivityName=".activities.MainActivity">
+            android:parentActivityName="com.example.frontpi4.activities.MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".activities.MainActivity" />
+                android:value="com.example.frontpi4.activities.MainActivity" />
         </activity>
         <activity
-            android:name=".activities.ListaUsuariosActivity"
+            android:name="com.example.frontpi4.activities.ListaUsuariosActivity"
             android:label="Lista de usuários"
-            android:parentActivityName=".activities.MainActivity">
+            android:parentActivityName="com.example.frontpi4.activities.MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".activities.MainActivity" />
+                android:value="com.example.frontpi4.activities.MainActivity" />
         </activity>
         <activity
-            android:name=".activities.LoginActivity"
+            android:name="com.example.frontpi4.activities.LoginActivity"
             android:label="Login"
-            android:parentActivityName=".activities.MainActivity">
+            android:parentActivityName="com.example.frontpi4.activities.MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".activities.MainActivity" />
+                android:value="com.example.frontpi4.activities.MainActivity" />
         </activity>
         <activity
-            android:name=".activities.CadastroDeUsuarioActivity"
+            android:name="com.example.frontpi4.activities.CadastroDeUsuarioActivity"
             android:label="Cadastro de usuário"
-            android:parentActivityName=".activities.MainActivity">
+            android:parentActivityName="com.example.frontpi4.activities.MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".activities.MainActivity" />
+                android:value="com.example.frontpi4.activities.MainActivity" />
         </activity>
         <activity
-            android:name=".activities.MainActivity"
+            android:name="com.example.frontpi4.activities.MainActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>

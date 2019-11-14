@@ -1,4 +1,4 @@
-package com.example.cruddeusuarios.helpers;
+package com.example.frontpi4.helpers;
 
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -10,7 +10,7 @@ import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.cruddeusuarios.R;
+import com.example.frontpi4.R;
 
 public class SwipeToDeleteCallback extends ItemTouchHelper.SimpleCallback {
 

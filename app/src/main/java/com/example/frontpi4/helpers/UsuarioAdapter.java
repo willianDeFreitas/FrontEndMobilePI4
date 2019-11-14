@@ -1,4 +1,4 @@
-package com.example.cruddeusuarios.helpers;
+package com.example.frontpi4.helpers;
 
 import android.app.AlertDialog;
 import android.content.Context;
@@ -14,10 +14,10 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.cruddeusuarios.R;
-import com.example.cruddeusuarios.activities.AlteracaoUsuarioActivity;
-import com.example.cruddeusuarios.dto.DtoUser;
-import com.example.cruddeusuarios.services.RetrofitService;
+import com.example.frontpi4.R;
+import com.example.frontpi4.activities.AlteracaoUsuarioActivity;
+import com.example.frontpi4.dto.UsuarioDTO;
+import com.example.frontpi4.services.RetrofitService;
 
 import java.util.List;
 
@@ -29,16 +29,16 @@ public class UsuarioAdapter extends RecyclerView.Adapter<UsuarioAdapter.UsuarioH
     //UsuarioAdapter.UsuarioHolder siginifica que será criada uma classe interna UsuarioHolder dentro de UsuarioAdapter
     private LayoutInflater mInflater;//objeto que "infla" o layout do item de lista do recyclerview
     private Context context;//activity que está exibindo o recyclerview
-    private List<DtoUser> lista;//fonte dos dados da lista a ser exibida
+    private List<UsuarioDTO> lista;//fonte dos dados da lista a ser exibida
 
     private Integer recentlyDeletedItemPosition;
-    private DtoUser recentlyDeletedItem;
+    private UsuarioDTO recentlyDeletedItem;
 
     public Context getContext() {
         return context;
     }
 
-    public UsuarioAdapter(Context context, List<DtoUser> lista) {
+    public UsuarioAdapter(Context context, List<UsuarioDTO> lista) {
         this.mInflater = LayoutInflater.from(context);
         this.context = context;
         this.lista = lista;
@@ -53,7 +53,7 @@ public class UsuarioAdapter extends RecyclerView.Adapter<UsuarioAdapter.UsuarioH
 
     @Override
     public void onBindViewHolder(@NonNull UsuarioHolder holder, int position) {
-        String nome = lista.get(position).getName();
+        String nome = lista.get(position).getNome();
         holder.nome.setText(nome);
     }
 
@@ -78,16 +78,16 @@ public class UsuarioAdapter extends RecyclerView.Adapter<UsuarioAdapter.UsuarioH
             itemView.setOnClickListener(new View.OnClickListener(){
                 @Override
                 public void onClick(View v) {
-                    DtoUser user = lista.get(getLayoutPosition());
-                    String nome = user.getName();
+                    UsuarioDTO user = lista.get(getLayoutPosition());
+                    String nome = user.getNome();
                     int id = user.getId();
                     String email = user.getEmail();
-                    String tel = user.getPhone();
+
                     Intent intent = new Intent(context, AlteracaoUsuarioActivity.class);
                     intent.putExtra("id",id);
                     intent.putExtra("nome",nome);
                     intent.putExtra("email",email);
-                    intent.putExtra("tel",tel);
+
                     context.startActivity(intent);
                 }
             });

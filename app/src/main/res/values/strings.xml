@@ -7,4 +7,9 @@
     <string name="Quantidade">Quantidade</string>
     <string name="cliente">Cliente</string>
     <string name="Valor_venda">Valor da venda</string>
+    <string-array name="funcao_array">
+        <item>Secretaria</item>
+        <item>Estoque</item>
+    </string-array>
+
 </resources>

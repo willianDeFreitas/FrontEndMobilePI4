@@ -1,4 +1,4 @@
-package com.example.cruddeusuarios.activities;
+package com.example.frontpi4.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -13,13 +13,16 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import com.example.cruddeusuarios.R;
-import com.example.cruddeusuarios.dto.DtoCliente;
-import com.example.cruddeusuarios.dto.DtoProduto;
-import com.example.cruddeusuarios.dto.DtoUser;
-import com.example.cruddeusuarios.services.RetrofitService;
+import com.example.frontpi4.R;
+import com.example.frontpi4.dto.ClienteDTO;
+import com.example.frontpi4.dto.ItemVendaDTO;
+import com.example.frontpi4.dto.ProdutoDTO;
+import com.example.frontpi4.dto.UsuarioDTO;
+import com.example.frontpi4.dto.VendaDTO;
+import com.example.frontpi4.services.RetrofitService;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import retrofit2.Call;
@@ -29,10 +32,11 @@ import retrofit2.Response;
 public class CadastroPedidoDeVendaActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
 
     public static final String TAG = "CadastroPedidoDevendaActivity";
+
     Spinner spin_cliente;
     Spinner spin_produto;
-    List<DtoCliente> listaDeClientes;
-    List<DtoProduto> listaDeProdutos;
+    List<ClienteDTO> listaDeClientes;
+    List<ProdutoDTO> listaDeProdutos;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,14 +55,15 @@ public class CadastroPedidoDeVendaActivity extends AppCompatActivity implements 
         String token = sp.getString("token",null);
         //#
 
-        RetrofitService.getServico().buscaClientes("Bearer "+token).enqueue(new Callback<List<DtoCliente>>() {
+        RetrofitService.getServico().buscaClientes("Bearer "+token).enqueue(new Callback<List<ClienteDTO>>() {
             @Override
-            public void onResponse(Call<List<DtoCliente>> call, Response<List<DtoCliente>> response) {
+            public void onResponse(Call<List<ClienteDTO>> call, Response<List<ClienteDTO>> response) {
                 listaDeClientes = response.body();
                 List<String> listaNomesDeClientes = new ArrayList<>();
-                for (DtoCliente cliente : listaDeClientes) {
-                    listaNomesDeClientes.add(cliente.getName());
+                for (ClienteDTO cliente : listaDeClientes) {
+                   // listaNomesDeClientes.add(cliente.getName());
                 }
+
                 ArrayAdapter<String> adapter = new ArrayAdapter<>(
                         CadastroPedidoDeVendaActivity.this,
                         android.R.layout.simple_spinner_item,
@@ -67,56 +72,58 @@ public class CadastroPedidoDeVendaActivity extends AppCompatActivity implements 
             }
 
             @Override
-            public void onFailure(Call<List<DtoCliente>> call, Throwable t) {
+            public void onFailure(Call<List<ClienteDTO>> call, Throwable t) {
                 Log.e("Cliente: ", t.getMessage());
             }
         });
 
-        RetrofitService.getServico().buscaProdutos("Bearer "+token).enqueue(new Callback<List<DtoProduto>>() {
+        RetrofitService.getServico().buscaProdutos("Bearer "+token).enqueue(new Callback<List<ProdutoDTO>>() {
             @Override
-            public void onResponse(Call<List<DtoProduto>> call, Response<List<DtoProduto>> response) {
+            public void onResponse(Call<List<ProdutoDTO>> call, Response<List<ProdutoDTO>> response) {
                 listaDeProdutos = response.body();
-                List<String> listaDeProdutos = new ArrayList<>();
-                for (DtoProduto produto : listaDeProdutos) {
-                    listaDeProdutos.add(produto.getName());
+                List<String> listaNomeDeProdutos = new ArrayList<>();
+                for (ProdutoDTO produto : listaDeProdutos) {
+                    //listaDeProdutos.add(produto.getName());
                 }
+
                 ArrayAdapter<String> adapter = new ArrayAdapter<>(
                         CadastroPedidoDeVendaActivity.this,
                         android.R.layout.simple_spinner_item,
-                        listaDeProdutos);
+                        listaNomeDeProdutos);
                 spin_produto.setAdapter(adapter);
             }
 
             @Override
-            public void onFailure(Call<List<DtoProduto>> call, Throwable t) {
+            public void onFailure(Call<List<ProdutoDTO>> call, Throwable t) {
                 Log.e("Produto: ", t.getMessage());
             }
         });
     }
 
-
-
     public void cadastrar(View view) {
-        String nome = ((EditText)findViewById(R.id.et_cadastro_usuario_nome)).getText().toString();
-        String telefone = ((EditText)findViewById(R.id.et_cadastro_usuario_telefone)).getText().toString();
-        String email = ((EditText)findViewById(R.id.et_cadastro_usuario_email)).getText().toString();
-        String senha = ((EditText)findViewById(R.id.et_cadastro_usuario_password)).getText().toString();
+        Date data = new Date(System.currentTimeMillis());
+        int clientId = 0;
+        List<ItemVendaDTO> itensVenda = new ArrayList<>();
+        //String email = ((EditText)findViewById(R.id.et_cadastro_usuario_email)).getText().toString();
+        Double totalV = 0.0;
 
-        DtoUser dtoUser =  new DtoUser(email, nome, senha, telefone);
+        VendaDTO vendaDTO =  new VendaDTO(data, totalV, clientId, itensVenda);
 
-        RetrofitService.getServico().cadastraUsuario(dtoUser).enqueue(new Callback<DtoUser>() {
+        String token = getToken();
+
+        RetrofitService.getServico().cadastraPedidoDeVenda(vendaDTO, "Bearer "+token).enqueue(new Callback<VendaDTO>() {
             @Override
-            public void onResponse(Call<DtoUser> call, Response<DtoUser> response) {
+            public void onResponse(Call<VendaDTO> call, Response<VendaDTO> response) {
                 if (response.isSuccessful()) {
                     Toast.makeText(CadastroPedidoDeVendaActivity.this, "Pedido de venda cadastrado com ID: " + response.body().getId(), Toast.LENGTH_LONG).show();
                     startActivity(new Intent(CadastroPedidoDeVendaActivity.this, MainActivity.class));
                 } else {
-                    Toast.makeText(CadastroPedidoDeVendaActivity.this, "Problemas ao cadastratrar usuário ", Toast.LENGTH_LONG).show();
+                    Toast.makeText(CadastroPedidoDeVendaActivity.this, "Problemas ao cadastrar Pedido ", Toast.LENGTH_LONG).show();
                 }
             }
 
             @Override
-            public void onFailure(Call<DtoUser> call, Throwable t) {
+            public void onFailure(Call<VendaDTO> call, Throwable t) {
                 Log.d(TAG, "onFailure: " + t.getMessage());
             }
         });
@@ -130,5 +137,10 @@ public class CadastroPedidoDeVendaActivity extends AppCompatActivity implements 
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
 
+    }
+
+    private String getToken() {
+        SharedPreferences sp = getSharedPreferences("dados",0);
+        return sp.getString("token",null);
     }
 }

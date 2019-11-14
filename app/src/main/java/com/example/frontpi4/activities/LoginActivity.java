@@ -1,4 +1,4 @@
-package com.example.cruddeusuarios.activities;
+package com.example.frontpi4.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -10,14 +10,13 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.cruddeusuarios.R;
-import com.example.cruddeusuarios.dto.DtoLogin;
-import com.example.cruddeusuarios.services.RetrofitService;
+import com.example.frontpi4.R;
+import com.example.frontpi4.dto.LoginDTO;
+import com.example.frontpi4.services.RetrofitService;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import retrofit2.Retrofit;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -32,13 +31,13 @@ public class LoginActivity extends AppCompatActivity {
         String email = ((EditText)findViewById(R.id.et_login_email)).getText().toString();
         String senha = ((EditText)findViewById(R.id.et_login_password)).getText().toString();
 
-        DtoLogin dtoLogin = new DtoLogin();
+        LoginDTO dtoLogin = new LoginDTO();
         dtoLogin.setEmail(email);
-        dtoLogin.setPassword(senha);
+        dtoLogin.setSenha(senha);
 
-        RetrofitService.getServico().login(dtoLogin).enqueue(new Callback<DtoLogin>() {
+        RetrofitService.getServico().login(dtoLogin).enqueue(new Callback<LoginDTO>() {
             @Override
-            public void onResponse(Call<DtoLogin> call, Response<DtoLogin> response) {
+            public void onResponse(Call<LoginDTO> call, Response<LoginDTO> response) {
                 if (response.isSuccessful()){
                     String token = response.body().getToken();
                     Toast.makeText(LoginActivity.this, "Usuário Logado", Toast.LENGTH_SHORT).show();
@@ -58,7 +57,7 @@ public class LoginActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<DtoLogin> call, Throwable t) {
+            public void onFailure(Call<LoginDTO> call, Throwable t) {
                 Log.d(TAG, "onFailure: " + t.getMessage());
 
             }

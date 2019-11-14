@@ -48,8 +48,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/et_cadastro_usuario_nome" />
 
-    <EditText
-        android:id="@+id/et_cadastro_usuario_telefone"
+    <Spinner
+        android:id="@+id/sp_cadastro_usuario_fucao"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -57,21 +57,20 @@
         android:layout_marginEnd="8dp"
         android:ems="10"
         android:hint="Telefone"
-        android:inputType="phone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_cadastro_usuario_password" />
+        app:layout_constraintTop_toBottomOf="@+id/et_cadastro_usuario_password"/>
 
     <Button
         android:id="@+id/button2"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="80dp"
         android:layout_marginEnd="8dp"
         android:onClick="cadastrar"
         android:text="Salvar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_cadastro_usuario_telefone" />
+        app:layout_constraintTop_toBottomOf="@+id/sp_cadastro_usuario_fucao" />
 </androidx.constraintlayout.widget.ConstraintLayout>

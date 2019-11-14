@@ -1,11 +1,11 @@
-package com.example.cruddeusuarios.dto;
+package com.example.frontpi4.dto;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class DtoLogin {
+public class LoginDTO {
     private String email;
-    private String password;
+    private String senha;
     private String token;
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
@@ -17,12 +17,12 @@ public class DtoLogin {
         this.email = email;
     }
 
-    public String getPassword() {
-        return password;
+    public String getSenha() {
+        return senha;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setSenha(String senha) {
+        this.senha = senha;
     }
 
     public String getToken() {
