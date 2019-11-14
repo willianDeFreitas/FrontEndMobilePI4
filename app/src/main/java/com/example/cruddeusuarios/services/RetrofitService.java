@@ -13,8 +13,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
  */
 
 public class RetrofitService {
-
-    private String baseUrl = "https://testeexercicio03102019.herokuapp.com";
+    private String baseUrl = "https://projetointegradorfour.herokuapp.com";
     private ApiEndPoint api;
     private static RetrofitService instancia;
 
