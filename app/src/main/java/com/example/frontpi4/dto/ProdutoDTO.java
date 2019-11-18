@@ -57,4 +57,11 @@ public class ProdutoDTO {
         this.vol = vol;
     }
 
+    public Double getQtd() {
+        return qtd;
+    }
+
+    public void setQtd(Double qtd) {
+        this.qtd = qtd;
+    }
 }

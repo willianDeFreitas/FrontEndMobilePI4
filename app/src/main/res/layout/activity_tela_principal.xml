@@ -25,7 +25,8 @@
         android:src="@drawable/fornecedores"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/im_tela_principal_clientes"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:onClick="fornecedores"/>
 
     <TextView
         android:id="@+id/tv_tela_principal_clientes"
@@ -48,7 +49,8 @@
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="@+id/im_tela_principal_fornecedores"
         app:layout_constraintStart_toStartOf="@+id/im_tela_principal_fornecedores"
-        app:layout_constraintTop_toBottomOf="@+id/im_tela_principal_fornecedores" />
+        app:layout_constraintTop_toBottomOf="@+id/im_tela_principal_fornecedores"
+        android:onClick="fornecedores"/>
 
     <ImageView
         android:id="@+id/im_tela_principal_vendas"
@@ -58,7 +60,8 @@
         android:src="@drawable/vendas"
         app:layout_constraintEnd_toEndOf="@+id/tv_tela_principal_clientes"
         app:layout_constraintStart_toStartOf="@+id/tv_tela_principal_clientes"
-        app:layout_constraintTop_toBottomOf="@+id/tv_tela_principal_clientes" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_tela_principal_clientes"
+        android:onClick="vendas"/>
 
     <ImageView
         android:id="@+id/im_tela_principal_compras"
@@ -68,7 +71,8 @@
         android:src="@drawable/compras"
         app:layout_constraintEnd_toEndOf="@+id/tv_tela_principal_fornecedores"
         app:layout_constraintStart_toStartOf="@+id/tv_tela_principal_fornecedores"
-        app:layout_constraintTop_toBottomOf="@+id/tv_tela_principal_fornecedores" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_tela_principal_fornecedores"
+        android:onClick="compras"/>
 
     <TextView
         android:id="@+id/tv_tela_principal_vendas"
@@ -79,7 +83,8 @@
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="@+id/im_tela_principal_vendas"
         app:layout_constraintStart_toStartOf="@+id/im_tela_principal_vendas"
-        app:layout_constraintTop_toBottomOf="@+id/im_tela_principal_vendas" />
+        app:layout_constraintTop_toBottomOf="@+id/im_tela_principal_vendas"
+        android:onClick="vendas"/>
 
     <TextView
         android:id="@+id/tv_tela_principal_compras"
@@ -90,7 +95,8 @@
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="@+id/im_tela_principal_compras"
         app:layout_constraintStart_toStartOf="@+id/im_tela_principal_compras"
-        app:layout_constraintTop_toBottomOf="@+id/im_tela_principal_compras" />
+        app:layout_constraintTop_toBottomOf="@+id/im_tela_principal_compras"
+        android:onClick="compras"/>
 
     <ImageView
         android:id="@+id/im_tela_principal_confsaida"
@@ -100,7 +106,8 @@
         android:src="@drawable/confsaida"
         app:layout_constraintEnd_toEndOf="@+id/tv_tela_principal_vendas"
         app:layout_constraintStart_toStartOf="@+id/tv_tela_principal_vendas"
-        app:layout_constraintTop_toBottomOf="@+id/tv_tela_principal_vendas" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_tela_principal_vendas"
+        android:onClick="confSaida"/>
 
     <ImageView
         android:id="@+id/im_tela_principal_confentrada"
@@ -110,7 +117,8 @@
         android:src="@drawable/confentrada"
         app:layout_constraintEnd_toEndOf="@+id/tv_tela_principal_compras"
         app:layout_constraintStart_toStartOf="@+id/tv_tela_principal_compras"
-        app:layout_constraintTop_toBottomOf="@+id/tv_tela_principal_compras" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_tela_principal_compras"
+        android:onClick="confEntrada"/>
 
     <TextView
         android:id="@+id/tv_tela_principal_confentrada"
@@ -121,7 +129,8 @@
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="@+id/im_tela_principal_confsaida"
         app:layout_constraintStart_toStartOf="@+id/im_tela_principal_confsaida"
-        app:layout_constraintTop_toBottomOf="@+id/im_tela_principal_confsaida" />
+        app:layout_constraintTop_toBottomOf="@+id/im_tela_principal_confsaida"
+        android:onClick="confEntrada"/>
 
     <TextView
         android:id="@+id/tv_tela_principal_confsaida"
@@ -132,7 +141,8 @@
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="@+id/im_tela_principal_confentrada"
         app:layout_constraintStart_toStartOf="@+id/im_tela_principal_confentrada"
-        app:layout_constraintTop_toBottomOf="@+id/im_tela_principal_confentrada" />
+        app:layout_constraintTop_toBottomOf="@+id/im_tela_principal_confentrada"
+        android:onClick="confSaida"/>
 
     <ImageView
         android:id="@+id/im_tela_principal_produtos"
@@ -143,7 +153,8 @@
         app:layout_constraintEnd_toEndOf="@+id/im_tela_principal_confentrada"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="@+id/im_tela_principal_confsaida"
-        app:layout_constraintTop_toBottomOf="@+id/tv_tela_principal_confsaida" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_tela_principal_confsaida"
+        android:onClick="produtos"/>
 
     <TextView
         android:id="@+id/tv_tela_principal_produtos"
@@ -156,6 +167,7 @@
         app:layout_constraintEnd_toEndOf="@+id/im_tela_principal_produtos"
         app:layout_constraintStart_toStartOf="@+id/im_tela_principal_produtos"
         app:layout_constraintTop_toBottomOf="@+id/im_tela_principal_produtos"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.0"
+        android:onClick="produtos"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

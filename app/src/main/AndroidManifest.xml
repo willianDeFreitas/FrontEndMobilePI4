@@ -13,19 +13,27 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".activities.TelaPrincipalActivity"
+        <activity android:name=".activities.ProdutosActivity"></activity>
+        <activity android:name=".activities.ConferenciaDeSaidaActivity" />
+        <activity android:name=".activities.ConferenciaDeEntradaActivity" />
+        <activity android:name=".activities.CadastroPedidoDeCompraActivity" />
+        <activity android:name=".activities.FornecedoresActivity" />
+        <activity android:name=".activities.ClientesActivity" />
+        <activity
+            android:name=".activities.TelaPrincipalActivity"
             android:label="Areia e Brita"
             android:parentActivityName=".activities.MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.frontpi4.activities.MainActivity" />
         </activity>
-        <activity android:name=".activities.CadastroPedidoDeVendaActivity"
+        <activity
+            android:name=".activities.CadastroPedidoDeVendaActivity"
             android:label="Pedido de Venda"
-            android:parentActivityName=".activities.MainActivity">
+            android:parentActivityName=".activities.TelaPrincipalActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.frontpi4.activities.MainActivity" />
+                android:value="com.example.frontpi4.activities.TelaPrincipalActivity" />
         </activity>
         <activity
             android:name=".activities.AlteracaoUsuarioActivity"
