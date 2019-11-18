@@ -32,12 +32,9 @@ public class CadastroDeUsuarioActivity extends AppCompatActivity implements Adap
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cadastro_de_usuario);
         funcao = findViewById(R.id.sp_cadastro_usuario_fucao);
-        // Create an ArrayAdapter using the string array and a default spinner layout
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
                 R.array.funcao_array, android.R.layout.simple_spinner_item);
-        // Specify the layout to use when the list of choices appears
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        // Apply the adapter to the spinner
         funcao.setAdapter(adapter);
         funcao.setOnItemSelectedListener(this);
     }
@@ -46,11 +43,15 @@ public class CadastroDeUsuarioActivity extends AppCompatActivity implements Adap
         String nome = ((EditText)findViewById(R.id.et_cadastro_usuario_nome)).getText().toString();
         String email = ((EditText)findViewById(R.id.et_cadastro_usuario_email)).getText().toString();
         String senha = ((EditText)findViewById(R.id.et_cadastro_usuario_password)).getText().toString();
-        //int teste = funcao_selecionada;
 
-        UsuarioDTO usuarioDTO =  new UsuarioDTO(email, nome, senha);
+        UsuarioDTO usuarioDTO = null;
+        String token = "";
 
-        String token = getToken();
+        if (funcao_selecionada != 0 && senha != "" && email != "") {
+            funcao_selecionada += 1;
+            usuarioDTO =  new UsuarioDTO(email, nome, senha, funcao_selecionada);
+            token = getToken();
+        }
 
         RetrofitService.getServico().cadastraUsuario(usuarioDTO, "Bearer "+token).enqueue(new Callback<UsuarioDTO>() {
             @Override
@@ -77,7 +78,7 @@ public class CadastroDeUsuarioActivity extends AppCompatActivity implements Adap
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-        //funcao_selecionada = (int) parent.getItemAtPosition(position);
+        funcao_selecionada = position;
     }
 
     @Override

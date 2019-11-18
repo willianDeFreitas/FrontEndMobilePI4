@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.frontpi4.activities.TelaPrincipalActivity">
+
+    <ImageView
+        android:id="@+id/im_tela_principal_clientes"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="16dp"
+        android:src="@drawable/clientes"
+        app:layout_constraintEnd_toStartOf="@+id/im_tela_principal_fornecedores"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:onClick="clientes"/>
+
+    <ImageView
+        android:id="@+id/im_tela_principal_fornecedores"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="16dp"
+        android:src="@drawable/fornecedores"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/im_tela_principal_clientes"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_tela_principal_clientes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="Clientes"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="@+id/im_tela_principal_clientes"
+        app:layout_constraintStart_toStartOf="@+id/im_tela_principal_clientes"
+        app:layout_constraintTop_toBottomOf="@+id/im_tela_principal_clientes"
+        android:onClick="clientes"/>
+
+    <TextView
+        android:id="@+id/tv_tela_principal_fornecedores"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="Fornecedores"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="@+id/im_tela_principal_fornecedores"
+        app:layout_constraintStart_toStartOf="@+id/im_tela_principal_fornecedores"
+        app:layout_constraintTop_toBottomOf="@+id/im_tela_principal_fornecedores" />
+
+    <ImageView
+        android:id="@+id/im_tela_principal_vendas"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="24dp"
+        android:src="@drawable/vendas"
+        app:layout_constraintEnd_toEndOf="@+id/tv_tela_principal_clientes"
+        app:layout_constraintStart_toStartOf="@+id/tv_tela_principal_clientes"
+        app:layout_constraintTop_toBottomOf="@+id/tv_tela_principal_clientes" />
+
+    <ImageView
+        android:id="@+id/im_tela_principal_compras"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="24dp"
+        android:src="@drawable/compras"
+        app:layout_constraintEnd_toEndOf="@+id/tv_tela_principal_fornecedores"
+        app:layout_constraintStart_toStartOf="@+id/tv_tela_principal_fornecedores"
+        app:layout_constraintTop_toBottomOf="@+id/tv_tela_principal_fornecedores" />
+
+    <TextView
+        android:id="@+id/tv_tela_principal_vendas"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="Vendas"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="@+id/im_tela_principal_vendas"
+        app:layout_constraintStart_toStartOf="@+id/im_tela_principal_vendas"
+        app:layout_constraintTop_toBottomOf="@+id/im_tela_principal_vendas" />
+
+    <TextView
+        android:id="@+id/tv_tela_principal_compras"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="Compras"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="@+id/im_tela_principal_compras"
+        app:layout_constraintStart_toStartOf="@+id/im_tela_principal_compras"
+        app:layout_constraintTop_toBottomOf="@+id/im_tela_principal_compras" />
+
+    <ImageView
+        android:id="@+id/im_tela_principal_confsaida"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="24dp"
+        android:src="@drawable/confsaida"
+        app:layout_constraintEnd_toEndOf="@+id/tv_tela_principal_vendas"
+        app:layout_constraintStart_toStartOf="@+id/tv_tela_principal_vendas"
+        app:layout_constraintTop_toBottomOf="@+id/tv_tela_principal_vendas" />
+
+    <ImageView
+        android:id="@+id/im_tela_principal_confentrada"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="24dp"
+        android:src="@drawable/confentrada"
+        app:layout_constraintEnd_toEndOf="@+id/tv_tela_principal_compras"
+        app:layout_constraintStart_toStartOf="@+id/tv_tela_principal_compras"
+        app:layout_constraintTop_toBottomOf="@+id/tv_tela_principal_compras" />
+
+    <TextView
+        android:id="@+id/tv_tela_principal_confentrada"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="Conf. Entrada"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="@+id/im_tela_principal_confsaida"
+        app:layout_constraintStart_toStartOf="@+id/im_tela_principal_confsaida"
+        app:layout_constraintTop_toBottomOf="@+id/im_tela_principal_confsaida" />
+
+    <TextView
+        android:id="@+id/tv_tela_principal_confsaida"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="Conf. Saída"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="@+id/im_tela_principal_confentrada"
+        app:layout_constraintStart_toStartOf="@+id/im_tela_principal_confentrada"
+        app:layout_constraintTop_toBottomOf="@+id/im_tela_principal_confentrada" />
+
+    <ImageView
+        android:id="@+id/im_tela_principal_produtos"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="24dp"
+        android:src="@drawable/produtos"
+        app:layout_constraintEnd_toEndOf="@+id/im_tela_principal_confentrada"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="@+id/im_tela_principal_confsaida"
+        app:layout_constraintTop_toBottomOf="@+id/tv_tela_principal_confsaida" />
+
+    <TextView
+        android:id="@+id/tv_tela_principal_produtos"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="Produtos"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/im_tela_principal_produtos"
+        app:layout_constraintStart_toStartOf="@+id/im_tela_principal_produtos"
+        app:layout_constraintTop_toBottomOf="@+id/im_tela_principal_produtos"
+        app:layout_constraintVertical_bias="0.0" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -47,7 +47,7 @@ public class LoginActivity extends AppCompatActivity {
                     editor.putString("token",token);
                     editor.apply();
 
-                    startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                    startActivity(new Intent(LoginActivity.this, TelaPrincipalActivity.class));
                 } else {
                     Toast.makeText(LoginActivity.this, "Login Falhou", Toast.LENGTH_SHORT).show();
                     startActivity(new Intent(LoginActivity.this, LoginActivity.class));

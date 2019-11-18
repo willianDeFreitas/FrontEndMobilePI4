@@ -6,6 +6,7 @@ public class UsuarioDTO {
     private int id;
     private String nome;
     private String senha;
+    private int funcao;
 
     public UsuarioDTO(String email, String nome) {
         this.email = email;
@@ -16,6 +17,14 @@ public class UsuarioDTO {
         this.email = email;
         this.nome = nome;
         this.senha = senha;
+        this.funcao = funcao;
+    }
+
+    public UsuarioDTO(String email, String nome, String senha, int funcao) {
+        this.email = email;
+        this.nome = nome;
+        this.senha = senha;
+        this.funcao = funcao;
     }
 
     public String getEmail() {
@@ -48,6 +57,14 @@ public class UsuarioDTO {
 
     public void setSenha(String senha) {
         this.senha = senha;
+    }
+
+    public int getFuncao() {
+        return funcao;
+    }
+
+    public void setFuncao(int funcao) {
+        this.funcao = funcao;
     }
 
 }
