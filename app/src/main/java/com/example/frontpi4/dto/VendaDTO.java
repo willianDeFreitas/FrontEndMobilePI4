@@ -4,24 +4,24 @@ import java.util.Date;
 import java.util.List;
 
 public class VendaDTO {
-    private int id;
-    private int clienteId;
+    private Long id;
+    private Long clienteId;
     private Date data;
     private Double totalV;
     private List<ItemVendaDTO> itensVenda = null;
 
-    public VendaDTO(Date data, Double totalV, int clienteId, List<ItemVendaDTO> itensVenda) {
+    public VendaDTO(Date data, Double totalV, Long clienteId, List<ItemVendaDTO> itensVenda) {
         this.data = data;
         this.totalV = totalV;
         this.clienteId = clienteId;
         this.itensVenda = itensVenda;
     }
 
-    public int getClienteId() {
+    public Long getClienteId() {
         return clienteId;
     }
 
-    public void setClienteId(int clienteId) {
+    public void setClienteId(Long clienteId) {
         this.clienteId = clienteId;
     }
 
@@ -33,11 +33,11 @@ public class VendaDTO {
         this.data = data;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

@@ -2,14 +2,14 @@ package com.example.frontpi4.dto;
 
 public class ClienteDTO {
 
-    private int id;
+    private Long id;
     private String nome;
     private String email;
     private String cpf;
     private String end;
     private String tel;
 
-    public ClienteDTO(int id, String nome, String cpf, String end, String email, String tel) {
+    public ClienteDTO(Long id, String nome, String cpf, String end, String email, String tel) {
         this.id = id;
         this.nome = nome;
         this.cpf = cpf;
@@ -42,11 +42,11 @@ public class ClienteDTO {
         this.end = end;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

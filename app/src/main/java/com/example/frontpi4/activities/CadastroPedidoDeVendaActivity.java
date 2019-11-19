@@ -39,6 +39,7 @@ public class CadastroPedidoDeVendaActivity extends AppCompatActivity implements 
     List<ClienteDTO> listaDeClientes;
     List<ProdutoDTO> listaDeProdutos;
     List<ItemVendaDTO> listaDeItemVenda = new ArrayList<>();
+    Singleton singleton = Singleton.getInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -116,7 +117,6 @@ public class CadastroPedidoDeVendaActivity extends AppCompatActivity implements 
         ItemVendaDTO itemVendaDTO = new ItemVendaDTO(null, qtdItemV, valorItemV, idProd, null, conferido);
         listaDeItemVenda.add(itemVendaDTO);
 
-        Singleton singleton = Singleton.getInstance();
         singleton.setListaDeItemVenda(listaDeItemVenda);
 
         //editText.setEnabled(true);
@@ -125,11 +125,14 @@ public class CadastroPedidoDeVendaActivity extends AppCompatActivity implements 
 
     public void cadastrar(View view) {
         Date data = new Date(System.currentTimeMillis());
-        int clientId = 0;
+        int clienteSelct = spin_cliente.getSelectedItemPosition();
+        String itemSelecionado = listaDeClientes.get(clienteSelct).getNome();
+        Long idProd = listaDeClientes.get(clienteSelct).getId();
+        Long clientId = null;
         String email = ((EditText)findViewById(R.id.et_cadastro_usuario_email)).getText().toString();
         Double totalV = 0.0;
 
-        VendaDTO vendaDTO =  new VendaDTO(data, totalV, clientId, listaDeItemVenda);
+        VendaDTO vendaDTO =  new VendaDTO(data, totalV, clientId, singleton.getListaDeItemVenda());
 
         String token = getToken();
 
