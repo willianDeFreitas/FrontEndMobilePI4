@@ -1,12 +1,32 @@
 package com.example.frontpi4.helpers;
 
-class Singleton {
-    private static final Singleton ourInstance = new Singleton();
+import com.example.frontpi4.dto.ItemVendaDTO;
 
-    static Singleton getInstance() {
-        return ourInstance;
+import java.util.ArrayList;
+import java.util.List;
+
+public class Singleton {
+    private static Singleton _instance;
+    private List<ItemVendaDTO> listaDeItemVenda;
+
+    private Singleton() { }
+
+    public static Singleton getInstance() {
+        if (_instance == null) {
+            synchronized (Singleton.class){
+                if (_instance == null) {
+                    _instance = new Singleton();
+                }
+            }
+        }
+        return _instance;
     }
 
-    private Singleton() {
+    public List<ItemVendaDTO> getListaDeItemVenda() {
+        return listaDeItemVenda;
+    }
+
+    public void setListaDeItemVenda(List<ItemVendaDTO> listaDeItemVenda) {
+        this.listaDeItemVenda = listaDeItemVenda;
     }
 }

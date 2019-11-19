@@ -3,13 +3,13 @@ package com.example.frontpi4.dto;
 public class ItemVendaDTO{
 
     private String conferido;
-    private int id;
-    private int produtoId;
+    private Long id;
+    private Long produtoId;
     private Double qtdItemV;
     private Double valorItemV;
-    private int vendaId;
+    private Long vendaId;
 
-    public ItemVendaDTO(int id, Double qtdItemV, Double valorItemV, int produtoId, int vendaId, String conferido) {
+    public ItemVendaDTO(Long id, Double qtdItemV, Double valorItemV, Long produtoId, Long vendaId, String conferido) {
         this.qtdItemV = qtdItemV;
         this.valorItemV = valorItemV;
         this.produtoId = produtoId;
@@ -25,27 +25,27 @@ public class ItemVendaDTO{
         this.conferido = conferido;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
-    public int getProdutoId() {
+    public Long getProdutoId() {
         return produtoId;
     }
 
-    public void setProdutoId(int produtoId) {
+    public void setProdutoId(Long produtoId) {
         this.produtoId = produtoId;
     }
 
-    public int getVendaId() {
+    public Long getVendaId() {
         return vendaId;
     }
 
-    public void setVendaId(int vendaId) {
+    public void setVendaId(Long vendaId) {
         this.vendaId = vendaId;
     }
 

@@ -1,14 +1,14 @@
 package com.example.frontpi4.dto;
 
 public class ProdutoDTO {
-    private int id;
+    private Long id;
     private String nome;
     private Double preco;
     private Double qtd;
     private String vol;
-    private int categoriaId;
+    private Long categoriaId;
 
-    public ProdutoDTO(int id, String nome, Double preco, Double qtd, String vol, int categoriaId){
+    public ProdutoDTO(Long id, String nome, Double preco, Double qtd, String vol, Long categoriaId){
         this.id = id;
         this.nome = nome;
         this.preco = preco;
@@ -25,19 +25,19 @@ public class ProdutoDTO {
         return preco;
     }
 
-    public int getCategoriaId() {
+    public Long getCategoriaId() {
         return categoriaId;
     }
 
-    public void setCategoriaId(int categoriaId) {
+    public void setCategoriaId(Long categoriaId) {
         this.categoriaId = categoriaId;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

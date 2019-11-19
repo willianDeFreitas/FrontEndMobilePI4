@@ -19,6 +19,7 @@ import com.example.frontpi4.dto.ItemVendaDTO;
 import com.example.frontpi4.dto.ProdutoDTO;
 import com.example.frontpi4.dto.UsuarioDTO;
 import com.example.frontpi4.dto.VendaDTO;
+import com.example.frontpi4.helpers.Singleton;
 import com.example.frontpi4.services.RetrofitService;
 
 import java.util.ArrayList;
@@ -37,6 +38,7 @@ public class CadastroPedidoDeVendaActivity extends AppCompatActivity implements 
     Spinner spin_produto;
     List<ClienteDTO> listaDeClientes;
     List<ProdutoDTO> listaDeProdutos;
+    List<ItemVendaDTO> listaDeItemVenda = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,7 +63,7 @@ public class CadastroPedidoDeVendaActivity extends AppCompatActivity implements 
                 listaDeClientes = response.body();
                 List<String> listaNomesDeClientes = new ArrayList<>();
                 for (ClienteDTO cliente : listaDeClientes) {
-                   // listaNomesDeClientes.add(cliente.getName());
+                   listaNomesDeClientes.add(cliente.getNome());
                 }
 
                 ArrayAdapter<String> adapter = new ArrayAdapter<>(
@@ -83,7 +85,7 @@ public class CadastroPedidoDeVendaActivity extends AppCompatActivity implements 
                 listaDeProdutos = response.body();
                 List<String> listaNomeDeProdutos = new ArrayList<>();
                 for (ProdutoDTO produto : listaDeProdutos) {
-                    //listaDeProdutos.add(produto.getName());
+                    listaNomeDeProdutos.add(produto.getNome());
                 }
 
                 ArrayAdapter<String> adapter = new ArrayAdapter<>(
@@ -100,14 +102,34 @@ public class CadastroPedidoDeVendaActivity extends AppCompatActivity implements 
         });
     }
 
+    public void criaListaPedidoVenda (View view) {
+        String conferido = "N";
+        int produtoSelct = spin_produto.getSelectedItemPosition();
+        String itemSelecionado = listaDeProdutos.get(produtoSelct).getNome();
+        Long idProd = listaDeProdutos.get(produtoSelct).getId();
+        String qtdItemVStr = ((EditText)findViewById(R.id.et_cadastro_pedido_venda_quantidade)).getText().toString();
+        String valorItemVStr = ((EditText)findViewById(R.id.et_cadastro_pedido_venda_valor)).getText().toString();
+
+        Double qtdItemV = Double.parseDouble(qtdItemVStr);
+        Double valorItemV = Double.parseDouble(valorItemVStr);
+
+        ItemVendaDTO itemVendaDTO = new ItemVendaDTO(null, qtdItemV, valorItemV, idProd, null, conferido);
+        listaDeItemVenda.add(itemVendaDTO);
+
+        Singleton singleton = Singleton.getInstance();
+        singleton.setListaDeItemVenda(listaDeItemVenda);
+
+        //editText.setEnabled(true);
+        //editText.setEnabled(false);
+    }
+
     public void cadastrar(View view) {
         Date data = new Date(System.currentTimeMillis());
         int clientId = 0;
-        List<ItemVendaDTO> itensVenda = new ArrayList<>();
-        //String email = ((EditText)findViewById(R.id.et_cadastro_usuario_email)).getText().toString();
+        String email = ((EditText)findViewById(R.id.et_cadastro_usuario_email)).getText().toString();
         Double totalV = 0.0;
 
-        VendaDTO vendaDTO =  new VendaDTO(data, totalV, clientId, itensVenda);
+        VendaDTO vendaDTO =  new VendaDTO(data, totalV, clientId, listaDeItemVenda);
 
         String token = getToken();
 
