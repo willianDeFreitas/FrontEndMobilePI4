@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">Areia e Brita</string>
-    <string name="action_settings">Settings</string>
+    <string name="action_settings">Configurações</string>
     <string name="login">Login</string>
     <string name="senha">Senha</string>
     <string name="email">Email</string>
@@ -8,6 +8,17 @@
     <string name="cliente">Cliente</string>
     <string name="Valor_venda">Valor da venda</string>
     <string name="entrar_no_sistema">Entrar no sistema</string>
+    <string name="conf_saida">Conferência de Saída</string>
+    <string name="conf_entrada">Conferência de Entrada</string>
+    <string name="pedido_compra">Pedido de Compra</string>
+    <string name="produtos">Produtos</string>
+    <string name="pedido_venda">Pedido de Venda</string>
+    <string name="texto_logo_empresa">Areia e Brita</string>
+    <string name="fornecedores">Fornecedores</string>
+    <string name="clientes">Clientes</string>
+    <string name="alterar_usuario">Alterar de usuário</string>
+    <string name="lista_usuarios">Lista de usuários</string>
+    <string name="cadastra_usuarios">Cadastro de usuário</string>
     <string-array name="funcao_array">
         <item>Selecione a função</item>
         <item>Secretaria</item>

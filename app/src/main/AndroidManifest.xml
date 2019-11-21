@@ -35,9 +35,10 @@
                 android:value="com.example.frontpi4.activities.MainActivity" />
         </activity>
 
+                                <!--Activities tela principal INICIO-->
         <activity
             android:name=".activities.TelaPrincipalActivity"
-            android:label="Areia e Brita"
+            android:label="@string/texto_logo_empresa"
             android:parentActivityName=".activities.LoginActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
@@ -47,24 +48,71 @@
 
         <activity
             android:name=".activities.CadastroPedidoDeVendaActivity"
-            android:label="Pedido de Venda"
+            android:label="@string/pedido_venda"
             android:parentActivityName=".activities.TelaPrincipalActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.frontpi4.activities.TelaPrincipalActivity" />
         </activity>
 
-        <activity android:name=".activities.ProdutosActivity" />
-        <activity android:name=".activities.ConferenciaDeSaidaActivity" />
-        <activity android:name=".activities.ConferenciaDeEntradaActivity" />
-        <activity android:name=".activities.CadastroPedidoDeCompraActivity" />
-        <activity android:name=".activities.FornecedoresActivity" />
-        <activity android:name=".activities.ClientesActivity" />
+        <activity
+            android:name=".activities.CadastroPedidoDeCompraActivity"
+            android:label="@string/pedido_compra"
+            android:parentActivityName=".activities.TelaPrincipalActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.frontpi4.activities.TelaPrincipalActivity" />
+        </activity>
 
+        <activity
+            android:name=".activities.ConferenciaDeSaidaActivity"
+            android:label="@string/conf_saida"
+            android:parentActivityName=".activities.TelaPrincipalActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.frontpi4.activities.TelaPrincipalActivity" />
+        </activity>
+
+        <activity
+            android:name=".activities.ConferenciaDeEntradaActivity"
+            android:label="@string/conf_entrada"
+            android:parentActivityName=".activities.TelaPrincipalActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.frontpi4.activities.TelaPrincipalActivity" />
+        </activity>
+
+        <activity
+            android:name=".activities.FornecedoresActivity"
+            android:label="@string/fornecedores"
+            android:parentActivityName=".activities.TelaPrincipalActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.frontpi4.activities.TelaPrincipalActivity" />
+        </activity>
+
+        <activity
+            android:name=".activities.ClientesActivity"
+            android:label="@string/clientes"
+            android:parentActivityName=".activities.TelaPrincipalActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.frontpi4.activities.TelaPrincipalActivity" />
+        </activity>
+
+        <activity
+            android:name=".activities.ProdutosActivity"
+            android:label="@string/produtos"
+            android:parentActivityName=".activities.TelaPrincipalActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.frontpi4.activities.TelaPrincipalActivity" />
+        </activity>
+                                    <!--Activities tela principal FIM-->
                                         <!--OPCOES DO APPBAR INICIO-->
         <activity
             android:name=".activities.AlteracaoUsuarioActivity"
-            android:label="Alterar de usuário"
+            android:label="@string/alterar_usuario"
             android:parentActivityName=".activities.TelaPrincipalActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -72,7 +120,7 @@
         </activity>
         <activity
             android:name=".activities.ListaUsuariosActivity"
-            android:label="Lista de usuários"
+            android:label="@string/lista_usuarios"
             android:parentActivityName=".activities.TelaPrincipalActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -80,7 +128,7 @@
         </activity>
         <activity
             android:name=".activities.CadastroDeUsuarioActivity"
-            android:label="Cadastro de usuário"
+            android:label="@string/cadastra_usuarios"
             android:parentActivityName=".activities.TelaPrincipalActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
