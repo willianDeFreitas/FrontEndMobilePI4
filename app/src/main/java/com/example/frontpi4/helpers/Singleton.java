@@ -8,6 +8,7 @@ import java.util.List;
 public class Singleton {
     private static Singleton _instance;
     private List<ItemVendaDTO> listaDeItemVenda;
+    private int qtdItemVenda;
 
     private Singleton() { }
 
@@ -28,5 +29,13 @@ public class Singleton {
 
     public void setListaDeItemVenda(List<ItemVendaDTO> listaDeItemVenda) {
         this.listaDeItemVenda = listaDeItemVenda;
+    }
+
+    public int getQtdItemVenda() {
+        return qtdItemVenda;
+    }
+
+    public void setQtdItemVenda(int qtdItemVenda) {
+        this.qtdItemVenda = qtdItemVenda;
     }
 }

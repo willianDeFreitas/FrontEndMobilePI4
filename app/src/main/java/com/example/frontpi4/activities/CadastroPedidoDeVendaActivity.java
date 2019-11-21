@@ -43,15 +43,16 @@ public class CadastroPedidoDeVendaActivity extends AppCompatActivity implements 
     List<ItemVendaDTO> listaDeItemVenda = new ArrayList<>();
     Singleton singleton = Singleton.getInstance();
     SimpleDateFormat formataData = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'");
-    Button btnConfirmar;
+    Button btnConfirmarPedidoVenda;
+    int qtdItemVenda = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cadastro_pedido_de_venda);
 
-        btnConfirmar = findViewById(R.id.bt_cadastro_pedido_venda_confirma_pedido);
-        btnConfirmar.setEnabled(false);
+        btnConfirmarPedidoVenda = findViewById(R.id.bt_cadastro_pedido_venda_confirma_pedido);
+        btnConfirmarPedidoVenda.setEnabled(false);
 
         spin_cliente = findViewById(R.id.spin_cadastro_pedido_venda_cliente);
         spin_produto = findViewById(R.id.spin_cadastro_pedido_venda_produto);
@@ -79,8 +80,9 @@ public class CadastroPedidoDeVendaActivity extends AppCompatActivity implements 
 
                 ArrayAdapter<String> adapter = new ArrayAdapter<>(
                         CadastroPedidoDeVendaActivity.this,
-                        android.R.layout.simple_spinner_item,
+                        R.layout.spinner_item,
                         listaNomesDeClientes);
+
                 spin_cliente.setAdapter(adapter);
             }
 
@@ -101,7 +103,7 @@ public class CadastroPedidoDeVendaActivity extends AppCompatActivity implements 
 
                 ArrayAdapter<String> adapter = new ArrayAdapter<>(
                         CadastroPedidoDeVendaActivity.this,
-                        android.R.layout.simple_spinner_item,
+                        R.layout.spinner_item,
                         listaNomeDeProdutos);
                 spin_produto.setAdapter(adapter);
             }
@@ -128,7 +130,13 @@ public class CadastroPedidoDeVendaActivity extends AppCompatActivity implements 
 
         singleton.setListaDeItemVenda(listaDeItemVenda);
 
-        btnConfirmar.setEnabled(true);
+        qtdItemVenda++;
+        singleton.setQtdItemVenda(qtdItemVenda);
+        qtdItemVenda = singleton.getQtdItemVenda();
+        Toast.makeText(CadastroPedidoDeVendaActivity.this, "Item de venda: "+ qtdItemVenda +" salvo", Toast.LENGTH_LONG).show();
+
+        btnConfirmarPedidoVenda.setEnabled(true);
+        spin_cliente.setEnabled(false);
     }
 
     public void confirmarPedidoVenda(View view) {
@@ -151,7 +159,8 @@ public class CadastroPedidoDeVendaActivity extends AppCompatActivity implements 
             @Override
             public void onResponse(Call<VendaDTO> call, Response<VendaDTO> response) {
                 if (response.isSuccessful()) {
-                    Toast.makeText(CadastroPedidoDeVendaActivity.this, "Pedido de venda cadastrado com ID: " + response.body().getId(), Toast.LENGTH_LONG).show();
+                    Toast.makeText(CadastroPedidoDeVendaActivity.this, "Pedido de venda inserido com sucesso", Toast.LENGTH_LONG).show();
+                    finish();
                     startActivity(new Intent(CadastroPedidoDeVendaActivity.this, TelaPrincipalActivity.class));
                 } else {
                     Toast.makeText(CadastroPedidoDeVendaActivity.this, "Problemas ao cadastrar Pedido ", Toast.LENGTH_LONG).show();
@@ -178,5 +187,10 @@ public class CadastroPedidoDeVendaActivity extends AppCompatActivity implements 
     private String getToken() {
         SharedPreferences sp = getSharedPreferences("dados",0);
         return sp.getString("token",null);
+    }
+
+    public void cancelaPedidoDeVenda(View view) {
+        finish();
+        startActivity(new Intent(CadastroPedidoDeVendaActivity.this, TelaPrincipalActivity.class));
     }
 }
