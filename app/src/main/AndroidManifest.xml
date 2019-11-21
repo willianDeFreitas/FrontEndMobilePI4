@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.example.frontpi4">
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -12,45 +13,19 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-        android:usesCleartextTraffic="true">
-        <activity android:name=".activities.ProdutosActivity"></activity>
-        <activity android:name=".activities.ConferenciaDeSaidaActivity" />
-        <activity android:name=".activities.ConferenciaDeEntradaActivity" />
-        <activity android:name=".activities.CadastroPedidoDeCompraActivity" />
-        <activity android:name=".activities.FornecedoresActivity" />
-        <activity android:name=".activities.ClientesActivity" />
+        android:usesCleartextTraffic="true"
+        tools:ignore="GoogleAppIndexingWarning">
+
         <activity
-            android:name=".activities.TelaPrincipalActivity"
-            android:label="Areia e Brita"
-            android:parentActivityName=".activities.MainActivity">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.frontpi4.activities.MainActivity" />
+            android:name=".activities.MainActivity"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
-        <activity
-            android:name=".activities.CadastroPedidoDeVendaActivity"
-            android:label="Pedido de Venda"
-            android:parentActivityName=".activities.TelaPrincipalActivity">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.frontpi4.activities.TelaPrincipalActivity" />
-        </activity>
-        <activity
-            android:name=".activities.AlteracaoUsuarioActivity"
-            android:label="Alterar de usuário"
-            android:parentActivityName=".activities.MainActivity">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.frontpi4.activities.MainActivity" />
-        </activity>
-        <activity
-            android:name=".activities.ListaUsuariosActivity"
-            android:label="Lista de usuários"
-            android:parentActivityName=".activities.MainActivity">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.frontpi4.activities.MainActivity" />
-        </activity>
+
         <activity
             android:name=".activities.LoginActivity"
             android:label="Login"
@@ -59,24 +34,58 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.frontpi4.activities.MainActivity" />
         </activity>
+
+        <activity
+            android:name=".activities.TelaPrincipalActivity"
+            android:label="Areia e Brita"
+            android:parentActivityName=".activities.LoginActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.frontpi4.activities.LoginActivity" />
+        </activity>
+
+        <activity
+            android:name=".activities.CadastroPedidoDeVendaActivity"
+            android:label="Pedido de Venda"
+            android:parentActivityName=".activities.TelaPrincipalActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.frontpi4.activities.TelaPrincipalActivity" />
+        </activity>
+
+        <activity android:name=".activities.ProdutosActivity" />
+        <activity android:name=".activities.ConferenciaDeSaidaActivity" />
+        <activity android:name=".activities.ConferenciaDeEntradaActivity" />
+        <activity android:name=".activities.CadastroPedidoDeCompraActivity" />
+        <activity android:name=".activities.FornecedoresActivity" />
+        <activity android:name=".activities.ClientesActivity" />
+
+                                        <!--OPCOES DO APPBAR INICIO-->
+        <activity
+            android:name=".activities.AlteracaoUsuarioActivity"
+            android:label="Alterar de usuário"
+            android:parentActivityName=".activities.TelaPrincipalActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.frontpi4.activities.TelaPrincipalActivity" />
+        </activity>
+        <activity
+            android:name=".activities.ListaUsuariosActivity"
+            android:label="Lista de usuários"
+            android:parentActivityName=".activities.TelaPrincipalActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.frontpi4.activities.TelaPrincipalActivity" />
+        </activity>
         <activity
             android:name=".activities.CadastroDeUsuarioActivity"
             android:label="Cadastro de usuário"
-            android:parentActivityName=".activities.MainActivity">
+            android:parentActivityName=".activities.TelaPrincipalActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.frontpi4.activities.MainActivity" />
+                android:value="com.example.frontpi4.activities.TelaPrincipalActivity" />
         </activity>
-        <activity
-            android:name=".activities.MainActivity"
-            android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+                                        <!--OPCOES DO APPBAR FIM-->
     </application>
-
 </manifest>

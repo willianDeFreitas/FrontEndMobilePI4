@@ -7,14 +7,14 @@
         android:id="@+id/action_cadastro_de_usuario"
         android:icon="@drawable/ic_action_cadastro_de_usuario"
         android:title="Cadastro de usuário"
-        app:showAsAction="always" />
+        app:showAsAction="never" />
     <item
         android:id="@+id/action_lista_usuarios"
         android:icon="@drawable/ic_action_lista_usuarios"
         android:title="Todos" />
     <item
-        android:id="@+id/action_login"
+        android:id="@+id/action_sair"
         android:icon="@drawable/ic_action_login"
-        android:title="Login"
-        app:showAsAction="always" />
+        android:title="Sair"
+        app:showAsAction="never" />
 </menu>

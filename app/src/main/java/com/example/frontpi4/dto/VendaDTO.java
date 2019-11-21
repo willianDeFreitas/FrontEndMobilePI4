@@ -1,16 +1,15 @@
 package com.example.frontpi4.dto;
 
-import java.util.Date;
 import java.util.List;
 
 public class VendaDTO {
     private Long id;
     private Long clienteId;
-    private Date data;
+    private String data;
     private Double totalV;
     private List<ItemVendaDTO> itensVenda = null;
 
-    public VendaDTO(Date data, Double totalV, Long clienteId, List<ItemVendaDTO> itensVenda) {
+    public VendaDTO(String data, Double totalV, Long clienteId, List<ItemVendaDTO> itensVenda) {
         this.data = data;
         this.totalV = totalV;
         this.clienteId = clienteId;
@@ -25,11 +24,11 @@ public class VendaDTO {
         this.clienteId = clienteId;
     }
 
-    public Date getData() {
+    public String getData() {
         return data;
     }
 
-    public void setData(Date data) {
+    public void setData(String data) {
         this.data = data;
     }
 

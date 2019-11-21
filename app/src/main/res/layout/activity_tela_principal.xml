@@ -6,168 +6,183 @@
     android:layout_height="match_parent"
     tools:context="com.example.frontpi4.activities.TelaPrincipalActivity">
 
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay"
+        tools:ignore="MissingConstraints">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            app:popupTheme="@style/AppTheme.PopupOverlay" />
+
+    </com.google.android.material.appbar.AppBarLayout>
+
     <ImageView
         android:id="@+id/im_tela_principal_clientes"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="75dp"
+        android:onClick="clientes"
         android:src="@drawable/clientes"
         app:layout_constraintEnd_toStartOf="@+id/im_tela_principal_fornecedores"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:onClick="clientes"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/im_tela_principal_fornecedores"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="75dp"
+        android:onClick="fornecedores"
         android:src="@drawable/fornecedores"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/im_tela_principal_clientes"
-        app:layout_constraintTop_toTopOf="parent"
-        android:onClick="fornecedores"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/tv_tela_principal_clientes"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="8dp"
+        android:onClick="clientes"
         android:text="Clientes"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="@+id/im_tela_principal_clientes"
         app:layout_constraintStart_toStartOf="@+id/im_tela_principal_clientes"
-        app:layout_constraintTop_toBottomOf="@+id/im_tela_principal_clientes"
-        android:onClick="clientes"/>
+        app:layout_constraintTop_toBottomOf="@+id/im_tela_principal_clientes" />
 
     <TextView
         android:id="@+id/tv_tela_principal_fornecedores"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="8dp"
+        android:onClick="fornecedores"
         android:text="Fornecedores"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="@+id/im_tela_principal_fornecedores"
         app:layout_constraintStart_toStartOf="@+id/im_tela_principal_fornecedores"
-        app:layout_constraintTop_toBottomOf="@+id/im_tela_principal_fornecedores"
-        android:onClick="fornecedores"/>
+        app:layout_constraintTop_toBottomOf="@+id/im_tela_principal_fornecedores" />
 
     <ImageView
         android:id="@+id/im_tela_principal_vendas"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="32dp"
+        android:onClick="vendas"
         android:src="@drawable/vendas"
         app:layout_constraintEnd_toEndOf="@+id/tv_tela_principal_clientes"
         app:layout_constraintStart_toStartOf="@+id/tv_tela_principal_clientes"
-        app:layout_constraintTop_toBottomOf="@+id/tv_tela_principal_clientes"
-        android:onClick="vendas"/>
+        app:layout_constraintTop_toBottomOf="@+id/tv_tela_principal_clientes" />
 
     <ImageView
         android:id="@+id/im_tela_principal_compras"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="32dp"
+        android:onClick="compras"
         android:src="@drawable/compras"
         app:layout_constraintEnd_toEndOf="@+id/tv_tela_principal_fornecedores"
         app:layout_constraintStart_toStartOf="@+id/tv_tela_principal_fornecedores"
-        app:layout_constraintTop_toBottomOf="@+id/tv_tela_principal_fornecedores"
-        android:onClick="compras"/>
+        app:layout_constraintTop_toBottomOf="@+id/tv_tela_principal_fornecedores" />
 
     <TextView
         android:id="@+id/tv_tela_principal_vendas"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="8dp"
+        android:onClick="vendas"
         android:text="Vendas"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="@+id/im_tela_principal_vendas"
         app:layout_constraintStart_toStartOf="@+id/im_tela_principal_vendas"
-        app:layout_constraintTop_toBottomOf="@+id/im_tela_principal_vendas"
-        android:onClick="vendas"/>
+        app:layout_constraintTop_toBottomOf="@+id/im_tela_principal_vendas" />
 
     <TextView
         android:id="@+id/tv_tela_principal_compras"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="8dp"
+        android:onClick="compras"
         android:text="Compras"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="@+id/im_tela_principal_compras"
         app:layout_constraintStart_toStartOf="@+id/im_tela_principal_compras"
-        app:layout_constraintTop_toBottomOf="@+id/im_tela_principal_compras"
-        android:onClick="compras"/>
+        app:layout_constraintTop_toBottomOf="@+id/im_tela_principal_compras" />
 
     <ImageView
         android:id="@+id/im_tela_principal_confsaida"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="32dp"
+        android:onClick="confSaida"
         android:src="@drawable/confsaida"
         app:layout_constraintEnd_toEndOf="@+id/tv_tela_principal_vendas"
         app:layout_constraintStart_toStartOf="@+id/tv_tela_principal_vendas"
-        app:layout_constraintTop_toBottomOf="@+id/tv_tela_principal_vendas"
-        android:onClick="confSaida"/>
+        app:layout_constraintTop_toBottomOf="@+id/tv_tela_principal_vendas" />
 
     <ImageView
         android:id="@+id/im_tela_principal_confentrada"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="32dp"
+        android:onClick="confEntrada"
         android:src="@drawable/confentrada"
         app:layout_constraintEnd_toEndOf="@+id/tv_tela_principal_compras"
         app:layout_constraintStart_toStartOf="@+id/tv_tela_principal_compras"
-        app:layout_constraintTop_toBottomOf="@+id/tv_tela_principal_compras"
-        android:onClick="confEntrada"/>
+        app:layout_constraintTop_toBottomOf="@+id/tv_tela_principal_compras" />
 
     <TextView
         android:id="@+id/tv_tela_principal_confentrada"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="8dp"
+        android:onClick="confEntrada"
         android:text="Conf. Entrada"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="@+id/im_tela_principal_confsaida"
         app:layout_constraintStart_toStartOf="@+id/im_tela_principal_confsaida"
-        app:layout_constraintTop_toBottomOf="@+id/im_tela_principal_confsaida"
-        android:onClick="confEntrada"/>
+        app:layout_constraintTop_toBottomOf="@+id/im_tela_principal_confsaida" />
 
     <TextView
         android:id="@+id/tv_tela_principal_confsaida"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="8dp"
+        android:onClick="confSaida"
         android:text="Conf. Saída"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="@+id/im_tela_principal_confentrada"
         app:layout_constraintStart_toStartOf="@+id/im_tela_principal_confentrada"
-        app:layout_constraintTop_toBottomOf="@+id/im_tela_principal_confentrada"
-        android:onClick="confSaida"/>
+        app:layout_constraintTop_toBottomOf="@+id/im_tela_principal_confentrada" />
 
     <ImageView
         android:id="@+id/im_tela_principal_produtos"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="32dp"
+        android:onClick="produtos"
         android:src="@drawable/produtos"
         app:layout_constraintEnd_toEndOf="@+id/im_tela_principal_confentrada"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="@+id/im_tela_principal_confsaida"
-        app:layout_constraintTop_toBottomOf="@+id/tv_tela_principal_confsaida"
-        android:onClick="produtos"/>
+        app:layout_constraintTop_toBottomOf="@+id/tv_tela_principal_confsaida" />
 
     <TextView
         android:id="@+id/tv_tela_principal_produtos"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="8dp"
+        android:onClick="produtos"
         android:text="Produtos"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/im_tela_principal_produtos"
         app:layout_constraintStart_toStartOf="@+id/im_tela_principal_produtos"
         app:layout_constraintTop_toBottomOf="@+id/im_tela_principal_produtos"
-        app:layout_constraintVertical_bias="0.0"
-        android:onClick="produtos"/>
+        app:layout_constraintVertical_bias="0.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

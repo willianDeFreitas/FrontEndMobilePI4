@@ -7,6 +7,7 @@
     <string name="Quantidade">Quantidade</string>
     <string name="cliente">Cliente</string>
     <string name="Valor_venda">Valor da venda</string>
+    <string name="entrar_no_sistema">Entrar no sistema</string>
     <string-array name="funcao_array">
         <item>Selecione a função</item>
         <item>Secretaria</item>
