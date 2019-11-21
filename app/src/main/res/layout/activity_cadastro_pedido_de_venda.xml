@@ -66,8 +66,8 @@
     android:layout_marginStart="8dp"
     android:layout_marginTop="20dp"
     android:layout_marginEnd="8dp"
-    android:onClick="criaListaPedidoVenda"
-    android:text="Lançar pedido"
+    android:onClick="registraItemVenda"
+    android:text="Registra item de venda"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toBottomOf="@+id/et_cadastro_pedido_venda_valor" />
@@ -79,8 +79,8 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="8dp"
-        android:onClick="cadastrar"
-        android:text="Lançar pedido"
+        android:onClick="confirmarPedidoVenda"
+        android:text="Confirma pedido"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/bt_cadastro_pedido_venda_lancar_pedido" />

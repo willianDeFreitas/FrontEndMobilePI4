@@ -4,11 +4,13 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
@@ -17,11 +19,11 @@ import com.example.frontpi4.R;
 import com.example.frontpi4.dto.ClienteDTO;
 import com.example.frontpi4.dto.ItemVendaDTO;
 import com.example.frontpi4.dto.ProdutoDTO;
-import com.example.frontpi4.dto.UsuarioDTO;
 import com.example.frontpi4.dto.VendaDTO;
 import com.example.frontpi4.helpers.Singleton;
 import com.example.frontpi4.services.RetrofitService;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -40,19 +42,27 @@ public class CadastroPedidoDeVendaActivity extends AppCompatActivity implements 
     List<ProdutoDTO> listaDeProdutos;
     List<ItemVendaDTO> listaDeItemVenda = new ArrayList<>();
     Singleton singleton = Singleton.getInstance();
+    SimpleDateFormat formataData = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'");
+    Button btnConfirmar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cadastro_pedido_de_venda);
+
+        btnConfirmar = findViewById(R.id.bt_cadastro_pedido_venda_confirma_pedido);
+        btnConfirmar.setEnabled(false);
+
         spin_cliente = findViewById(R.id.spin_cadastro_pedido_venda_cliente);
         spin_produto = findViewById(R.id.spin_cadastro_pedido_venda_produto);
-        buscaDados();
+
+        buscaDadosSpinners();
+
         spin_cliente.setOnItemSelectedListener(this);
         spin_produto.setOnItemSelectedListener(this);
     }
 
-    public void buscaDados(){
+    public void buscaDadosSpinners(){
         //# Rercuperando token salvo na activity de login
         SharedPreferences sp = getSharedPreferences("dados", 0);
         String token = sp.getString("token",null);
@@ -103,10 +113,9 @@ public class CadastroPedidoDeVendaActivity extends AppCompatActivity implements 
         });
     }
 
-    public void criaListaPedidoVenda (View view) {
+    public void registraItemVenda (View view) {
         String conferido = "N";
         int produtoSelct = spin_produto.getSelectedItemPosition();
-        String itemSelecionado = listaDeProdutos.get(produtoSelct).getNome();
         Long idProd = listaDeProdutos.get(produtoSelct).getId();
         String qtdItemVStr = ((EditText)findViewById(R.id.et_cadastro_pedido_venda_quantidade)).getText().toString();
         String valorItemVStr = ((EditText)findViewById(R.id.et_cadastro_pedido_venda_valor)).getText().toString();
@@ -119,20 +128,22 @@ public class CadastroPedidoDeVendaActivity extends AppCompatActivity implements 
 
         singleton.setListaDeItemVenda(listaDeItemVenda);
 
-        //editText.setEnabled(true);
-        //editText.setEnabled(false);
+        btnConfirmar.setEnabled(true);
     }
 
-    public void cadastrar(View view) {
-        Date data = new Date(System.currentTimeMillis());
-        int clienteSelct = spin_cliente.getSelectedItemPosition();
-        String itemSelecionado = listaDeClientes.get(clienteSelct).getNome();
-        Long idProd = listaDeClientes.get(clienteSelct).getId();
-        Long clientId = null;
-        String email = ((EditText)findViewById(R.id.et_cadastro_usuario_email)).getText().toString();
+    public void confirmarPedidoVenda(View view) {
         Double totalV = 0.0;
+        Date data = new Date();
+        String dataform = formataData.format(data);
+        int clienteSelct = spin_cliente.getSelectedItemPosition();
+        Long clienteId = listaDeClientes.get(clienteSelct).getId();
 
-        VendaDTO vendaDTO =  new VendaDTO(data, totalV, clientId, singleton.getListaDeItemVenda());
+        for (ItemVendaDTO itemVendaDTO : singleton.getListaDeItemVenda()){
+            Double vlrItemVenda = itemVendaDTO.getValorItemV();
+            totalV += vlrItemVenda;
+        }
+
+        VendaDTO vendaDTO =  new VendaDTO(dataform, totalV, clienteId, singleton.getListaDeItemVenda());
 
         String token = getToken();
 
