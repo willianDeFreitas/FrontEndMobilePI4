@@ -40,7 +40,7 @@ public class LoginActivity extends AppCompatActivity {
             public void onResponse(Call<LoginDTO> call, Response<LoginDTO> response) {
                 if (response.isSuccessful()){
                     String token = response.body().getToken();
-                    Toast.makeText(LoginActivity.this, "Usuário Logado", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LoginActivity.this, "Bem vindo", Toast.LENGTH_LONG).show();
 
                     SharedPreferences sp = getSharedPreferences("dados", 0);
                     SharedPreferences.Editor editor = sp.edit();

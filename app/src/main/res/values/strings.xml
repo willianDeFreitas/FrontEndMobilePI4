@@ -20,6 +20,7 @@
     <string name="lista_usuarios">Lista de usuários</string>
     <string name="cadastra_usuarios">Cadastro de usuário</string>
     <string name="cliente_dois_pontos">Cliente:</string>
+    <string name="produto_dois_pontos">Produto:</string>
     <string-array name="funcao_array">
         <item>Selecione a função</item>
         <item>Secretaria</item>

@@ -2,7 +2,6 @@ package com.example.frontpi4.helpers;
 
 import com.example.frontpi4.dto.ItemVendaDTO;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Singleton {
