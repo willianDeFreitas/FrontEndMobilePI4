@@ -109,7 +109,43 @@
                 android:value="com.example.frontpi4.activities.TelaPrincipalActivity" />
         </activity>
                                     <!--Activities tela principal FIM-->
-                                        <!--OPCOES DO APPBAR INICIO-->
+
+
+        <activity
+            android:name=".activities.AlteracaoClienteActivity"
+            android:label="@string/alterar_cliente"
+            android:parentActivityName=".activities.ClientesActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.frontpi4.activities.ClientesActivity" />
+        </activity>
+
+        <activity
+            android:name=".activities.CadastroDeClienteActivity"
+            android:label="@string/cadastra_cliente"
+            android:parentActivityName=".activities.ClientesActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.frontpi4.activities.ClientesActivity" />
+        </activity>
+        <activity
+            android:name=".activities.AlteracaoFornecedorActivity"
+            android:label="@string/alterar_fornecedor"
+            android:parentActivityName=".activities.TelaPrincipalActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.frontpi4.activities.TelaPrincipalActivity" />
+        </activity>
+        <activity
+            android:name=".activities.CadastroDeFornecedorActivity"
+            android:label="@string/cadastra_fornecedor"
+            android:parentActivityName=".activities.TelaPrincipalActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.frontpi4.activities.TelaPrincipalActivity" />
+        </activity>
+
+                                    <!--OPCOES DO APPBAR INICIO-->
         <activity
             android:name=".activities.AlteracaoUsuarioActivity"
             android:label="@string/alterar_usuario"
@@ -129,38 +165,6 @@
         <activity
             android:name=".activities.CadastroDeUsuarioActivity"
             android:label="@string/cadastra_usuarios"
-            android:parentActivityName=".activities.TelaPrincipalActivity">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.frontpi4.activities.TelaPrincipalActivity" />
-        </activity>
-        <activity
-            android:name=".activities.AlteracaoClienteActivity"
-            android:label="@string/alterar_cliente"
-            android:parentActivityName=".activities.TelaPrincipalActivity">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.frontpi4.activities.TelaPrincipalActivity" />
-        </activity>
-        <activity
-            android:name=".activities.CadastroDeClienteActivity"
-            android:label="@string/cadastra_cliente"
-            android:parentActivityName=".activities.TelaPrincipalActivity">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.frontpi4.activities.TelaPrincipalActivity" />
-        </activity>
-        <activity
-            android:name=".activities.AlteracaoFornecedorActivity"
-            android:label="@string/alterar_fornecedor"
-            android:parentActivityName=".activities.TelaPrincipalActivity">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.frontpi4.activities.TelaPrincipalActivity" />
-        </activity>
-        <activity
-            android:name=".activities.CadastroDeFornecedorActivity"
-            android:label="@string/cadastra_fornecedor"
             android:parentActivityName=".activities.TelaPrincipalActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"

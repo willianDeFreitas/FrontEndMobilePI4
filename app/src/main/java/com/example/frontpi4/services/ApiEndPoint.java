@@ -1,6 +1,7 @@
 package com.example.frontpi4.services;
 
 import com.example.frontpi4.dto.ClienteDTO;
+import com.example.frontpi4.dto.CompraDTO;
 import com.example.frontpi4.dto.FornecedorDTO;
 import com.example.frontpi4.dto.LoginDTO;
 import com.example.frontpi4.dto.ProdutoDTO;
@@ -78,5 +79,10 @@ public interface ApiEndPoint {
     /*EndPoints de Venda*/
     @POST("/vendas")
     Call<VendaDTO> cadastraPedidoDeVenda(@Body VendaDTO vendaDTO, @Header("Authorization") String authorization);
+    ///////////////////////
 
+    /*EndPoints de Compra*/
+    @POST("/compras")
+    Call<CompraDTO> cadastraPedidoDeCompra(@Body CompraDTO compraDTO, @Header("Authorization") String authorization);
+    ////////////////////////
 }
