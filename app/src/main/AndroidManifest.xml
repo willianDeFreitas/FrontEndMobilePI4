@@ -134,6 +134,38 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.frontpi4.activities.TelaPrincipalActivity" />
         </activity>
+        <activity
+            android:name=".activities.AlteracaoClienteActivity"
+            android:label="@string/alterar_cliente"
+            android:parentActivityName=".activities.TelaPrincipalActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.frontpi4.activities.TelaPrincipalActivity" />
+        </activity>
+        <activity
+            android:name=".activities.CadastroDeClienteActivity"
+            android:label="@string/cadastra_cliente"
+            android:parentActivityName=".activities.TelaPrincipalActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.frontpi4.activities.TelaPrincipalActivity" />
+        </activity>
+        <activity
+            android:name=".activities.AlteracaoFornecedorActivity"
+            android:label="@string/alterar_fornecedor"
+            android:parentActivityName=".activities.TelaPrincipalActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.frontpi4.activities.TelaPrincipalActivity" />
+        </activity>
+        <activity
+            android:name=".activities.CadastroDeFornecedorActivity"
+            android:label="@string/cadastra_fornecedor"
+            android:parentActivityName=".activities.TelaPrincipalActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.frontpi4.activities.TelaPrincipalActivity" />
+        </activity>
                                         <!--OPCOES DO APPBAR FIM-->
     </application>
 </manifest>

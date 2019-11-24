@@ -21,6 +21,14 @@
     <string name="cadastra_usuarios">Cadastro de usuário</string>
     <string name="cliente_dois_pontos">Cliente:</string>
     <string name="produto_dois_pontos">Produto:</string>
+    <string name="endereco">endereco</string>
+    <string name="alterar_cliente">Alterar cliente</string>
+    <string name="cpf">cpf</string>
+    <string name="telefone">telefone</string>
+    <string name="cadastra_cliente">Cadastrar cliente</string>
+    <string name="alterar_fornecedor">Alterar dados fornecedor</string>
+    <string name="cadastra_fornecedor">Cadastrar fornecedor</string>
+    <string name="cnpj">CNPJ</string>
     <string-array name="funcao_array">
         <item>Selecione a função</item>
         <item>Secretaria</item>

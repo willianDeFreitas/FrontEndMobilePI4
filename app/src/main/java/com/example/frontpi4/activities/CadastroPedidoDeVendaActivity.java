@@ -198,7 +198,7 @@ public class CadastroPedidoDeVendaActivity extends AppCompatActivity implements 
         /*faz um ajuste para poder pegar a posição correta do cliente no array*/
         clienteSelct -= 1;
 
-        Long clienteId = listaDeClientes.get(clienteSelct).getId();
+        int clienteId = listaDeClientes.get(clienteSelct).getId();
 
         for (ItemVendaDTO itemVendaDTO : singleton.getListaDeItemVenda()){
             Double vlrItemVenda = itemVendaDTO.getValorItemV();
