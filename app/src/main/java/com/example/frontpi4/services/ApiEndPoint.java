@@ -70,6 +70,9 @@ public interface ApiEndPoint {
     /*EndPoints de Produto*/
     @GET("/produtos")
     Call<List<ProdutoDTO>> buscaProdutos(@Header("Authorization") String authorization);
+
+    @DELETE("/clientes/{id}")
+    Call<Void> deletaProduto(@Path("id") Long id, @Header("Authorization") String authorization);
     //////////////////////
 
     /*EndPoints de Venda*/

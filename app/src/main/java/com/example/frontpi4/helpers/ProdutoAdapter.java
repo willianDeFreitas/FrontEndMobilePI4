@@ -15,7 +15,9 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.frontpi4.R;
+import com.example.frontpi4.activities.AlteracaoProdutoActivity;
 import com.example.frontpi4.activities.AlteracaoUsuarioActivity;
+import com.example.frontpi4.dto.ProdutoDTO;
 import com.example.frontpi4.dto.UsuarioDTO;
 import com.example.frontpi4.services.RetrofitService;
 
@@ -25,20 +27,20 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class UsuarioAdapter extends RecyclerView.Adapter<UsuarioAdapter.UsuarioHolder> {
+public class ProdutoAdapter extends RecyclerView.Adapter<ProdutoAdapter.ProdutoHolder> {
     //UsuarioAdapter.UsuarioHolder siginifica que será criada uma classe interna UsuarioHolder dentro de UsuarioAdapter
     private LayoutInflater mInflater;//objeto que "infla" o layout do item de lista do recyclerview
     private Context context;//activity que está exibindo o recyclerview
-    private List<UsuarioDTO> lista;//fonte dos dados da lista a ser exibida
+    private List<ProdutoDTO> lista;//fonte dos dados da lista a ser exibida
 
     private Integer recentlyDeletedItemPosition;
-    private UsuarioDTO recentlyDeletedItem;
+    private ProdutoDTO recentlyDeletedItem;
 
     public Context getContext() {
         return context;
     }
 
-    public UsuarioAdapter(Context context, List<UsuarioDTO> lista) {
+    public ProdutoAdapter(Context context, List<ProdutoDTO> lista) {
         this.mInflater = LayoutInflater.from(context);
         this.context = context;
         this.lista = lista;
@@ -46,16 +48,23 @@ public class UsuarioAdapter extends RecyclerView.Adapter<UsuarioAdapter.UsuarioH
 
     @NonNull
     @Override
-    public  UsuarioHolder onCreateViewHolder(@NonNull ViewGroup parent, int ViewType) {
-        View mItemView = mInflater.inflate(R.layout.recyclerview_layout_item_todos_usuarios, parent, false);
-        return new UsuarioHolder(mItemView, this);
+    public  ProdutoHolder onCreateViewHolder(@NonNull ViewGroup parent, int ViewType) {
+        View mItemView = mInflater.inflate(R.layout.recyclerview_layout_item_todos_produtos, parent, false);
+        return new ProdutoHolder(mItemView, this);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull UsuarioHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ProdutoHolder holder, int position) {
         String nome = lista.get(position).getNome();
+        double p = lista.get(position).getPreco();
+        double q =  lista.get(position).getQtd();
+
+        int preco = (int)p;
+        int qtd = (int)q;
 
         holder.nome.setText(nome);
+        holder.preco.setText(preco);
+        holder.qtd.setText(qtd);
     }
 
     @Override
@@ -67,27 +76,37 @@ public class UsuarioAdapter extends RecyclerView.Adapter<UsuarioAdapter.UsuarioH
         }
     }
 
-    public class UsuarioHolder extends RecyclerView.ViewHolder {
-        final UsuarioAdapter usuarioAdapter;
+    public class ProdutoHolder extends RecyclerView.ViewHolder {
+        final ProdutoAdapter produtoAdapter;
         public final TextView nome;
+        public final TextView preco;
+        public final TextView qtd;
 
-        public UsuarioHolder(@NonNull View itemView, UsuarioAdapter usuarioAdapter) {
+        public ProdutoHolder(@NonNull View itemView, ProdutoAdapter produtoAdapter) {
             super(itemView);
 
-            this.usuarioAdapter = usuarioAdapter;
-            nome = itemView.findViewById(R.id.tv_recyclerview_nome_usuario);
+            this.produtoAdapter = produtoAdapter;
+            nome = itemView.findViewById(R.id.tv_recyclerview_nome_produto);
+            preco= itemView.findViewById(R.id.tv_recyclerview_preco_produto);
+            qtd= itemView.findViewById(R.id.tv_recyclerview_qtd_produto);
+
             itemView.setOnClickListener(new View.OnClickListener(){
                 @Override
                 public void onClick(View v) {
-                    UsuarioDTO user = lista.get(getLayoutPosition());
-                    String nome = user.getNome();
-                    int id = user.getId();
-                    String email = user.getEmail();
+                    ProdutoDTO produto = lista.get(getLayoutPosition());
+                    String nome = produto.getNome();
+                    Long id = produto.getId();
+                    double preco = produto.getPreco();
+                    double qtd = produto.getQtd();
+                    String vol = produto.getVol();
 
-                    Intent intent = new Intent(context, AlteracaoUsuarioActivity.class);
+
+                    Intent intent = new Intent(context, AlteracaoProdutoActivity.class);
                     intent.putExtra("id",id);
                     intent.putExtra("nome",nome);
-                    intent.putExtra("email",email);
+                    intent.putExtra("preco",preco);
+                    intent.putExtra("qtd",qtd);
+                    intent.putExtra("vol",vol);
 
                     context.startActivity(intent);
                 }
@@ -107,7 +126,7 @@ public class UsuarioAdapter extends RecyclerView.Adapter<UsuarioAdapter.UsuarioH
 
     private void showUndoDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
-        builder.setMessage("Deseja apagar este usuário?");
+        builder.setMessage("Deseja apagar este produto?");
         builder.setCancelable(true);
 
         builder.setPositiveButton(
@@ -135,17 +154,17 @@ public class UsuarioAdapter extends RecyclerView.Adapter<UsuarioAdapter.UsuarioH
         SharedPreferences sp = context.getSharedPreferences("dados", 0);
         String token = sp.getString("token", null);
 
-        RetrofitService.getServico().deletaUsuario(recentlyDeletedItem.getId(), "Bearer " + token).enqueue(new Callback<Void>() {
+        RetrofitService.getServico().deletaProduto(recentlyDeletedItem.getId(), "Bearer " + token).enqueue(new Callback<Void>() {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
                 if(response.isSuccessful()){
-                    Toast.makeText(context, "Usuário foi apagado com sucesso", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, "Produto foi apagado com sucesso", Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
             public void onFailure(Call<Void> call, Throwable t) {
-                Toast.makeText(context, "Falha ao apagar o usuário: " + t.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, "Falha ao apagar o produto: " + t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
     }
