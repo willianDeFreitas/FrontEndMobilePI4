@@ -8,8 +8,8 @@ public class ProdutoDTO {
     private String vol;
     private Long categoriaId;
 
-    public ProdutoDTO(Long id, String nome, Double preco, Double qtd, String vol, Long categoriaId){
-        this.id = id;
+    public ProdutoDTO(String nome, Double preco, Double qtd, String vol, Long categoriaId){
+
         this.nome = nome;
         this.preco = preco;
         this.qtd = qtd;

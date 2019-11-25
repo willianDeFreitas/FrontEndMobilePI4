@@ -5,18 +5,22 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.DrawableRes;
 import androidx.annotation.NonNull;
+import androidx.appcompat.widget.DrawableUtils;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.frontpi4.R;
 import com.example.frontpi4.activities.AlteracaoProdutoActivity;
 import com.example.frontpi4.activities.AlteracaoUsuarioActivity;
+import com.example.frontpi4.activities.ExibirProdutosActivity;
 import com.example.frontpi4.dto.ProdutoDTO;
 import com.example.frontpi4.dto.UsuarioDTO;
 import com.example.frontpi4.services.RetrofitService;
@@ -57,14 +61,20 @@ public class ProdutoAdapter extends RecyclerView.Adapter<ProdutoAdapter.ProdutoH
     public void onBindViewHolder(@NonNull ProdutoHolder holder, int position) {
         String nome = lista.get(position).getNome();
         double p = lista.get(position).getPreco();
-        double q =  lista.get(position).getQtd();
+        String q =  lista.get(position).getVol();
 
         int preco = (int)p;
-        int qtd = (int)q;
 
+        if(position%2 == 0) {
+            Drawable d = context.getResources().getDrawable(R.drawable.lista);
+            holder.nome.setBackground(d);
+            holder.qtd.setBackground(d);
+            holder.preco.setBackground(d);
+        }
         holder.nome.setText(nome);
-        holder.preco.setText(preco);
-        holder.qtd.setText(qtd);
+        holder.qtd.setText(q);
+        holder.preco.setText("R$ "+preco);
+
     }
 
     @Override
@@ -99,14 +109,16 @@ public class ProdutoAdapter extends RecyclerView.Adapter<ProdutoAdapter.ProdutoH
                     double preco = produto.getPreco();
                     double qtd = produto.getQtd();
                     String vol = produto.getVol();
+                    Long categoriaId = produto.getCategoriaId();
 
 
-                    Intent intent = new Intent(context, AlteracaoProdutoActivity.class);
+                    Intent intent = new Intent(context, ExibirProdutosActivity.class);
                     intent.putExtra("id",id);
                     intent.putExtra("nome",nome);
-                    intent.putExtra("preco",preco);
-                    intent.putExtra("qtd",qtd);
+                    intent.putExtra("preco",""+preco);
+                    intent.putExtra("qtd",""+qtd);
                     intent.putExtra("vol",vol);
+                    intent.putExtra("catId",""+ categoriaId);
 
                     context.startActivity(intent);
                 }

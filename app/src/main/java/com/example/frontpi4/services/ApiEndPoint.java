@@ -65,14 +65,16 @@ public interface ApiEndPoint {
 
     @DELETE("/clientes/{id}")
     Call<Void> deletaCliente(@Path("id") int id, @Header("Authorization") String authorization);
-    /////////////////////////
+     /////////////////////////
 
     /*EndPoints de Produto*/
     @GET("/produtos")
     Call<List<ProdutoDTO>> buscaProdutos(@Header("Authorization") String authorization);
-
-    @DELETE("/clientes/{id}")
+    @DELETE("/produto/{id}")
     Call<Void> deletaProduto(@Path("id") Long id, @Header("Authorization") String authorization);
+    @PUT("/produto/{id}")
+    Call<ProdutoDTO> alteraProduto(@Body ProdutoDTO produtoDTO, @Path("id") int id, @Header("Authorization") String authorization);
+
     //////////////////////
 
     /*EndPoints de Venda*/

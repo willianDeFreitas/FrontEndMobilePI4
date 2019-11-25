@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -54,6 +55,11 @@ public class UsuarioAdapter extends RecyclerView.Adapter<UsuarioAdapter.UsuarioH
     @Override
     public void onBindViewHolder(@NonNull UsuarioHolder holder, int position) {
         String nome = lista.get(position).getNome();
+
+        if(position%2 == 0) {
+            Drawable d = context.getResources().getDrawable(R.drawable.lista);
+            holder.nome.setBackground(d);
+        }
 
         holder.nome.setText(nome);
     }

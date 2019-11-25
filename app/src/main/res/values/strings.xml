@@ -29,6 +29,8 @@
     <string name="alterar_fornecedor">Alterar dados fornecedor</string>
     <string name="cadastra_fornecedor">Cadastrar fornecedor</string>
     <string name="cnpj">CNPJ</string>
+    <string name="alterar_produto">Alterar produto</string>
+    <string name="exibirProduto">Exibir produto</string>
     <string-array name="funcao_array">
         <item>Selecione a função</item>
         <item>Secretaria</item>

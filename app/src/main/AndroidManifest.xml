@@ -134,13 +134,14 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.frontpi4.activities.TelaPrincipalActivity" />
         </activity>
+
         <activity
             android:name=".activities.AlteracaoClienteActivity"
             android:label="@string/alterar_cliente"
             android:parentActivityName=".activities.TelaPrincipalActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.frontpi4.activities.TelaPrincipalActivity" />
+                android:value="com.example.frontpi4.activities.TelaPrincipalActivity"/>
         </activity>
         <activity
             android:name=".activities.CadastroDeClienteActivity"
@@ -161,6 +162,22 @@
         <activity
             android:name=".activities.CadastroDeFornecedorActivity"
             android:label="@string/cadastra_fornecedor"
+            android:parentActivityName=".activities.TelaPrincipalActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.frontpi4.activities.TelaPrincipalActivity" />
+        </activity>
+        <activity
+            android:name=".activities.AlteracaoProdutoActivity"
+            android:label="@string/alterar_produto"
+            android:parentActivityName=".activities.TelaPrincipalActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.frontpi4.activities.TelaPrincipalActivity" />
+        </activity>
+        <activity
+            android:name=".activities.ExibirProdutosActivity"
+            android:label="@string/exibirProduto"
             android:parentActivityName=".activities.TelaPrincipalActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
