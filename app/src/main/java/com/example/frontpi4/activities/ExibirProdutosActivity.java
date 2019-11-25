@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -26,7 +27,9 @@ public class ExibirProdutosActivity extends Activity {
 
     TextView et_qtd, et_vol;
     EditText et_nome,et_preco, et_categoria ;
-    int id;
+   int id;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,11 +50,14 @@ public class ExibirProdutosActivity extends Activity {
         et_preco = findViewById(R.id.et_preco_produto);
         et_qtd = findViewById(R.id.tv_quantidade_produto);
         et_categoria = findViewById(R.id.et_categoria_produto);
+        et_vol = findViewById(R.id.tv_volume_produto);
 
         et_nome.setText(nome);
         et_preco.setText(preco);
         et_qtd.setText(qtd);
+        et_vol.setText(vol);
         et_categoria.setText(categoriaId);
+
 
     }
 
@@ -60,19 +66,19 @@ public class ExibirProdutosActivity extends Activity {
         String p = ((EditText)findViewById(R.id.et_preco_produto)).getText().toString();
         String q = ((TextView)findViewById(R.id.tv_quantidade_produto)).getText().toString();
         String catId = ((EditText)findViewById(R.id.et_categoria_produto)).getText().toString();
-        String vol = " ";
+        String vol = ((TextView)findViewById(R.id.tv_volume_produto)).getText().toString();;
 
         ProdutoDTO produtoDTO;
 
         double preco=Double.parseDouble(p);
         double qtd=Double.parseDouble(q);
         Long categoria=Long.valueOf(catId);
-
+        Long idProduto= Long.valueOf(id);
         produtoDTO = new ProdutoDTO(nome,preco,qtd,vol,categoria);
 
         String token = getToken();
 
-        RetrofitService.getServico().alteraProduto(produtoDTO, id, "Bearer "+token).enqueue(new Callback<ProdutoDTO>() {
+        RetrofitService.getServico().alteraProduto(produtoDTO, idProduto, "Bearer "+token).enqueue(new Callback<ProdutoDTO>() {
             @Override
             public void onResponse(Call<ProdutoDTO> call, Response<ProdutoDTO> response) {
                 if(response.code() == 200){
@@ -80,7 +86,7 @@ public class ExibirProdutosActivity extends Activity {
                     startActivity(new Intent(ExibirProdutosActivity.this, ProdutosActivity.class));
                     onFailure(call, new Exception());
                 } else {
-                    Toast.makeText(ExibirProdutosActivity.this, "Erro: " + response.code(), Toast.LENGTH_LONG).show();
+                    Toast.makeText(ExibirProdutosActivity.this, "Erro: Usuario não autorizado " + response.code(), Toast.LENGTH_LONG).show();
                 }
             }
 
@@ -93,6 +99,12 @@ public class ExibirProdutosActivity extends Activity {
 
     private String getToken() {
         SharedPreferences sp = getSharedPreferences("dados",0);
+        String e = sp.getString("email",null);
         return sp.getString("token",null);
+    }
+    private String getEmail() {
+        SharedPreferences sp = getSharedPreferences("dados",0);
+
+        return sp.getString("email",null);
     }
 }

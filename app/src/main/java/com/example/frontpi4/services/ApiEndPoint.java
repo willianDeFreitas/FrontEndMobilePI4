@@ -73,10 +73,14 @@ public interface ApiEndPoint {
     /*EndPoints de Produto*/
     @GET("/produtos")
     Call<List<ProdutoDTO>> buscaProdutos(@Header("Authorization") String authorization);
-    @DELETE("/produto/{id}")
+
+    @POST("/produtos")
+    Call<ProdutoDTO> cadastraProduto(@Body ProdutoDTO produtoDTO, @Header("Authorization") String authorization);
+
+    @DELETE("/produtos/{id}")
     Call<Void> deletaProduto(@Path("id") Long id, @Header("Authorization") String authorization);
-    @PUT("/produto/{id}")
-    Call<ProdutoDTO> alteraProduto(@Body ProdutoDTO produtoDTO, @Path("id") int id, @Header("Authorization") String authorization);
+    @PUT("/produtos/{id}")
+    Call<ProdutoDTO> alteraProduto(@Body ProdutoDTO produtoDTO, @Path("id") Long id, @Header("Authorization") String authorization);
 
     //////////////////////
 

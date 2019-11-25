@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 
 import com.example.frontpi4.R;
 import com.example.frontpi4.dto.ProdutoDTO;
@@ -18,6 +19,7 @@ import com.example.frontpi4.helpers.SwipeToDeleteCallback;
 import com.example.frontpi4.helpers.SwipeToDeleteCallbackProduto;
 import com.example.frontpi4.helpers.UsuarioAdapter;
 import com.example.frontpi4.services.RetrofitService;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.List;
 
@@ -35,6 +37,14 @@ public class ProdutosActivity extends AppCompatActivity {
         setContentView(R.layout.activity_lista_produtos);
 
         buscaDados();
+
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fabProduto);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(ProdutosActivity.this, CadastroDeProdutoActivity.class));
+            }
+        });
     }
 
     private void preencheRecyclerview(List<ProdutoDTO> lista){

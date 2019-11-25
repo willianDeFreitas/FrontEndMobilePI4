@@ -105,15 +105,17 @@ public class ProdutoAdapter extends RecyclerView.Adapter<ProdutoAdapter.ProdutoH
                 public void onClick(View v) {
                     ProdutoDTO produto = lista.get(getLayoutPosition());
                     String nome = produto.getNome();
-                    Long id = produto.getId();
+                    String id = produto.getId().toString();
+                    int idInt = Integer.parseInt(id);
                     double preco = produto.getPreco();
                     double qtd = produto.getQtd();
                     String vol = produto.getVol();
                     Long categoriaId = produto.getCategoriaId();
 
 
+
                     Intent intent = new Intent(context, ExibirProdutosActivity.class);
-                    intent.putExtra("id",id);
+                    intent.putExtra("id",idInt);
                     intent.putExtra("nome",nome);
                     intent.putExtra("preco",""+preco);
                     intent.putExtra("qtd",""+qtd);

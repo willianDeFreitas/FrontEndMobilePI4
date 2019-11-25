@@ -196,6 +196,14 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.frontpi4.activities.TelaPrincipalActivity" />
         </activity>
+        <activity
+            android:name=".activities.CadastroDeProdutoActivity"
+            android:label="@string/cadastra_produto"
+            android:parentActivityName=".activities.TelaPrincipalActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.frontpi4.activities.TelaPrincipalActivity" />
+        </activity>
                                         <!--OPCOES DO APPBAR FIM-->
     </application>
 </manifest>
