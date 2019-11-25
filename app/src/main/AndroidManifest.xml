@@ -74,6 +74,15 @@
         </activity>
 
         <activity
+            android:name=".activities.ConfereSaidaActivity"
+            android:label="@string/conferencia_de_saida"
+            android:parentActivityName=".activities.ConferenciaDeSaidaActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.frontpi4.activities.ConferenciaDeSaidaActivity" />
+        </activity>
+
+        <activity
             android:name=".activities.ConferenciaDeEntradaActivity"
             android:label="@string/conf_entrada"
             android:parentActivityName=".activities.TelaPrincipalActivity">
