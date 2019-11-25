@@ -214,7 +214,7 @@ public class CadastroPedidoDeVendaActivity extends AppCompatActivity implements 
             public void onResponse(Call<VendaDTO> call, Response<VendaDTO> response) {
                 if (response.isSuccessful()) {
                     Toast.makeText(CadastroPedidoDeVendaActivity.this, "Pedido de venda inserido com sucesso", Toast.LENGTH_LONG).show();
-                    singleton.setListaDeItemVenda(null);
+                    singleton.getListaDeItemVenda().clear();
                     singleton.setQtdItemVenda(0);
                     finish();
                     startActivity(new Intent(CadastroPedidoDeVendaActivity.this, TelaPrincipalActivity.class));
@@ -252,7 +252,7 @@ public class CadastroPedidoDeVendaActivity extends AppCompatActivity implements 
     }
 
     public void limpaListaDeItensDeVenda(View view) {
-        singleton.setListaDeItemVenda(null);
+        singleton.getListaDeItemVenda().clear();
         singleton.setQtdItemVenda(0);
         qtdItemVenda = 0;
         btnConfirmarPedidoVenda.setEnabled(false);

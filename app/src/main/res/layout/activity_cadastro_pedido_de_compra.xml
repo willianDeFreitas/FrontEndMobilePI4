@@ -6,4 +6,147 @@
     android:layout_height="match_parent"
     tools:context="com.example.frontpi4.activities.CadastroPedidoDeCompraActivity">
 
+    <TextView
+        android:id="@+id/tv_cadastro_pedido_compra_fornecedor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="8dp"
+        android:text="@string/fornecedor_dois_pontos"
+        android:textSize="22sp"
+        app:layout_constraintBottom_toTopOf="@+id/spin_cadastro_pedido_compra_fornecedor"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Spinner
+        android:id="@+id/spin_cadastro_pedido_compra_fornecedor"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:ems="10"
+        app:layout_constraintBottom_toTopOf="@+id/tv_cadastro_pedido_compra_produto"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_cadastro_pedido_compra_fornecedor" />
+
+    <TextView
+        android:id="@+id/tv_cadastro_pedido_compra_produto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginBottom="8dp"
+        android:text="@string/produto_dois_pontos"
+        android:textSize="22sp"
+        app:layout_constraintBottom_toTopOf="@+id/spin_cadastro_pedido_compra_produto"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spin_cadastro_pedido_compra_fornecedor" />
+
+    <Spinner
+        android:id="@+id/spin_cadastro_pedido_compra_produto"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:ems="10"
+        app:layout_constraintBottom_toTopOf="@+id/et_cadastro_pedido_compra_quantidade"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_cadastro_pedido_compra_produto" />
+
+    <EditText
+        android:id="@+id/et_cadastro_pedido_compra_quantidade"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="8dp"
+        android:ems="10"
+        android:hint="@string/Quantidade"
+        android:inputType="number"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spin_cadastro_pedido_compra_produto" />
+
+    <EditText
+        android:id="@+id/et_cadastro_pedido_compra_valor"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="8dp"
+        android:ems="10"
+        android:hint="@string/valor_da_compra"
+        android:inputType="number"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et_cadastro_pedido_compra_quantidade" />
+
+    <Button
+        android:id="@+id/bt_cadastro_pedido_compra_lancar_pedido"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="8dp"
+        android:onClick="registraItemCompra"
+        android:text="Registra item de compra"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et_cadastro_pedido_compra_valor" />
+
+    <Button
+        android:id="@+id/bt_cadastro_pedido_compra_confirma_pedido"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:onClick="confirmarPedidoCompra"
+        android:text="Confirma pedido"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bt_cadastro_pedido_compra_cancelar" />
+
+    <Button
+        android:id="@+id/bt_cadastro_pedido_compra_limpa_lista_itens"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="Limpa Lista de itens"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bt_cadastro_pedido_compra_lancar_pedido"
+        android:onClick="limpaListaDeItensDeCompra"/>
+
+    <Button
+        android:id="@+id/bt_cadastro_pedido_compra_cancelar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:onClick="cancelaPedidoDeCompra"
+        android:text="Cancelar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/bt_cadastro_pedido_compra_limpa_lista_itens"
+        app:layout_constraintTop_toBottomOf="@+id/bt_cadastro_pedido_compra_lancar_pedido" />
+
+    <ProgressBar
+        android:id="@+id/pb_cadastro_pedido_compra_carregando"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:indeterminate="false"
+        android:progressTint="#F50202"
+        android:translationZ="2dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints"
+        tools:visibility="invisible" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,7 +1,10 @@
 package com.example.frontpi4.services;
 
 import com.example.frontpi4.dto.ClienteDTO;
+import com.example.frontpi4.dto.CompraDTO;
 import com.example.frontpi4.dto.FornecedorDTO;
+import com.example.frontpi4.dto.ItemCompraDTO;
+import com.example.frontpi4.dto.ItemVendaDTO;
 import com.example.frontpi4.dto.LoginDTO;
 import com.example.frontpi4.dto.ProdutoDTO;
 import com.example.frontpi4.dto.UsuarioDTO;
@@ -80,5 +83,26 @@ public interface ApiEndPoint {
     /*EndPoints de Venda*/
     @POST("/vendas")
     Call<VendaDTO> cadastraPedidoDeVenda(@Body VendaDTO vendaDTO, @Header("Authorization") String authorization);
+    ///////////////////////
 
+    /*EndPoints de Compra*/
+    @POST("/compras")
+    Call<CompraDTO> cadastraPedidoDeCompra(@Body CompraDTO compraDTO, @Header("Authorization") String authorization);
+    ////////////////////////
+
+    /*EndPoints de ItemVenda*/
+    @PUT("/itensvenda/{id}")
+    Call<ItemVendaDTO> confereItemVenda(@Body ItemVendaDTO itemVendaDTO, @Path("id") int id, @Header("Authorization") String authorization);
+
+    @GET("/itensvenda/naoconf")
+    Call<List<ItemVendaDTO>> buscaItensVendaNaoConferido(@Header("Authorization") String authorization);
+    ////////////////////////
+
+    /*EndPoints de ItemCompra*/
+    @PUT("/itenscompra/{id}")
+    Call<ItemCompraDTO> confereItemCompra(@Body ItemCompraDTO itemCompraDTO, @Path("id") int id, @Header("Authorization") String authorization);
+
+    @GET("/itenscompra/naoconf")
+    Call<List<ItemCompraDTO>> buscaItensCompraNaoConferido(@Header("Authorization") String authorization);
+    ////////////////////////
 }

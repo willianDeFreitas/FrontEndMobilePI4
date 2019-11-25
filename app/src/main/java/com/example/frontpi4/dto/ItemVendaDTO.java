@@ -17,6 +17,12 @@ public class ItemVendaDTO{
         this.conferido = conferido;
     }
 
+    public ItemVendaDTO(Long produtoId, Long vendaId, String conferido) {
+        this.produtoId = produtoId;
+        this.vendaId = vendaId;
+        this.conferido = conferido;
+    }
+
     public String getConferido() {
         return conferido;
     }
