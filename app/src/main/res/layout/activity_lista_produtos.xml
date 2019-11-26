@@ -2,72 +2,76 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="wrap_content"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
     tools:context=".activities.ProdutosActivity">
 
     <TextView
-        android:id="@+id/tv_produto_nome"
-        android:layout_width="176dp"
-        android:layout_height="25dp"
-        android:layout_marginStart="8dp"
-        android:background="#00756A6A"
-        android:text="NOME"
-        app:layout_constraintBottom_toBottomOf="@+id/tv_produto_preco"
-        app:layout_constraintEnd_toStartOf="@+id/tv_produto_preco"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/tv_produto_preco" />
-
-    <TextView
-        android:id="@+id/tv_produto_preco"
-        android:layout_width="100dp"
-        android:layout_height="25dp"
-        android:text="PREÇO/m³"
-        android:textAlignment="center"
-        app:layout_constraintBottom_toBottomOf="@+id/tv_produto_quantidade"
-        app:layout_constraintEnd_toStartOf="@+id/tv_produto_quantidade"
-        app:layout_constraintStart_toEndOf="@+id/tv_produto_nome"
-        app:layout_constraintTop_toTopOf="@+id/tv_produto_quantidade"
-        app:layout_constraintVertical_bias="1.0" />
-
-    <TextView
-        android:id="@+id/tv_produto_quantidade"
-        android:layout_width="100dp"
-        android:layout_height="25dp"
+        android:id="@+id/tv_dados_produto_nome"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="8dp"
-        android:text="QUANTIDADE"
+        android:ems="7"
+        android:fontFamily="monospace"
+        android:inputType="textPersonName"
+        android:text="Nome"
         android:textAlignment="center"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.78"
-        app:layout_constraintStart_toEndOf="@+id/tv_produto_preco"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_dados_produto_preco"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:ems="3"
+        android:text="Preço"
+        android:textAlignment="center"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_dados_produto_nome"
+        app:layout_constraintStart_toEndOf="@+id/tv_dados_produto_nome"
+        app:layout_constraintTop_toTopOf="@+id/tv_dados_produto_nome"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/tv_dados_produto_quantidade"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:ems="7"
+        android:fontFamily="monospace"
+        android:inputType="textPersonName"
+        android:text="@string/Quantidade"
+        android:textAlignment="center"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_dados_produto_preco"
+        app:layout_constraintStart_toEndOf="@+id/tv_dados_produto_preco"
+        app:layout_constraintTop_toTopOf="@+id/tv_dados_produto_preco"
+        app:layout_constraintVertical_bias="1.0" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_todos_produto"
-        android:layout_width="365dp"
-        android:layout_height="556dp"
+        android:layout_width="0dp"
+        android:layout_height="522dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="32dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_produto_preco" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_dados_produto_nome" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fabProduto"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="16dp"
         android:clickable="true"
-        app:layout_constraintBottom_toBottomOf="@+id/rv_todos_produto"
-        app:layout_constraintEnd_toEndOf="@+id/rv_todos_produto"
-        app:layout_constraintHorizontal_bias="0.951"
-        app:layout_constraintStart_toStartOf="@+id/rv_todos_produto"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/rv_todos_produto"
-        app:layout_constraintVertical_bias="1.0"
+        app:layout_constraintVertical_bias="0.965"
         app:srcCompat="@android:drawable/ic_input_add" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

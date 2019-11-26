@@ -126,9 +126,8 @@
             android:parentActivityName=".activities.ClientesActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.frontpi4.activities.ClientesActivity" />
+                android:value="com.example.frontpi4.activities.ClientesActivity"/>
         </activity>
-
         <activity
             android:name=".activities.CadastroDeClienteActivity"
             android:label="@string/cadastra_cliente"

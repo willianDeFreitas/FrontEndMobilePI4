@@ -56,12 +56,15 @@ public class ClienteAdapter extends RecyclerView.Adapter<ClienteAdapter.ClienteH
     @Override
     public void onBindViewHolder(@NonNull ClienteHolder holder, int position) {
         String nome = lista.get(position).getNome();
+        String telefone = lista.get(position).getTel();
 
         if(position%2 == 0) {
             Drawable d = context.getResources().getDrawable(R.drawable.lista);
             holder.nome.setBackground(d);
+            holder.telefone.setBackground(d);
         }
         holder.nome.setText(nome);
+        holder.telefone.setText(telefone);
     }
 
     @Override
@@ -76,12 +79,14 @@ public class ClienteAdapter extends RecyclerView.Adapter<ClienteAdapter.ClienteH
     public class ClienteHolder extends RecyclerView.ViewHolder {
         final ClienteAdapter clienteAdapter;
         public final TextView nome;
+        public final TextView telefone;
 
         public ClienteHolder(@NonNull View itemView, ClienteAdapter clienteAdapter) {
             super(itemView);
 
             this.clienteAdapter = clienteAdapter;
             nome = itemView.findViewById(R.id.tv_recyclerview_nome_clientes);
+            telefone = itemView.findViewById(R.id.tv_recyclerview_telefone_clientes);
             itemView.setOnClickListener(new View.OnClickListener(){
                 @Override
                 public void onClick(View v) {

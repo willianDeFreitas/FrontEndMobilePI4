@@ -6,33 +6,68 @@
     android:layout_height="match_parent"
     tools:context=".activities.FornecedoresActivity">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_todos_fornecedores"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+    <TextView
+        android:id="@+id/tv_dados_fornecedor"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
+        android:ems="9"
+        android:fontFamily="monospace"
+        android:inputType="textPersonName"
+        android:text="Nome"
+        android:textAlignment="center"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/rv_todos_fornecedores"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:ems="9"
+        android:fontFamily="monospace"
+        android:inputType="textPersonName"
+        android:text="Telefone"
+        android:textAlignment="center"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_dados_fornecedor"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tv_dados_fornecedor" />
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_todos_fornecedores"
+        android:layout_width="0dp"
+        android:layout_height="522dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="24dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_dados_fornecedor" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab_fornecedor"
-        android:layout_width="62dp"
+        android:layout_width="wrap_content"
         android:layout_height="67dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
         android:clickable="true"
+        android:ems="10"
         android:onClick="adicionarFornecedor"
         app:layout_constraintBottom_toBottomOf="@+id/rv_todos_fornecedores"
         app:layout_constraintEnd_toEndOf="@+id/rv_todos_fornecedores"
-        app:layout_constraintHorizontal_bias="0.915"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/rv_todos_fornecedores"
-        app:layout_constraintTop_toTopOf="@+id/rv_todos_fornecedores"
-        app:layout_constraintVertical_bias="0.969"
+        app:layout_constraintTop_toBottomOf="@+id/tv_dados_fornecedor"
+        app:layout_constraintVertical_bias="1.0"
         app:srcCompat="@android:drawable/ic_input_add" />
 
 

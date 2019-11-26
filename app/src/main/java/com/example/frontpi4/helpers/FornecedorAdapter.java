@@ -57,11 +57,14 @@ public class FornecedorAdapter extends RecyclerView.Adapter<FornecedorAdapter.Fo
     @Override
     public void onBindViewHolder(@NonNull FornecedorHolder holder, int position) {
         String nome = lista.get(position).getNome();
+        String telefone = lista.get(position).gettelefone();
         if(position%2 == 0) {
             Drawable d = context.getResources().getDrawable(R.drawable.lista);
             holder.nome.setBackground(d);
+            holder.telefone.setBackground(d);
         }
         holder.nome.setText(nome);
+        holder.telefone.setText(telefone);
     }
 
     @Override
@@ -76,12 +79,15 @@ public class FornecedorAdapter extends RecyclerView.Adapter<FornecedorAdapter.Fo
     public class FornecedorHolder extends RecyclerView.ViewHolder {
         final FornecedorAdapter fornecedorAdapter;
         public final TextView nome;
+        public final TextView telefone;
 
         public FornecedorHolder(@NonNull View itemView, FornecedorAdapter fornecedorAdapter) {
             super(itemView);
 
             this.fornecedorAdapter = fornecedorAdapter;
-            nome = itemView.findViewById(R.id.tv_recyclerview_nome_fornecedores);
+            nome = itemView.findViewById(R.id.tv_recyclerview_nome_fornecedor);
+            telefone = itemView.findViewById(R.id.tv_recyclerview_telefone_fornecedor);
+
             itemView.setOnClickListener(new View.OnClickListener(){
                 @Override
                 public void onClick(View v) {
