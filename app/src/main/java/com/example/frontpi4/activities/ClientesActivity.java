@@ -10,6 +10,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.example.frontpi4.R;
@@ -34,11 +35,16 @@ import static android.provider.AlarmClock.EXTRA_MESSAGE;
 public class ClientesActivity extends AppCompatActivity {
 
     public static final String TAG = "ClientesActivity";
+    ProgressBar pbCarregando;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lista_clientes);
+
+        pbCarregando = findViewById(R.id.pb_liata_de_cliente_carregando);
+        pbCarregando.setVisibility(View.VISIBLE);
+
         buscaDados();
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
@@ -72,6 +78,7 @@ public class ClientesActivity extends AppCompatActivity {
                 if (response.isSuccessful()) {
                     List<ClienteDTO> lista = response.body();
                     preencheRecyclerview(lista);
+                    pbCarregando.setVisibility(View.INVISIBLE);
                 } else {
                     startActivity(new Intent(ClientesActivity.this, LoginActivity.class));
                     onFailure(call, new Exception());

@@ -10,6 +10,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ProgressBar;
 
 import com.example.frontpi4.R;
 import com.example.frontpi4.dto.ProdutoDTO;
@@ -30,11 +31,15 @@ import retrofit2.Response;
 public class ProdutosActivity extends AppCompatActivity {
 
     public static final String TAG = "ProdutoActivity";
+    ProgressBar pbCarregando;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lista_produtos);
+
+        pbCarregando = findViewById(R.id.pb_liata_de_produto_carregando);
+        pbCarregando.setVisibility(View.VISIBLE);
 
         buscaDados();
 
@@ -68,6 +73,7 @@ public class ProdutosActivity extends AppCompatActivity {
                 if (response.isSuccessful()) {
                     List<ProdutoDTO> lista = response.body();
                     preencheRecyclerview(lista);
+                    pbCarregando.setVisibility(View.INVISIBLE);
                 } else {
                     startActivity(new Intent(ProdutosActivity.this, LoginActivity.class));
                     onFailure(call, new Exception());
