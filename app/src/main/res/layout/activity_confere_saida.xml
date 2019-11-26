@@ -6,73 +6,94 @@
     android:layout_height="match_parent"
     tools:context=".activities.ConfereSaidaActivity">
 
-    <EditText
-        android:id="@+id/et_confere_saida_iditemvenda"
+    <TextView
+        android:id="@+id/tv_confere_saida_idvenda"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="150dp"
         android:layout_marginEnd="8dp"
-        android:ems="10"
-        android:hint="Id item venda"
-        android:inputType="number"
+        android:textSize="22sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
-        android:id="@+id/et_confere_saida_idproduto"
+    <TextView
+        android:id="@+id/tv_confere_saida_iditemvenda"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
-        android:ems="10"
-        android:hint="Id produto"
-        android:inputType="number"
+        android:textSize="22sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_confere_saida_iditemvenda" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_confere_saida_idvenda" />
 
-    <EditText
-        android:id="@+id/et_confere_saida_idvenda"
+    <TextView
+        android:id="@+id/tv_confere_saida_idproduto"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
-        android:ems="10"
-        android:hint="Id venda"
-        android:inputType="number"
+        android:textSize="22sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_confere_saida_idproduto" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_confere_saida_iditemvenda" />
+
+    <TextView
+        android:id="@+id/tv_confere_saida_cliente"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:textSize="22sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_confere_saida_idproduto" />
 
     <EditText
         android:id="@+id/et_confere_saida_qtd"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
-        android:ems="10"
         android:hint="@string/Quantidade"
-        android:inputType="number"
+        android:inputType="numberDecimal"
+        android:textSize="22sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_confere_saida_idvenda" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_confere_saida_cliente" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/btn_confere_saida_conferir"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="24dp"
         android:layout_marginEnd="8dp"
         android:onClick="conferirVenda"
         android:text="Conferir"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/et_confere_saida_qtd" />
+
+    <ProgressBar
+        android:id="@+id/pb_confere_saida_carregando"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:indeterminate="false"
+        android:progressTint="#F50202"
+        android:translationZ="2dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints"
+        tools:visibility="invisible" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

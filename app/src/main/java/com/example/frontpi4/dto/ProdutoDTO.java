@@ -7,14 +7,24 @@ public class ProdutoDTO {
     private Double qtd;
     private String vol;
     private Long categoriaId;
+    private String data;
 
     public ProdutoDTO(String nome, Double preco, Double qtd, String vol, Long categoriaId){
-
         this.nome = nome;
         this.preco = preco;
         this.qtd = qtd;
         this.vol = vol;
         this.categoriaId = categoriaId;
+    }
+
+    public ProdutoDTO(Long id, String nome, Double preco, Double qtd, String vol, Long categoriaId, String data){
+        this.id = id;
+        this.nome = nome;
+        this.preco = preco;
+        this.qtd = qtd;
+        this.vol = vol;
+        this.categoriaId = categoriaId;
+        this.data = data;
     }
 
     public void setPreco(Double preco) {
@@ -63,5 +73,13 @@ public class ProdutoDTO {
 
     public void setQtd(Double qtd) {
         this.qtd = qtd;
+    }
+
+    public String getData() {
+        return data;
+    }
+
+    public void setData(String data) {
+        this.data = data;
     }
 }

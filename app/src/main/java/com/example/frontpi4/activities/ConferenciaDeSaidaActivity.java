@@ -1,7 +1,6 @@
 package com.example.frontpi4.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -10,13 +9,11 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ProgressBar;
 
 import com.example.frontpi4.R;
 import com.example.frontpi4.dto.ItemVendaDTO;
-import com.example.frontpi4.dto.UsuarioDTO;
 import com.example.frontpi4.helpers.ConferenciaSaidaAdapter;
-import com.example.frontpi4.helpers.SwipeToDeleteCallback;
-import com.example.frontpi4.helpers.UsuarioAdapter;
 import com.example.frontpi4.services.RetrofitService;
 
 import java.util.List;
@@ -29,14 +26,21 @@ public class ConferenciaDeSaidaActivity extends AppCompatActivity {
 
     public static final String TAG = "ConferenciaSaidaActivity";
 
+    ProgressBar pbCarregando;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_conferencia_de_saida);
+
+        pbCarregando = findViewById(R.id.pb_conferencia_de_saida_carregando);
+        pbCarregando.setVisibility(View.INVISIBLE);
+
         buscaDados();
     }
 
     private void buscaDados(){
+        pbCarregando.setVisibility(View.VISIBLE);
         //# Rercuperando token salvo na activity de login
         SharedPreferences sp = getSharedPreferences("dados", 0);
         String token = sp.getString("token",null);
@@ -48,9 +52,11 @@ public class ConferenciaDeSaidaActivity extends AppCompatActivity {
                 if (response.isSuccessful()) {
                     List<ItemVendaDTO> lista = response.body();
                     preencheRecyclerview(lista);
+                    pbCarregando.setVisibility(View.INVISIBLE);
                 } else {
                     startActivity(new Intent(ConferenciaDeSaidaActivity.this, TelaPrincipalActivity.class));
                     onFailure(call, new Exception());
+                    pbCarregando.setVisibility(View.INVISIBLE);
                 }
             }
 

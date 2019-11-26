@@ -150,7 +150,7 @@
 
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/btn_confere_saida_conferir"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"

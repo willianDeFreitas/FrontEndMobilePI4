@@ -8,6 +8,18 @@ public class ItemVendaDTO{
     private Double qtdItemV;
     private Double valorItemV;
     private Long vendaId;
+    private String produto;
+    private String cliente;
+
+    public ItemVendaDTO(Long id, Double qtdItemV, Double valorItemV, Long produtoId, Long vendaId, String conferido, String produto, String cliente) {
+        this.qtdItemV = qtdItemV;
+        this.valorItemV = valorItemV;
+        this.produtoId = produtoId;
+        this.vendaId = vendaId;
+        this.conferido = conferido;
+        this.cliente = cliente;
+        this.produto = produto;
+    }
 
     public ItemVendaDTO(Long id, Double qtdItemV, Double valorItemV, Long produtoId, Long vendaId, String conferido) {
         this.qtdItemV = qtdItemV;
@@ -69,5 +81,21 @@ public class ItemVendaDTO{
 
     public void setValorItemV(Double valorItemV) {
         this.valorItemV = valorItemV;
+    }
+
+    public String getProduto() {
+        return produto;
+    }
+
+    public void setProduto(String produto) {
+        this.produto = produto;
+    }
+
+    public String getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(String cliente) {
+        this.cliente = cliente;
     }
 }
