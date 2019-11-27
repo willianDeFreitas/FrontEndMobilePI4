@@ -17,14 +17,8 @@ public class ProdutoDTO {
         this.categoriaId = categoriaId;
     }
 
-    public ProdutoDTO(Long id, String nome, Double preco, Double qtd, String vol, Long categoriaId, String data){
-        this.id = id;
-        this.nome = nome;
-        this.preco = preco;
+    public ProdutoDTO(Double qtd){
         this.qtd = qtd;
-        this.vol = vol;
-        this.categoriaId = categoriaId;
-        this.data = data;
     }
 
     public void setPreco(Double preco) {

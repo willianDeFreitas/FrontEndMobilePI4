@@ -72,8 +72,7 @@ public class ConfereSaidaActivity extends AppCompatActivity {
     public void conferirVenda(View view) {
         pbCarregando.setVisibility(View.VISIBLE);
         Double qtdProduto = produtoDTO.getQtd();
-        Date data = new Date();
-        String dataform = formataData.format(data);
+
         String qtdConferidaStr = ((EditText)findViewById(R.id.et_confere_saida_qtd)).getText().toString();
         final Double qtdConferida = Double.parseDouble(qtdConferidaStr);
 
@@ -107,13 +106,7 @@ public class ConfereSaidaActivity extends AppCompatActivity {
             }
         });
 
-        ProdutoDTO produtoDTOUpdate = new ProdutoDTO(produtoDTO.getId()
-                , produtoDTO.getNome()
-                , produtoDTO.getPreco()
-                , qtdProduto
-                , produtoDTO.getVol()
-                , produtoDTO.getCategoriaId()
-                , produtoDTO.getData());
+        ProdutoDTO produtoDTOUpdate = new ProdutoDTO(qtdProduto);
 
         RetrofitService.getServico().alteraProduto(produtoDTOUpdate, idProd, "Bearer "+token).enqueue(new Callback<ProdutoDTO>() {
             @Override
