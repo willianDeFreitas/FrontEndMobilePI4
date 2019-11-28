@@ -42,7 +42,7 @@
         android:ems="7"
         android:fontFamily="monospace"
         android:inputType="textPersonName"
-        android:text="@string/Quantidade"
+        android:text="@string/qtd_ponto"
         android:textAlignment="center"
         android:textSize="18sp"
         android:textStyle="bold"

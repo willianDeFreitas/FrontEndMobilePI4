@@ -12,17 +12,12 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.DrawableRes;
 import androidx.annotation.NonNull;
-import androidx.appcompat.widget.DrawableUtils;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.frontpi4.R;
-import com.example.frontpi4.activities.AlteracaoProdutoActivity;
-import com.example.frontpi4.activities.AlteracaoUsuarioActivity;
 import com.example.frontpi4.activities.ExibirProdutosActivity;
 import com.example.frontpi4.dto.ProdutoDTO;
-import com.example.frontpi4.dto.UsuarioDTO;
 import com.example.frontpi4.services.RetrofitService;
 
 import java.util.List;

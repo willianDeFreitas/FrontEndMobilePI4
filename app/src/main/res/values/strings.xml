@@ -40,6 +40,7 @@
     <string name="et_preco_do_produto">Preço do produto</string>
     <string name="valor_item_venda_dois_pontos">Valor item venda:</string>
     <string name="valor_item_venda">Valor item venda</string>
+    <string name="qtd_ponto">Qtd.</string>
     <string-array name="funcao_array">
         <item>Selecione a função</item>
         <item>Secretaria</item>

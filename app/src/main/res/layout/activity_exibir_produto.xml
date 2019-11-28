@@ -132,20 +132,21 @@
         app:layout_constraintStart_toEndOf="@+id/tv_dados_prod_preco"
         app:layout_constraintTop_toTopOf="@+id/tv_dados_prod_preco" />
 
-    <EditText
-        android:id="@+id/et_categoria_produto"
+
+    <Spinner
+        android:id="@+id/sp_exibir_categoria_produto"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
-        android:textAlignment="center"
-        android:textSize="12sp"
-        android:background="#51B9B0B0"
-        android:fontFamily="monospace"
+        android:ems="10"
+        android:hint="Telefone"
         app:layout_constraintBottom_toBottomOf="@+id/tv_dados_prod_categoria"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/tv_dados_prod_categoria"
-        app:layout_constraintTop_toTopOf="@+id/tv_dados_prod_categoria" />
+        app:layout_constraintTop_toTopOf="@+id/tv_dados_prod_categoria"/>
+
 
     <Button
         android:id="@+id/bt_alterar_produto"

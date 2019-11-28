@@ -167,14 +167,6 @@
                 android:value="com.example.frontpi4.activities.TelaPrincipalActivity" />
         </activity>
         <activity
-            android:name=".activities.AlteracaoProdutoActivity"
-            android:label="@string/alterar_produto"
-            android:parentActivityName=".activities.ProdutosActivity">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.frontpi4.activities.ProdutosActivity" />
-        </activity>
-        <activity
             android:name=".activities.ExibirProdutosActivity"
             android:label="@string/exibirProduto"
             android:parentActivityName=".activities.ProdutosActivity">

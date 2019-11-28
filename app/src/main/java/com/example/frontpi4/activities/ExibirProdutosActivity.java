@@ -5,7 +5,10 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -20,7 +23,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 
-public class ExibirProdutosActivity extends AppCompatActivity {
+public class ExibirProdutosActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
     public static final String TAG = "ExibirProdutoActivity";
 
@@ -28,6 +31,8 @@ public class ExibirProdutosActivity extends AppCompatActivity {
     EditText et_nome,et_preco, et_categoria ;
    int id;
 
+    Spinner funcao;
+    int funcao_selecionada;
 
 
     @Override
@@ -48,14 +53,21 @@ public class ExibirProdutosActivity extends AppCompatActivity {
         et_nome = findViewById(R.id.et_nome_produto);
         et_preco = findViewById(R.id.et_preco_produto);
         et_qtd = findViewById(R.id.tv_quantidade_produto);
-        et_categoria = findViewById(R.id.et_categoria_produto);
         et_vol = findViewById(R.id.tv_volume_produto);
 
         et_nome.setText(nome);
         et_preco.setText(preco);
         et_qtd.setText(qtd);
         et_vol.setText(vol);
-        et_categoria.setText(categoriaId);
+//        et_categoria.setText(categoriaId);
+
+        funcao = findViewById(R.id.sp_exibir_categoria_produto);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
+                R.array.funcao_array_categoria, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        funcao.setAdapter(adapter);
+        funcao.setOnItemSelectedListener(this);
+        funcao.setSelection(Integer.parseInt(categoriaId));
 
 
     }
@@ -64,18 +76,23 @@ public class ExibirProdutosActivity extends AppCompatActivity {
         String nome = ((EditText)findViewById(R.id.et_nome_produto)).getText().toString();
         String p = ((EditText)findViewById(R.id.et_preco_produto)).getText().toString();
         String q = ((TextView)findViewById(R.id.tv_quantidade_produto)).getText().toString();
-        String catId = ((EditText)findViewById(R.id.et_categoria_produto)).getText().toString();
         String vol = ((TextView)findViewById(R.id.tv_volume_produto)).getText().toString();;
 
         ProdutoDTO produtoDTO;
 
         double preco=Double.parseDouble(p);
         double qtd=Double.parseDouble(q);
-        Long categoria=Long.valueOf(catId);
+        Long categoria=Long.valueOf(funcao_selecionada);
         Long idProduto= Long.valueOf(id);
         produtoDTO = new ProdutoDTO(nome,preco,qtd,vol,categoria);
 
-        String token = getToken();
+        String token ="" ;
+
+
+        if (nome != "" && preco != 0 && qtd != 0 && categoria != 0 && vol != "" ) {
+            produtoDTO = new ProdutoDTO(nome,preco,qtd,vol,categoria);
+            token = getToken();
+        }
 
         RetrofitService.getServico().alteraProduto(produtoDTO, idProduto, "Bearer "+token).enqueue(new Callback<ProdutoDTO>() {
             @Override
@@ -105,5 +122,15 @@ public class ExibirProdutosActivity extends AppCompatActivity {
         SharedPreferences sp = getSharedPreferences("dados",0);
 
         return sp.getString("email",null);
+    }
+
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        funcao_selecionada = position;
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
+
     }
 }
