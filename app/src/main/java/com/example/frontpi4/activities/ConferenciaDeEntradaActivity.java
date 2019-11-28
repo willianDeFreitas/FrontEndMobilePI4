@@ -36,7 +36,7 @@ public class ConferenciaDeEntradaActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_conferencia_de_entrada);
 
-        pbCarregando = findViewById(R.id.pb_conferencia_de_saida_carregando);
+        pbCarregando = findViewById(R.id.pb_conferencia_de_entrada_carregando);
         pbCarregando.setVisibility(View.INVISIBLE);
 
         buscaDados();

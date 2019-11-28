@@ -1,16 +1,15 @@
 package com.example.frontpi4.activities;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.frontpi4.R;
 import com.example.frontpi4.dto.ProdutoDTO;
@@ -21,7 +20,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 
-public class ExibirProdutosActivity extends Activity {
+public class ExibirProdutosActivity extends AppCompatActivity {
 
     public static final String TAG = "ExibirProdutoActivity";
 

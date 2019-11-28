@@ -99,6 +99,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.frontpi4.activities.TelaPrincipalActivity" />
         </activity>
+
         <activity
             android:name=".activities.ProdutosActivity"
             android:label="@string/produtos"
@@ -106,7 +107,9 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.frontpi4.activities.TelaPrincipalActivity" />
-        </activity> <!-- Activities tela principal FIM -->
+        </activity>
+
+        <!-- Activities tela principal FIM -->
         <activity
             android:name=".activities.AlteracaoClienteActivity"
             android:label="@string/alterar_cliente"
@@ -166,26 +169,26 @@
         <activity
             android:name=".activities.AlteracaoProdutoActivity"
             android:label="@string/alterar_produto"
-            android:parentActivityName=".activities.TelaPrincipalActivity">
+            android:parentActivityName=".activities.ProdutosActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.frontpi4.activities.TelaPrincipalActivity" />
+                android:value="com.example.frontpi4.activities.ProdutosActivity" />
         </activity>
         <activity
             android:name=".activities.ExibirProdutosActivity"
             android:label="@string/exibirProduto"
-            android:parentActivityName=".activities.TelaPrincipalActivity">
+            android:parentActivityName=".activities.ProdutosActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.frontpi4.activities.TelaPrincipalActivity" />
+                android:value="com.example.frontpi4.activities.ProdutosActivity" />
         </activity>
         <activity
             android:name=".activities.CadastroDeProdutoActivity"
             android:label="@string/cadastra_produto"
-            android:parentActivityName=".activities.TelaPrincipalActivity">
+            android:parentActivityName=".activities.ProdutosActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.frontpi4.activities.TelaPrincipalActivity" />
+                android:value="com.example.frontpi4.activities.ProdutosActivity" />
         </activity>
     </application>
 

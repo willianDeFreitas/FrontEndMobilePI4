@@ -75,6 +75,7 @@ public class ConfereEntradaActivity extends AppCompatActivity {
 
         if (qtdNegociada.compareTo(qtdConferida) != 0){
             Toast.makeText(ConfereEntradaActivity.this, "Quantidade incorreta do produto", Toast.LENGTH_LONG).show();
+            pbCarregando.setVisibility(View.INVISIBLE);
             return;
         }
 

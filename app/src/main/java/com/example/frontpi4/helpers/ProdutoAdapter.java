@@ -61,7 +61,7 @@ public class ProdutoAdapter extends RecyclerView.Adapter<ProdutoAdapter.ProdutoH
     public void onBindViewHolder(@NonNull ProdutoHolder holder, int position) {
         String nome = lista.get(position).getNome();
         double p = lista.get(position).getPreco();
-        String q =  lista.get(position).getVol();
+        Double q =  lista.get(position).getQtd();
 
         int preco = (int)p;
 
@@ -72,7 +72,7 @@ public class ProdutoAdapter extends RecyclerView.Adapter<ProdutoAdapter.ProdutoH
             holder.preco.setBackground(d);
         }
         holder.nome.setText(nome);
-        holder.qtd.setText(q);
+        holder.qtd.setText(q.toString());
         holder.preco.setText("R$ "+preco);
 
     }
