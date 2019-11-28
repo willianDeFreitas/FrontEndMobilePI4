@@ -11,10 +11,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginTop="1dp"
+        android:layout_marginBottom="1dp"
         android:text="@string/cliente_dois_pontos"
-        android:textSize="22sp"
+        android:textSize="18sp"
         app:layout_constraintBottom_toTopOf="@+id/spin_cadastro_pedido_venda_cliente"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -37,9 +37,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginBottom="1dp"
         android:text="@string/produto_dois_pontos"
-        android:textSize="22sp"
+        android:textSize="18sp"
         app:layout_constraintBottom_toTopOf="@+id/spin_cadastro_pedido_venda_produto"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/spin_cadastro_pedido_venda_cliente" />
@@ -57,33 +57,56 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_cadastro_pedido_venda_produto" />
 
+    <TextView
+        android:id="@+id/tv_cadastro_pedido_venda_quantidade"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginBottom="1dp"
+        android:text="@string/quandidade_dois_pontos"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/et_cadastro_pedido_venda_quantidade"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spin_cadastro_pedido_venda_produto" />
+
     <EditText
         android:id="@+id/et_cadastro_pedido_venda_quantidade"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="1dp"
         android:layout_marginEnd="8dp"
         android:ems="10"
         android:hint="@string/Quantidade"
-        android:inputType="number"
+        android:inputType="numberDecimal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spin_cadastro_pedido_venda_produto" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_cadastro_pedido_venda_quantidade" />
+
+    <TextView
+        android:id="@+id/tv_cadastro_pedido_venda_valor_produto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginBottom="1dp"
+        android:text="@string/preco_do_produto"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/et_cadastro_pedido_venda_valor_produto"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et_cadastro_pedido_venda_quantidade" />
 
     <EditText
-        android:id="@+id/et_cadastro_pedido_venda_valor"
+        android:id="@+id/et_cadastro_pedido_venda_valor_produto"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="1dp"
         android:layout_marginEnd="8dp"
         android:ems="10"
-        android:hint="@string/Valor_venda"
         android:inputType="number"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_cadastro_pedido_venda_quantidade" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_cadastro_pedido_venda_valor_produto" />
 
     <Button
         android:id="@+id/bt_cadastro_pedido_venda_lancar_pedido"
@@ -96,7 +119,7 @@
         android:text="Registra item de venda"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_cadastro_pedido_venda_valor" />
+        app:layout_constraintTop_toBottomOf="@+id/et_cadastro_pedido_venda_valor_produto" />
 
     <Button
         android:id="@+id/bt_cadastro_pedido_venda_confirma_pedido"

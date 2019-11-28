@@ -4,7 +4,7 @@
     <string name="login">Login</string>
     <string name="senha">Senha</string>
     <string name="email">Email</string>
-    <string name="Quantidade">Quantidade</string>
+    <string name="Quantidade">Insira uma quantidade</string>
     <string name="cliente">Cliente</string>
     <string name="Valor_venda">Valor da venda</string>
     <string name="entrar_no_sistema">Entrar no sistema</string>
@@ -35,6 +35,11 @@
     <string name="valor_da_compra">Valor da compra</string>
     <string name="conferencia_de_saida">Conferência de Saída</string>
     <string name="cadastra_produto">Cadastra produto</string>
+    <string name="quandidade_dois_pontos">Quandidade:</string>
+    <string name="preco_do_produto">Preço do produto:</string>
+    <string name="et_preco_do_produto">Preço do produto</string>
+    <string name="valor_item_venda_dois_pontos">Valor item venda:</string>
+    <string name="valor_item_venda">Valor item venda</string>
     <string-array name="funcao_array">
         <item>Selecione a função</item>
         <item>Secretaria</item>

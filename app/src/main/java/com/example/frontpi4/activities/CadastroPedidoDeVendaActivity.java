@@ -48,6 +48,8 @@ public class CadastroPedidoDeVendaActivity extends AppCompatActivity implements 
     Button btnLimpaListaDeItensDeVenda;
     int qtdItemVenda = 0;
     ProgressBar pbCarregando;
+    EditText precoProduto, qtdProduto;
+    Double estoque;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,10 +68,33 @@ public class CadastroPedidoDeVendaActivity extends AppCompatActivity implements 
         spin_cliente = findViewById(R.id.spin_cadastro_pedido_venda_cliente);
         spin_produto = findViewById(R.id.spin_cadastro_pedido_venda_produto);
 
+        precoProduto = findViewById(R.id.et_cadastro_pedido_venda_valor_produto);
+        precoProduto.setEnabled(false);
+
+        qtdProduto = findViewById(R.id.et_cadastro_pedido_venda_quantidade);
+
         buscaDadosSpinners();
 
         spin_cliente.setOnItemSelectedListener(this);
-        spin_produto.setOnItemSelectedListener(this);
+        spin_produto.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                int produtoSelct = spin_produto.getSelectedItemPosition();
+                if (produtoSelct > 0) {
+                    /*faz um ajuste para poder pegar a posição correta do produto no array*/
+                    produtoSelct -= 1;
+                    precoProduto.setText(listaDeProdutos.get(produtoSelct).getPreco().toString());
+                    estoque = listaDeProdutos.get(produtoSelct).getQtd();
+                } else {
+                    precoProduto.setText("0.00");
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
     }
 
     public void buscaDadosSpinners(){
@@ -143,7 +168,7 @@ public class CadastroPedidoDeVendaActivity extends AppCompatActivity implements 
         int clienteSelct = spin_cliente.getSelectedItemPosition();
         int produtoSelct = spin_produto.getSelectedItemPosition();
         String qtdItemVStr = ((EditText)findViewById(R.id.et_cadastro_pedido_venda_quantidade)).getText().toString();
-        String valorItemVStr = ((EditText)findViewById(R.id.et_cadastro_pedido_venda_valor)).getText().toString();
+        String precoProduto = ((EditText)findViewById(R.id.et_cadastro_pedido_venda_valor_produto)).getText().toString();
 
         if (clienteSelct <= 0) {
             Toast.makeText(CadastroPedidoDeVendaActivity.this, "Selecione um CLIENTE", Toast.LENGTH_LONG).show();
@@ -160,18 +185,40 @@ public class CadastroPedidoDeVendaActivity extends AppCompatActivity implements 
 
         Long idProd = listaDeProdutos.get(produtoSelct).getId();
 
-        if ("".equals(qtdItemVStr)) {
+        if ("".equals(qtdItemVStr.trim())) {
             Toast.makeText(CadastroPedidoDeVendaActivity.this, "Insira uma QUANTIDADE", Toast.LENGTH_LONG).show();
             return;
         }
 
-        if ("".equals(valorItemVStr)) {
-            Toast.makeText(CadastroPedidoDeVendaActivity.this, "Insira o VALOR DO ITEM", Toast.LENGTH_LONG).show();
+        Double qtdItemV = Double.parseDouble(qtdItemVStr);
+
+        Double valorJaVendido = 0.0;
+        Boolean teveDebito = false;
+
+        if (singleton.getListaDeItemVenda() != null) {
+            for (ItemVendaDTO itemVendaDTO : singleton.getListaDeItemVenda()){
+                if ( idProd == itemVendaDTO.getProdutoId()) {
+                    valorJaVendido += itemVendaDTO.getQtdItemV();
+                    estoque -= valorJaVendido;
+                    teveDebito = true;
+                }
+            }
+        }
+
+        if (estoque.compareTo(qtdItemV) != 1 && estoque.compareTo(qtdItemV) != 0) {
+            if (teveDebito) {
+                estoque += valorJaVendido;
+                teveDebito = false;
+            }
+            Toast.makeText(CadastroPedidoDeVendaActivity.this, "Estoque insuficiente", Toast.LENGTH_LONG).show();
             return;
         }
 
-        Double qtdItemV = Double.parseDouble(qtdItemVStr);
-        Double valorItemV = Double.parseDouble(valorItemVStr);
+        if (qtdItemV <= 0.0) {
+            Toast.makeText(CadastroPedidoDeVendaActivity.this, "Insira uma QUANTIDADE válida", Toast.LENGTH_LONG).show();
+            return;
+        }
+        Double valorItemV = (Double.parseDouble(precoProduto)*qtdItemV);
 
         ItemVendaDTO itemVendaDTO = new ItemVendaDTO(null, qtdItemV, valorItemV, idProd, null, conferido);
         listaDeItemVenda.add(itemVendaDTO);
@@ -181,7 +228,7 @@ public class CadastroPedidoDeVendaActivity extends AppCompatActivity implements 
         qtdItemVenda++;
         singleton.setQtdItemVenda(qtdItemVenda);
         qtdItemVenda = singleton.getQtdItemVenda();
-        Toast.makeText(CadastroPedidoDeVendaActivity.this, "Item de venda: "+ qtdItemVenda +" salvo", Toast.LENGTH_LONG).show();
+        Toast.makeText(CadastroPedidoDeVendaActivity.this, "Salvo! Valor: R$ "+ valorItemV + "\nSequência: " + qtdItemVenda +" salvo", Toast.LENGTH_LONG).show();
 
         btnConfirmarPedidoVenda.setEnabled(true);
         btnLimpaListaDeItensDeVenda.setEnabled(true);
@@ -233,7 +280,6 @@ public class CadastroPedidoDeVendaActivity extends AppCompatActivity implements 
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-
     }
 
     @Override
@@ -258,6 +304,14 @@ public class CadastroPedidoDeVendaActivity extends AppCompatActivity implements 
         btnConfirmarPedidoVenda.setEnabled(false);
         btnLimpaListaDeItensDeVenda.setEnabled(false);
         spin_cliente.setEnabled(true);
+
+        int produtoSelct = spin_produto.getSelectedItemPosition();
+        if (produtoSelct > 0) {
+            /*faz um ajuste para poder pegar a posição correta do produto no array*/
+            produtoSelct -= 1;
+            estoque = listaDeProdutos.get(produtoSelct).getQtd();
+        }
+
         Toast.makeText(CadastroPedidoDeVendaActivity.this, "Lista de itens foi apagada", Toast.LENGTH_LONG).show();
     }
 }
