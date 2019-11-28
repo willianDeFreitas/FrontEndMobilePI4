@@ -5,7 +5,10 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -19,14 +22,23 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class CadastroDeProdutoActivity extends AppCompatActivity {
+public class CadastroDeProdutoActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
     public static final String TAG = "CadastroDeProdutoActivity";
+    Spinner funcao;
+    int funcao_selecionada;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cadastro_de_produto);
+
+        funcao = findViewById(R.id.sp_cadastro_categoria_produto);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
+                R.array.funcao_array_categoria, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        funcao.setAdapter(adapter);
+        funcao.setOnItemSelectedListener(this);
 
     }
 
@@ -34,7 +46,7 @@ public class CadastroDeProdutoActivity extends AppCompatActivity {
         String nome = ((EditText)findViewById(R.id.et_cadastro_nome_produto)).getText().toString();
         String p = ((EditText)findViewById(R.id.et_cadastro_preco_produto)).getText().toString();
         String q = ((TextView)findViewById(R.id.et_cadastro_quantidade_produto)).getText().toString();
-        String catId = ((EditText)findViewById(R.id.et_cadastro_categoria_produto)).getText().toString();
+        int catId = funcao_selecionada;
         String vol = ((TextView)findViewById(R.id.et_cadastro_volume_produto)).getText().toString();;
 
         double preco=Double.parseDouble(p);
@@ -47,7 +59,7 @@ public class CadastroDeProdutoActivity extends AppCompatActivity {
         String token = "";
 
         if (nome != "" && preco != 0 && qtd != 0 && categoria != 0 && vol != "" ) {
-
+            funcao_selecionada += 1;
             produtoDTO = new ProdutoDTO(nome,preco,qtd,vol,categoria);;
             token = getToken();
         }
@@ -76,4 +88,13 @@ public class CadastroDeProdutoActivity extends AppCompatActivity {
     }
 
 
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        funcao_selecionada = position;
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
+
+    }
 }

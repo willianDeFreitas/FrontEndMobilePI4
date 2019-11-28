@@ -17,6 +17,8 @@ import com.example.frontpi4.R;
 import com.example.frontpi4.dto.UsuarioDTO;
 import com.example.frontpi4.services.RetrofitService;
 
+import java.util.List;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -27,11 +29,14 @@ public class CadastroDeUsuarioActivity extends AppCompatActivity implements Adap
     Spinner funcao;
     int funcao_selecionada;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cadastro_de_usuario);
         funcao = findViewById(R.id.sp_cadastro_usuario_fucao);
+
+
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
                 R.array.funcao_array, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);

@@ -46,4 +46,10 @@
         <item>Estoque</item>
     </string-array>
 
+    <string-array name="funcao_array_categoria">
+        <item>Selecione a categoria</item>
+        <item>Areia</item>
+        <item>Brita</item>
+    </string-array>
+
 </resources>

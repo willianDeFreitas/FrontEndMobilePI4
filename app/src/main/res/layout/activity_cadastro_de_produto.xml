@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activities.CadastroDeUsuarioActivity">
+    tools:context=".activities.CadastroDeProdutoActivity">
 
     <TextView
         android:id="@+id/tv_prod_nome"
@@ -58,6 +58,7 @@
         app:layout_constraintEnd_toEndOf="@+id/tv_prod_vol"
         app:layout_constraintStart_toStartOf="@+id/tv_prod_vol"
         app:layout_constraintTop_toBottomOf="@+id/tv_prod_vol" />
+
 
     <TextView
         android:id="@+id/tv_prod_categoria"
@@ -132,21 +133,19 @@
         app:layout_constraintStart_toEndOf="@+id/tv_prod_preco"
         app:layout_constraintTop_toTopOf="@+id/tv_prod_preco" />
 
-    <EditText
-        android:id="@+id/et_cadastro_categoria_produto"
+    <Spinner
+        android:id="@+id/sp_cadastro_categoria_produto"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
-        android:textAlignment="center"
-        android:textSize="12sp"
-        android:background="#51B9B0B0"
-        android:fontFamily="monospace"
+        android:ems="10"
+        android:hint="Telefone"
         app:layout_constraintBottom_toBottomOf="@+id/tv_prod_categoria"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/tv_prod_categoria"
-        app:layout_constraintTop_toTopOf="@+id/tv_prod_categoria" />
-
+        app:layout_constraintTop_toTopOf="@+id/tv_prod_categoria"/>
 
 
     <Button
@@ -160,5 +159,5 @@
         android:text="Salvar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_cadastro_categoria_produto" />
+        app:layout_constraintTop_toBottomOf="@+id/sp_cadastro_categoria_produto" />
 </androidx.constraintlayout.widget.ConstraintLayout>
