@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import com.example.frontpi4.R;
 import com.example.frontpi4.dto.ItemVendaDTO;
@@ -51,7 +52,14 @@ public class ConferenciaDeSaidaActivity extends AppCompatActivity {
             public void onResponse(Call<List<ItemVendaDTO>> call, Response<List<ItemVendaDTO>> response) {
                 if (response.isSuccessful()) {
                     List<ItemVendaDTO> lista = response.body();
-                    preencheRecyclerview(lista);
+
+                    if (!lista.isEmpty()) {
+                        preencheRecyclerview(lista);
+                    } else {
+                        Toast.makeText(ConferenciaDeSaidaActivity.this, "Não há conferências de saída", Toast.LENGTH_LONG).show();
+                        startActivity(new Intent(ConferenciaDeSaidaActivity.this, TelaPrincipalActivity.class));
+                    }
+
                     pbCarregando.setVisibility(View.INVISIBLE);
                 } else {
                     startActivity(new Intent(ConferenciaDeSaidaActivity.this, TelaPrincipalActivity.class));

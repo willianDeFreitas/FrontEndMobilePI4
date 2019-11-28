@@ -1,5 +1,7 @@
 package com.example.frontpi4.activities;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -10,28 +12,23 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import com.example.frontpi4.R;
-import com.example.frontpi4.dto.ItemVendaDTO;
+import com.example.frontpi4.dto.ItemCompraDTO;
 import com.example.frontpi4.dto.ProdutoDTO;
 import com.example.frontpi4.services.RetrofitService;
-
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class ConfereSaidaActivity extends AppCompatActivity {
+public class ConfereEntradaActivity extends AppCompatActivity {
 
-    public static final String TAG = "ConfereSaidaActivity";
+    public static final String TAG = "ConfereEntradaActivity";
 
-    TextView tv_idVenda, tv_idItemVenda, tv_cliente, tv_idProd;
-    int idItemVenda;
+    TextView tv_idCompra, tv_idItemCompra, tv_fornecedor, tv_idProd;
+    int idItemCompra;
     Double qtdNegociada;
-    Long idVenda, idProd;
+    Long idCompra, idProd;
     ProgressBar pbCarregando;
     String token;
     ProdutoDTO produtoDTO;
@@ -39,44 +36,45 @@ public class ConfereSaidaActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_confere_saida);
+        setContentView(R.layout.activity_confere_entrada);
 
-        pbCarregando = findViewById(R.id.pb_confere_saida_carregando);
+        pbCarregando = findViewById(R.id.pb_confere_entrada_carregando);
         pbCarregando.setVisibility(View.INVISIBLE);
 
         Intent intent = getIntent();
 
-        idVenda = intent.getLongExtra("idVenda",-1);
-        idItemVenda = intent.getIntExtra("idItemVenda", -1);
+        idCompra = intent.getLongExtra("idCompra",-1);
+        idItemCompra = intent.getIntExtra("idItemCompra", -1);
 
         idProd = intent.getLongExtra("idProd", -1);
         buscaProduto(idProd);
 
         String produto = intent.getStringExtra("produto");
-        String cliente = intent.getStringExtra("cliente");
+        String fornecedor = intent.getStringExtra("fornecedor");
 
-        tv_idVenda = findViewById(R.id.tv_confere_saida_idvenda);
-        tv_idItemVenda = findViewById(R.id.tv_confere_saida_iditemvenda);
-        tv_idProd = findViewById(R.id.tv_confere_saida_idproduto);
-        tv_cliente = findViewById(R.id.tv_confere_saida_cliente);
+        tv_idCompra = findViewById(R.id.tv_confere_entrada_idcompra);
+        tv_idItemCompra = findViewById(R.id.tv_confere_entrada_iditemcompra);
+        tv_idProd = findViewById(R.id.tv_confere_entrada_idproduto);
+        tv_fornecedor = findViewById(R.id.tv_confere_entrada_fornecedor);
 
-        tv_idVenda.setText("Venda: " + idVenda.toString() );
-        tv_idItemVenda.setText("Item de venda: " + String.valueOf(idItemVenda));
+        tv_idCompra.setText("Compra: " + idCompra.toString() );
+        tv_idItemCompra.setText("Item de compra: " + String.valueOf(idItemCompra));
         tv_idProd.setText("Produto: \n" + idProd.toString() + "-" + produto);
-        tv_cliente.setText("Cliente: \n" + cliente);
+        tv_fornecedor.setText("Fornecedor: \n" + fornecedor);
 
         qtdNegociada = Double.parseDouble(intent.getStringExtra("qtdNegociada"));
     }
 
-    public void conferirVenda(View view) {
+
+    public void conferirCompra(View view) {
         pbCarregando.setVisibility(View.VISIBLE);
         Double qtdProduto = produtoDTO.getQtd();
 
-        String qtdConferidaStr = ((EditText)findViewById(R.id.et_confere_saida_qtd)).getText().toString();
+        String qtdConferidaStr = ((EditText)findViewById(R.id.et_confere_entrada_qtd)).getText().toString();
         final Double qtdConferida = Double.parseDouble(qtdConferidaStr);
 
         if (qtdNegociada.compareTo(qtdConferida) != 0){
-            Toast.makeText(ConfereSaidaActivity.this, "Quantidade incorreta do produto", Toast.LENGTH_LONG).show();
+            Toast.makeText(ConfereEntradaActivity.this, "Quantidade incorreta do produto", Toast.LENGTH_LONG).show();
             return;
         }
 
@@ -84,22 +82,22 @@ public class ConfereSaidaActivity extends AppCompatActivity {
 
         token = getToken();
 
-        ItemVendaDTO itemVendaDTO;
-        itemVendaDTO = new ItemVendaDTO(idProd,idVenda, "S");
+        ItemCompraDTO itemCompraDTO;
+        itemCompraDTO = new ItemCompraDTO(idProd,idCompra, "S");
 
-        RetrofitService.getServico().confereItemVenda(itemVendaDTO, idItemVenda, "Bearer "+token).enqueue(new Callback<ItemVendaDTO>() {
+        RetrofitService.getServico().confereItemCompra(itemCompraDTO, idItemCompra, "Bearer "+token).enqueue(new Callback<ItemCompraDTO>() {
             @Override
-            public void onResponse(Call<ItemVendaDTO> call, Response<ItemVendaDTO> response) {
+            public void onResponse(Call<ItemCompraDTO> call, Response<ItemCompraDTO> response) {
                 if(response.code() == 200){
                     onFailure(call, new Exception());
                 } else {
-                    Toast.makeText(ConfereSaidaActivity.this, "Erro: " + response.code(), Toast.LENGTH_LONG).show();
+                    Toast.makeText(ConfereEntradaActivity.this, "Erro: " + response.code(), Toast.LENGTH_LONG).show();
                     pbCarregando.setVisibility(View.INVISIBLE);
                 }
             }
 
             @Override
-            public void onFailure(Call<ItemVendaDTO> call, Throwable t) {
+            public void onFailure(Call<ItemCompraDTO> call, Throwable t) {
                 Log.d(TAG, "onFailure: " + t.getMessage());
             }
         });
@@ -110,12 +108,12 @@ public class ConfereSaidaActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<ProdutoDTO> call, Response<ProdutoDTO> response) {
                 if(response.code() == 200){
-                    Toast.makeText(ConfereSaidaActivity.this, "Conferido com sucesso", Toast.LENGTH_LONG).show();
+                    Toast.makeText(ConfereEntradaActivity.this, "Conferido com sucesso", Toast.LENGTH_LONG).show();
                     pbCarregando.setVisibility(View.INVISIBLE);
                     finish();
-                    startActivity(new Intent(ConfereSaidaActivity.this, ConferenciaDeSaidaActivity.class));
+                    startActivity(new Intent(ConfereEntradaActivity.this, ConferenciaDeEntradaActivity.class));
                 } else {
-                    Toast.makeText(ConfereSaidaActivity.this, "Erro: " + response.code(), Toast.LENGTH_LONG).show();
+                    Toast.makeText(ConfereEntradaActivity.this, "Erro: " + response.code(), Toast.LENGTH_LONG).show();
                     pbCarregando.setVisibility(View.INVISIBLE);
                 }
             }
@@ -144,7 +142,7 @@ public class ConfereSaidaActivity extends AppCompatActivity {
                 if(response.code() == 200){
                     produtoDTO = response.body();
                 } else {
-                    Toast.makeText(ConfereSaidaActivity.this, "Erro: " + response.code(), Toast.LENGTH_LONG).show();
+                    Toast.makeText(ConfereEntradaActivity.this, "Erro: " + response.code(), Toast.LENGTH_LONG).show();
                 }
             }
 

@@ -8,10 +8,18 @@ public class ItemCompraDTO {
     private Double qtdItemC;
     private Double valorItemC;
     private Long compraId;
+    private String produto;
+    private String fornecedor;
 
     public ItemCompraDTO(Long id, Double qtdItemC, Double valorItemC, Long produtoId, Long compraId, String conferido) {
         this.qtdItemC = qtdItemC;
         this.valorItemC = valorItemC;
+        this.produtoId = produtoId;
+        this.compraId = compraId;
+        this.conferido = conferido;
+    }
+
+    public ItemCompraDTO(Long produtoId, Long compraId, String conferido) {
         this.produtoId = produtoId;
         this.compraId = compraId;
         this.conferido = conferido;
@@ -63,5 +71,21 @@ public class ItemCompraDTO {
 
     public void setCompraId(Long compraId) {
         this.compraId = compraId;
+    }
+
+    public String getProduto() {
+        return produto;
+    }
+
+    public void setProduto(String produto) {
+        this.produto = produto;
+    }
+
+    public String getFornecedor() {
+        return fornecedor;
+    }
+
+    public void setFornecedor(String fornecedor) {
+        this.fornecedor = fornecedor;
     }
 }
