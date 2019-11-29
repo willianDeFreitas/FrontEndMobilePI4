@@ -228,7 +228,7 @@ public class CadastroPedidoDeVendaActivity extends AppCompatActivity implements 
         qtdItemVenda++;
         singleton.setQtdItemVenda(qtdItemVenda);
         qtdItemVenda = singleton.getQtdItemVenda();
-        Toast.makeText(CadastroPedidoDeVendaActivity.this, "Salvo! Valor: R$ "+ valorItemV + "\nSequência: " + qtdItemVenda +" salvo", Toast.LENGTH_LONG).show();
+        Toast.makeText(CadastroPedidoDeVendaActivity.this, "Salvo! Valor: R$ "+ valorItemV + "\nSequência: " + qtdItemVenda, Toast.LENGTH_LONG).show();
 
         btnConfirmarPedidoVenda.setEnabled(true);
         btnLimpaListaDeItensDeVenda.setEnabled(true);
