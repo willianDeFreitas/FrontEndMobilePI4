@@ -7,7 +7,16 @@ public class ProdutoDTO {
     private Double qtd;
     private String vol;
     private Long categoriaId;
-    private String data;
+    private String datareg;
+
+    public ProdutoDTO(String datareg, String nome, Double preco, Double qtd, String vol, Long categoriaId){
+        this.datareg = datareg;
+        this.nome = nome;
+        this.preco = preco;
+        this.qtd = qtd;
+        this.vol = vol;
+        this.categoriaId = categoriaId;
+    }
 
     public ProdutoDTO(String nome, Double preco, Double qtd, String vol, Long categoriaId){
         this.nome = nome;
@@ -70,10 +79,10 @@ public class ProdutoDTO {
     }
 
     public String getData() {
-        return data;
+        return datareg;
     }
 
-    public void setData(String data) {
-        this.data = data;
+    public void setData(String datareg) {
+        this.datareg = datareg;
     }
 }

@@ -18,6 +18,9 @@ import com.example.frontpi4.R;
 import com.example.frontpi4.dto.ProdutoDTO;
 import com.example.frontpi4.services.RetrofitService;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -27,6 +30,7 @@ public class CadastroDeProdutoActivity extends AppCompatActivity implements Adap
     public static final String TAG = "CadastroDeProdutoActivity";
     Spinner funcao;
     int funcao_selecionada;
+    SimpleDateFormat formataData = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,28 +43,46 @@ public class CadastroDeProdutoActivity extends AppCompatActivity implements Adap
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         funcao.setAdapter(adapter);
         funcao.setOnItemSelectedListener(this);
-
     }
 
     public void cadastrarProduto(View view) {
         String nome = ((EditText)findViewById(R.id.et_cadastro_nome_produto)).getText().toString();
         String p = ((EditText)findViewById(R.id.et_cadastro_preco_produto)).getText().toString();
         String q = ((TextView)findViewById(R.id.et_cadastro_quantidade_produto)).getText().toString();
-        int catId = funcao_selecionada;
-        String vol = ((TextView)findViewById(R.id.et_cadastro_volume_produto)).getText().toString();;
+        String vol = ((TextView)findViewById(R.id.et_cadastro_volume_produto)).getText().toString();
+
+        if ("".equals(nome)) {
+            Toast.makeText(CadastroDeProdutoActivity.this, "Preencha o NOME do produto", Toast.LENGTH_LONG).show();
+            return;
+        }
+
+        if ("".equals(p)) {
+            Toast.makeText(CadastroDeProdutoActivity.this, "Preencha o PREÇO do produto", Toast.LENGTH_LONG).show();
+            return;
+        }
+
+        if ("".equals(q)) {
+            Toast.makeText(CadastroDeProdutoActivity.this, "Preencha o QUANTIDADE do produto", Toast.LENGTH_LONG).show();
+            return;
+        }
+
+        if ("".equals(vol)) {
+            Toast.makeText(CadastroDeProdutoActivity.this, "Preencha o VOLUME do produto", Toast.LENGTH_LONG).show();
+            return;
+        }
 
         double preco=Double.parseDouble(p);
         double qtd=Double.parseDouble(q);
-        Long categoria=Long.valueOf(catId);
+        Long categoria=Long.valueOf(funcao_selecionada);
 
-
+        Date data = new Date();
+        String dataform = formataData.format(data);
 
         ProdutoDTO produtoDTO = null;
         String token = "";
 
         if (nome != "" && preco != 0 && qtd != 0 && categoria != 0 && vol != "" ) {
-            funcao_selecionada += 1;
-            produtoDTO = new ProdutoDTO(nome,preco,qtd,vol,categoria);;
+            produtoDTO = new ProdutoDTO(dataform, nome, preco, qtd, vol, categoria);
             token = getToken();
         }
 
