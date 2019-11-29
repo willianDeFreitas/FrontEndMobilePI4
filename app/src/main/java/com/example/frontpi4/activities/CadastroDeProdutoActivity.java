@@ -39,17 +39,18 @@ public class CadastroDeProdutoActivity extends AppCompatActivity implements Adap
 
         funcao = findViewById(R.id.sp_cadastro_categoria_produto);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
-                R.array.funcao_array_categoria, android.R.layout.simple_spinner_item);
+                R.array.funcao_array_categoria,  R.layout.spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
         funcao.setAdapter(adapter);
         funcao.setOnItemSelectedListener(this);
     }
 
     public void cadastrarProduto(View view) {
-        String nome = ((EditText)findViewById(R.id.et_cadastro_nome_produto)).getText().toString();
-        String p = ((EditText)findViewById(R.id.et_cadastro_preco_produto)).getText().toString();
-        String q = ((TextView)findViewById(R.id.et_cadastro_quantidade_produto)).getText().toString();
-        String vol = ((TextView)findViewById(R.id.et_cadastro_volume_produto)).getText().toString();
+        String nome = ((EditText)findViewById(R.id.et_cadastro_produto_nome)).getText().toString();
+        String p = ((EditText)findViewById(R.id.et_cadastro_produto_preco)).getText().toString();
+        String q = ((TextView)findViewById(R.id.et_cadastro_produto_quantidade)).getText().toString();
+        String vol = ((TextView)findViewById(R.id.et_cadastro_produto_volume)).getText().toString();
 
         if ("".equals(nome)) {
             Toast.makeText(CadastroDeProdutoActivity.this, "Preencha o NOME do produto", Toast.LENGTH_LONG).show();

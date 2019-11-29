@@ -6,81 +6,144 @@
     android:layout_height="match_parent"
     tools:context=".activities.CadastroDeFornecedorActivity">
 
+    <TextView
+        android:id="@+id/tv_cadastro_fornecedor_nome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="1dp"
+        android:layout_marginBottom="1dp"
+        android:text="Nome:"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
     <EditText
         android:id="@+id/et_cadastro_fornecedor_nome"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="1dp"
         android:layout_marginEnd="8dp"
         android:ems="10"
-        android:hint="Nome"
+        android:hint="nome"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_cadastro_fornecedor_nome" />
 
+    <TextView
+        android:id="@+id/tv_cadastro_fornecedor_email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="Email:"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et_cadastro_fornecedor_nome" />
 
     <EditText
         android:id="@+id/et_cadastro_fornecedor_email"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="1dp"
         android:layout_marginEnd="8dp"
         android:ems="10"
         android:hint="@string/email"
         android:inputType="textEmailAddress"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_cadastro_fornecedor_nome"/>
+        app:layout_constraintTop_toBottomOf="@+id/tv_cadastro_fornecedor_email" />
+
+
+    <TextView
+        android:id="@+id/tv_cadastro_fornecedor_cnpj"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="CNPJ:"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et_cadastro_fornecedor_email" />
 
     <EditText
         android:id="@+id/et_cadastro_fornecedor_cnpj"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="1dp"
         android:layout_marginEnd="8dp"
         android:ems="10"
         android:hint="@string/cnpj"
         android:inputType="number"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_cadastro_fornecedor_email" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_cadastro_fornecedor_cnpj" />
+
+    <TextView
+        android:id="@+id/tv_cadastro_fornecedor_end"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="Endereço:"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et_cadastro_fornecedor_cnpj" />
 
     <EditText
         android:id="@+id/et_cadastro_fornecedor_end"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="1dp"
         android:layout_marginEnd="8dp"
         android:ems="10"
         android:hint="@string/endereco"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_cadastro_fornecedor_cnpj"/>
+        app:layout_constraintTop_toBottomOf="@+id/tv_cadastro_fornecedor_end" />
+
+    <TextView
+        android:id="@+id/tv_cadastro_fornecedor_telefone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="Telefone:"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et_cadastro_fornecedor_end" />
+
 
     <EditText
         android:id="@+id/et_cadastro_fornecedor_telefone"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="1dp"
         android:layout_marginEnd="8dp"
         android:ems="10"
         android:hint="@string/telefone"
         android:inputType="phone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_cadastro_fornecedor_end" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_cadastro_fornecedor_telefone" />
     <Button
         android:id="@+id/bt_cadastro_fornecedor"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="8dp"
         android:onClick="cadastrarFornecedor"
         android:text="Salvar"

@@ -6,158 +6,142 @@
     android:layout_height="match_parent"
     tools:context=".activities.CadastroDeProdutoActivity">
 
+
     <TextView
-        android:id="@+id/tv_prod_nome"
-        android:layout_width="200dp"
+        android:id="@+id/tv_cadastro_produto_nome"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="32dp"
-        android:background="#51B9B0B0"
-        android:fontFamily="monospace"
-        android:text="Nome"
-        android:textStyle="bold"
-        android:visibility="visible"
+        android:layout_marginTop="1dp"
+        android:layout_marginBottom="1dp"
+        android:text="Nome:"
+        android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/tv_prod_qtd"
+    <EditText
+        android:id="@+id/et_cadastro_produto_nome"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:background="#51B9B0B0"
-        android:fontFamily="monospace"
-        android:textStyle="bold"
-        android:text="Quantidade"
-        app:layout_constraintEnd_toEndOf="@+id/tv_prod_nome"
-        app:layout_constraintStart_toStartOf="@+id/tv_prod_nome"
-        app:layout_constraintTop_toBottomOf="@+id/tv_prod_nome" />
-
-    <TextView
-        android:id="@+id/tv_prod_vol"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:background="#51B9B0B0"
-        android:fontFamily="monospace"
-        android:textStyle="bold"
-        android:text="Volume"
-        app:layout_constraintEnd_toEndOf="@+id/tv_prod_qtd"
-        app:layout_constraintStart_toStartOf="@+id/tv_prod_qtd"
-        app:layout_constraintTop_toBottomOf="@+id/tv_prod_qtd" />
-
-    <TextView
-        android:id="@+id/tv_prod_preco"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:background="#51B9B0B0"
-        android:fontFamily="monospace"
-        android:textStyle="bold"
-        android:text="Preço/m³"
-        app:layout_constraintEnd_toEndOf="@+id/tv_prod_vol"
-        app:layout_constraintStart_toStartOf="@+id/tv_prod_vol"
-        app:layout_constraintTop_toBottomOf="@+id/tv_prod_vol" />
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="1dp"
+        android:ems="10"
+        android:hint="nome"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_cadastro_produto_nome" />
 
 
     <TextView
-        android:id="@+id/tv_prod_categoria"
-        android:layout_width="200dp"
+        android:id="@+id/tv_cadastro_produto_volume"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:background="#51B9B0B0"
-        android:fontFamily="monospace"
-        android:textStyle="bold"
-        android:text="Categoria"
-        app:layout_constraintEnd_toEndOf="@+id/tv_prod_preco"
-        app:layout_constraintStart_toStartOf="@+id/tv_prod_preco"
-        app:layout_constraintTop_toBottomOf="@+id/tv_prod_preco" />
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="Volume:"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et_cadastro_produto_nome" />
 
     <EditText
-        android:id="@+id/et_cadastro_nome_produto"
+        android:id="@+id/et_cadastro_produto_volume"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="8dp"
-        android:textAlignment="center"
-        android:textSize="12sp"
-        android:background="#51B9B0B0"
-        android:fontFamily="monospace"
-        app:layout_constraintBottom_toBottomOf="@+id/tv_prod_nome"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="1dp"
+        android:ems="10"
+        android:hint="volume"
+        android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/tv_prod_nome"
-        app:layout_constraintTop_toTopOf="@+id/tv_prod_nome" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_cadastro_produto_volume" />
+
+    <TextView
+        android:id="@+id/tv_cadastro_produto_quantidade"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="Quantidade:"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et_cadastro_produto_volume" />
 
     <EditText
-        android:id="@+id/et_cadastro_quantidade_produto"
+        android:id="@+id/et_cadastro_produto_quantidade"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="8dp"
-        android:textAlignment="center"
-        android:textSize="12sp"
-        android:background="#51B9B0B0"
-        android:fontFamily="monospace"
-        app:layout_constraintBottom_toBottomOf="@+id/tv_prod_qtd"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="1dp"
+        android:ems="10"
+        android:hint="quantidade"
+        android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/tv_prod_qtd"
-        app:layout_constraintTop_toTopOf="@+id/tv_prod_qtd" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_cadastro_produto_quantidade" />
+
+    <TextView
+        android:id="@+id/tv_cadastro_produto_preco"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="Preço:"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et_cadastro_produto_quantidade" />
 
     <EditText
-        android:id="@+id/et_cadastro_volume_produto"
+        android:id="@+id/et_cadastro_produto_preco"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="8dp"
-        android:textAlignment="center"
-        android:textSize="14sp"
-        android:background="#51B9B0B0"
-        android:fontFamily="monospace"
-        app:layout_constraintBottom_toBottomOf="@+id/tv_prod_vol"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="1dp"
+        android:ems="10"
+        android:hint="preço"
+        android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/tv_prod_vol"
-        app:layout_constraintTop_toTopOf="@+id/tv_prod_vol" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_cadastro_produto_preco" />
 
-    <EditText
-        android:id="@+id/et_cadastro_preco_produto"
-        android:layout_width="0dp"
+    <TextView
+        android:id="@+id/tv_produto_categoria"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="8dp"
-        android:textAlignment="center"
-        android:textSize="12sp"
-        android:background="#51B9B0B0"
-        android:fontFamily="monospace"
-        app:layout_constraintBottom_toBottomOf="@+id/tv_prod_preco"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/tv_prod_preco"
-        app:layout_constraintTop_toTopOf="@+id/tv_prod_preco" />
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="Categoria:"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et_cadastro_produto_preco" />
+
 
     <Spinner
         android:id="@+id/sp_cadastro_categoria_produto"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="1dp"
         android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
         android:ems="10"
-        android:hint="Telefone"
-        app:layout_constraintBottom_toBottomOf="@+id/tv_prod_categoria"
+        app:layout_constraintBottom_toTopOf="@+id/btn_confere_saida_conferir"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/tv_prod_categoria"
-        app:layout_constraintTop_toTopOf="@+id/tv_prod_categoria"/>
-
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_produto_categoria" />
 
     <Button
         android:id="@+id/btn_confere_saida_conferir"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="8dp"
         android:onClick="cadastrarProduto"
         android:text="Salvar"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/sp_cadastro_categoria_produto" />
 </androidx.constraintlayout.widget.ConstraintLayout>

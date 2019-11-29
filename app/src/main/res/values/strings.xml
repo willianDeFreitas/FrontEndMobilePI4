@@ -3,7 +3,7 @@
     <string name="action_settings">Configurações</string>
     <string name="login">Login</string>
     <string name="senha">Senha</string>
-    <string name="email">Email</string>
+    <string name="email">email</string>
     <string name="Quantidade">Insira uma quantidade</string>
     <string name="cliente">Cliente</string>
     <string name="Valor_venda">Valor da venda</string>
@@ -28,13 +28,13 @@
     <string name="cadastra_cliente">Cadastrar cliente</string>
     <string name="alterar_fornecedor">Alterar dados fornecedor</string>
     <string name="cadastra_fornecedor">Cadastrar fornecedor</string>
-    <string name="cnpj">CNPJ</string>
+    <string name="cnpj">cnpj</string>
     <string name="alterar_produto">Alterar produto</string>
     <string name="exibirProduto">Exibir produto</string>
     <string name="fornecedor_dois_pontos">Fornecedor</string>
     <string name="valor_da_compra">Valor da compra</string>
     <string name="conferencia_de_saida">Conferência de Saída</string>
-    <string name="cadastra_produto">Cadastra produto</string>
+    <string name="cadastra_produto">Cadastrar produto</string>
     <string name="quandidade_dois_pontos">Quandidade:</string>
     <string name="preco_do_produto">Preço do produto:</string>
     <string name="et_preco_do_produto">Preço do produto</string>

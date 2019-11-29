@@ -63,7 +63,7 @@ public class ExibirProdutosActivity extends AppCompatActivity implements Adapter
 
         funcao = findViewById(R.id.sp_exibir_categoria_produto);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
-                R.array.funcao_array_categoria, android.R.layout.simple_spinner_item);
+                R.array.funcao_array_categoria,  R.layout.spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         funcao.setAdapter(adapter);
         funcao.setOnItemSelectedListener(this);
