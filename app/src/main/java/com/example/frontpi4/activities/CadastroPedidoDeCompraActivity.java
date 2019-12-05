@@ -1,6 +1,9 @@
 package com.example.frontpi4.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.ItemTouchHelper;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -20,12 +23,13 @@ import com.example.frontpi4.dto.CompraDTO;
 import com.example.frontpi4.dto.FornecedorDTO;
 import com.example.frontpi4.dto.ItemCompraDTO;
 import com.example.frontpi4.dto.ProdutoDTO;
+import com.example.frontpi4.helpers.ItensCompraAdapter;
 import com.example.frontpi4.helpers.Singleton;
+import com.example.frontpi4.helpers.SwipeToDeleteCallbackItensCompra;
 import com.example.frontpi4.services.RetrofitService;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
@@ -70,6 +74,15 @@ public class CadastroPedidoDeCompraActivity extends AppCompatActivity implements
 
         spin_fornecedor.setOnItemSelectedListener(this);
         spin_produto.setOnItemSelectedListener(this);
+    }
+
+    private void preencheRecyclerview(List<ItemCompraDTO> lista){
+        RecyclerView mRecyclerView = findViewById(R.id.rv_todos_itenscompra);
+        ItensCompraAdapter mAdapter = new ItensCompraAdapter(this, lista);
+        mRecyclerView.setAdapter(mAdapter);
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        ItemTouchHelper itemTouchHelper = new ItemTouchHelper(new SwipeToDeleteCallbackItensCompra(mAdapter));
+        itemTouchHelper.attachToRecyclerView(mRecyclerView);
     }
 
     public void buscaDadosSpinners(){
@@ -176,6 +189,8 @@ public class CadastroPedidoDeCompraActivity extends AppCompatActivity implements
         ItemCompraDTO itemCompraDTO = new ItemCompraDTO(null, qtdItemC, valorItemC, idProd, null, conferido);
         listaDeItemCompra.add(itemCompraDTO);
 
+        preencheRecyclerview(listaDeItemCompra);
+
         singleton.setListaDeItemCompra(listaDeItemCompra);
 
         qtdItemCompra++;
@@ -259,6 +274,11 @@ public class CadastroPedidoDeCompraActivity extends AppCompatActivity implements
         btnConfirmarPedidoCompra.setEnabled(false);
         btnLimpaListaDeItensDeCompra.setEnabled(false);
         spin_fornecedor.setEnabled(true);
+
+        RecyclerView mRecyclerView = findViewById(R.id.rv_todos_itenscompra);
+        mRecyclerView.setLayoutManager(null);
+        mRecyclerView.setAdapter(null);
+
         Toast.makeText(CadastroPedidoDeCompraActivity.this, "Lista de itens foi apagada", Toast.LENGTH_LONG).show();
     }
 }

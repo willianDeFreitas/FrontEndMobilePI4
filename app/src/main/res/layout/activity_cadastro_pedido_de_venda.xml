@@ -121,6 +121,18 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/et_cadastro_pedido_venda_valor_produto" />
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_todos_itensVenda"
+        android:layout_width="0dp"
+        android:layout_height="110dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.451"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bt_cadastro_pedido_venda_limpa_lista_itens" />
+
     <Button
         android:id="@+id/bt_cadastro_pedido_venda_confirma_pedido"
         android:layout_width="0dp"
@@ -131,8 +143,9 @@
         android:onClick="confirmarPedidoVenda"
         android:text="Confirma pedido"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/bt_cadastro_pedido_venda_cancelar" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_lab_cadastro_venda_total" />
 
     <Button
         android:id="@+id/bt_cadastro_pedido_venda_limpa_lista_itens"
@@ -171,5 +184,33 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingConstraints"
         tools:visibility="invisible" />
+
+    <TextView
+        android:id="@+id/tv_lab_cadastro_venda_total"
+        android:layout_width="0dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="1dp"
+        android:background="@android:color/darker_gray"
+        android:text="Total"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/tv_cadastro_pedido_venda_total"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rv_todos_itensVenda" />
+
+    <TextView
+            android:id="@+id/tv_cadastro_pedido_venda_total"
+        android:layout_width="231dp"
+        android:layout_height="30dp"
+        android:layout_marginEnd="8dp"
+        android:background="@android:color/darker_gray"
+        android:textAlignment="viewEnd"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_lab_cadastro_venda_total"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tv_lab_cadastro_venda_total"
+        app:layout_constraintTop_toTopOf="@+id/tv_lab_cadastro_venda_total" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -11,6 +11,7 @@ public class Singleton {
     private List<ItemCompraDTO> listaDeItemCompra;
     private int qtdItemVenda;
     private int qtdItemCompra;
+    private String nomeProduto;
 
     private Singleton() { }
 
@@ -30,6 +31,9 @@ public class Singleton {
     }
 
     public void setListaDeItemVenda(List<ItemVendaDTO> listaDeItemVenda) {
+        this.listaDeItemVenda = listaDeItemVenda;
+    }
+    public void removerListaDeItemVenda(List<ItemVendaDTO> listaDeItemVenda) {
         this.listaDeItemVenda = listaDeItemVenda;
     }
 
@@ -55,5 +59,13 @@ public class Singleton {
 
     public void setQtdItemCompra(int qtdItemCompra) {
         this.qtdItemCompra = qtdItemCompra;
+    }
+
+    public String getNomeProduto() {
+        return nomeProduto;
+    }
+
+    public void setNomeProduto(String nomeProduto) {
+        this.nomeProduto = nomeProduto;
     }
 }

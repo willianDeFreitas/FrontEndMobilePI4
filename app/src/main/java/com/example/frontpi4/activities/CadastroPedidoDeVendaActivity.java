@@ -1,6 +1,9 @@
 package com.example.frontpi4.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.ItemTouchHelper;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -14,6 +17,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.frontpi4.R;
@@ -21,7 +25,9 @@ import com.example.frontpi4.dto.ClienteDTO;
 import com.example.frontpi4.dto.ItemVendaDTO;
 import com.example.frontpi4.dto.ProdutoDTO;
 import com.example.frontpi4.dto.VendaDTO;
+import com.example.frontpi4.helpers.ItensVendaAdapter;
 import com.example.frontpi4.helpers.Singleton;
+import com.example.frontpi4.helpers.SwipeToDeleteCallbackItensVenda;
 import com.example.frontpi4.services.RetrofitService;
 
 import java.text.SimpleDateFormat;
@@ -36,7 +42,7 @@ import retrofit2.Response;
 public class CadastroPedidoDeVendaActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
 
     public static final String TAG = "CadastroPedidoDevendaActivity";
-
+    TextView tv_totalV;
     Spinner spin_cliente;
     Spinner spin_produto;
     List<ClienteDTO> listaDeClientes;
@@ -50,6 +56,9 @@ public class CadastroPedidoDeVendaActivity extends AppCompatActivity implements 
     ProgressBar pbCarregando;
     EditText precoProduto, qtdProduto;
     Double estoque;
+    Double totalVenda = 0.00;
+    private ItensVendaAdapter vendaAdapter;
+    private ItensVendaAdapter mAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,7 +81,7 @@ public class CadastroPedidoDeVendaActivity extends AppCompatActivity implements 
         precoProduto.setEnabled(false);
 
         qtdProduto = findViewById(R.id.et_cadastro_pedido_venda_quantidade);
-
+        tv_totalV = findViewById(R.id.tv_cadastro_pedido_venda_total);
         buscaDadosSpinners();
 
         spin_cliente.setOnItemSelectedListener(this);
@@ -97,6 +106,15 @@ public class CadastroPedidoDeVendaActivity extends AppCompatActivity implements 
         });
     }
 
+    private void preencheRecyclerview(List<ItemVendaDTO> lista){
+        RecyclerView mRecyclerView = findViewById(R.id.rv_todos_itensVenda);
+        mAdapter = new ItensVendaAdapter(this, lista);
+        mRecyclerView.setAdapter(mAdapter);
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        ItemTouchHelper itemTouchHelper = new ItemTouchHelper(new SwipeToDeleteCallbackItensVenda(mAdapter));
+        itemTouchHelper.attachToRecyclerView(mRecyclerView);
+
+    }
     public void buscaDadosSpinners(){
         //# Rercuperando token salvo na activity de login
         SharedPreferences sp = getSharedPreferences("dados", 0);
@@ -184,7 +202,7 @@ public class CadastroPedidoDeVendaActivity extends AppCompatActivity implements 
         produtoSelct -= 1;
 
         Long idProd = listaDeProdutos.get(produtoSelct).getId();
-
+        singleton.setNomeProduto(listaDeProdutos.get(produtoSelct).getNome());
         if ("".equals(qtdItemVStr.trim())) {
             Toast.makeText(CadastroPedidoDeVendaActivity.this, "Insira uma QUANTIDADE", Toast.LENGTH_LONG).show();
             return;
@@ -221,9 +239,12 @@ public class CadastroPedidoDeVendaActivity extends AppCompatActivity implements 
         Double valorItemV = (Double.parseDouble(precoProduto)*qtdItemV);
 
         ItemVendaDTO itemVendaDTO = new ItemVendaDTO(null, qtdItemV, valorItemV, idProd, null, conferido);
-        listaDeItemVenda.add(itemVendaDTO);
 
+        totalVenda= 0.00;
+        listaDeItemVenda.add(itemVendaDTO);
         singleton.setListaDeItemVenda(listaDeItemVenda);
+        preencheRecyclerview(listaDeItemVenda);
+        tv_totalV.setTag(calcularValorTotalVenda());
 
         qtdItemVenda++;
         singleton.setQtdItemVenda(qtdItemVenda);
@@ -233,26 +254,45 @@ public class CadastroPedidoDeVendaActivity extends AppCompatActivity implements 
         btnConfirmarPedidoVenda.setEnabled(true);
         btnLimpaListaDeItensDeVenda.setEnabled(true);
         spin_cliente.setEnabled(false);
+
+        ((EditText)findViewById(R.id.et_cadastro_pedido_venda_quantidade)).setText("");
+        spin_produto.setSelection(0);
+
+    }
+
+    public double calcularValorTotalVenda(){
+        totalVenda=0.00;
+        for (ItemVendaDTO itemVenda : mAdapter.getLista()){
+            Double vlrItemVenda = itemVenda.getValorItemV();
+            totalVenda += vlrItemVenda;
+        }
+
+        if (mAdapter.getLista().isEmpty()) {
+            totalVenda = 0.0;
+            tv_totalV.setText("R$ 0.0");
+        } else {
+            tv_totalV.setText("R$"+totalVenda);
+        }
+
+        return totalVenda;
     }
 
     public void confirmarPedidoVenda(View view) {
         pbCarregando.setVisibility(View.VISIBLE);
-        Double totalV = 0.0;
+        Double totalV = 0.00;
         Date data = new Date();
         String dataform = formataData.format(data);
         int clienteSelct = spin_cliente.getSelectedItemPosition();
 
         /*faz um ajuste para poder pegar a posição correta do cliente no array*/
-        clienteSelct -= 1;
+        clienteSelct--;
 
         int clienteId = listaDeClientes.get(clienteSelct).getId();
 
-        for (ItemVendaDTO itemVendaDTO : singleton.getListaDeItemVenda()){
-            Double vlrItemVenda = itemVendaDTO.getValorItemV();
-            totalV += vlrItemVenda;
-        }
+        totalV= calcularValorTotalVenda();
 
-        VendaDTO vendaDTO =  new VendaDTO(dataform, totalV, clienteId, singleton.getListaDeItemVenda());
+
+        VendaDTO vendaDTO =  new VendaDTO(dataform, totalV, clienteId, mAdapter.getLista());
 
         String token = getToken();
 
@@ -304,6 +344,11 @@ public class CadastroPedidoDeVendaActivity extends AppCompatActivity implements 
         btnConfirmarPedidoVenda.setEnabled(false);
         btnLimpaListaDeItensDeVenda.setEnabled(false);
         spin_cliente.setEnabled(true);
+        totalVenda = 0.00;
+        tv_totalV.setText("R$"+totalVenda);
+        RecyclerView mRecyclerView = findViewById(R.id.rv_todos_itensVenda);
+        mRecyclerView.setLayoutManager(null);
+        mRecyclerView.setAdapter(null);
 
         int produtoSelct = spin_produto.getSelectedItemPosition();
         if (produtoSelct > 0) {
@@ -312,6 +357,9 @@ public class CadastroPedidoDeVendaActivity extends AppCompatActivity implements 
             estoque = listaDeProdutos.get(produtoSelct).getQtd();
         }
 
+
         Toast.makeText(CadastroPedidoDeVendaActivity.this, "Lista de itens foi apagada", Toast.LENGTH_LONG).show();
     }
+
+
 }

@@ -98,18 +98,28 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/et_cadastro_pedido_compra_valor" />
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_todos_itenscompra"
+        android:layout_width="0dp"
+        android:layout_height="110dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bt_cadastro_pedido_compra_limpa_lista_itens" />
+
     <Button
         android:id="@+id/bt_cadastro_pedido_compra_confirma_pedido"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:onClick="confirmarPedidoCompra"
         android:text="Confirma pedido"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/bt_cadastro_pedido_compra_cancelar" />
+        app:layout_constraintTop_toBottomOf="@+id/rv_todos_itenscompra" />
 
     <Button
         android:id="@+id/bt_cadastro_pedido_compra_limpa_lista_itens"
