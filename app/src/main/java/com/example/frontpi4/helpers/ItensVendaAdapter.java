@@ -17,6 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.frontpi4.R;
 import com.example.frontpi4.activities.CadastroPedidoDeVendaActivity;
 import com.example.frontpi4.dto.ItemVendaDTO;
+import com.example.frontpi4.dto.ProdutoDTO;
 
 
 import java.util.ArrayList;
@@ -30,16 +31,16 @@ public class ItensVendaAdapter extends RecyclerView.Adapter<ItensVendaAdapter.It
 
     private LayoutInflater mInflater;
     private Context context;
-    private String nomeProduto;
+    private List<ItemVendaDTO> lista;
+    private Integer recentlyDeletedItemPosition;
+    private ItemVendaDTO recentlyDeletedItem;
+
+    Singleton singleton = Singleton.getInstance();
+
 
     public List<ItemVendaDTO> getLista() {
         return Collections.unmodifiableList(lista);
     }
-
-    private List<ItemVendaDTO> lista;
-    private Integer recentlyDeletedItemPosition;
-    private ItemVendaDTO recentlyDeletedItem;
-    Singleton singleton = Singleton.getInstance();
 
     public Context getContext() {
         return context;
@@ -61,8 +62,13 @@ public class ItensVendaAdapter extends RecyclerView.Adapter<ItensVendaAdapter.It
 
     @Override
     public void onBindViewHolder(@NonNull ItensVendaHolder holder, int position) {
+
+
+        int produtoId =Integer.parseInt(lista.get(position).getProdutoId().toString());
         double qtdItemV = lista.get(position).getQtdItemV();
         double valorIvendaV = lista.get(position).getValorItemV();
+        String produtoNome ="";
+
         if (position % 2 == 0) {
             Drawable d = context.getResources().getDrawable(R.drawable.lista);
             holder.produto.setBackground(d);
@@ -70,8 +76,15 @@ public class ItensVendaAdapter extends RecyclerView.Adapter<ItensVendaAdapter.It
             holder.valor.setBackground(d);
         }
 
+        List<ProdutoDTO> listaDeProdutos = ((CadastroPedidoDeVendaActivity) getContext()).getListaDeProdutos();
 
-        holder.produto.setText( singleton.getNomeProduto());
+        for (ProdutoDTO idProduto:listaDeProdutos) {
+            if(idProduto.getId() == produtoId){
+                 produtoNome = idProduto.getNome();
+            }
+        }
+
+        holder.produto.setText( produtoNome);
         holder.qtd.setText(" " + qtdItemV + "m³");
         holder.valor.setText("R$ " + valorIvendaV);
     }
@@ -107,13 +120,6 @@ public class ItensVendaAdapter extends RecyclerView.Adapter<ItensVendaAdapter.It
         recentlyDeletedItem = lista.get(position);
         recentlyDeletedItemPosition = position;
         lista.remove(position);
-
-//        for(ItemVendaDTO itemVendaDTO : lista){
-//            listaPersistencia.add(itemVendaDTO);
-//        }
-//
-//        singleton.getListaDeItemVenda().clear();
-//        singleton.setListaDeItemVenda(listaPersistencia);
         notifyItemRemoved(position);
         showUndoDialog();
 

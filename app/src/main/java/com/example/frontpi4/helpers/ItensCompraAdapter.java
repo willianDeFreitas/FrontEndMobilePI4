@@ -14,9 +14,13 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.frontpi4.R;
+import com.example.frontpi4.activities.CadastroPedidoDeCompraActivity;
+import com.example.frontpi4.activities.CadastroPedidoDeVendaActivity;
 import com.example.frontpi4.dto.ItemCompraDTO;
 import com.example.frontpi4.dto.ItemVendaDTO;
+import com.example.frontpi4.dto.ProdutoDTO;
 
+import java.util.Collections;
 import java.util.List;
 
 public class ItensCompraAdapter extends RecyclerView.Adapter<ItensCompraAdapter.ItensCompraHolder> {
@@ -24,12 +28,16 @@ public class ItensCompraAdapter extends RecyclerView.Adapter<ItensCompraAdapter.
     private LayoutInflater mInflater;
     private Context context;
     private List<ItemCompraDTO> lista;
-    Singleton singleton = Singleton.getInstance();
+    //Singleton singleton = Singleton.getInstance();
     private Integer recentlyDeletedItemPosition;
     private ItemCompraDTO recentlyDeletedItem;
+    private List<ProdutoDTO> listaDeProdutos;
 
     public Context getContext() {
         return context;
+    }
+    public List<ItemCompraDTO> getLista() {
+        return Collections.unmodifiableList(lista);
     }
 
     public ItensCompraAdapter(Context context, List<ItemCompraDTO> lista) {
@@ -48,9 +56,9 @@ public class ItensCompraAdapter extends RecyclerView.Adapter<ItensCompraAdapter.
     @Override
     public void onBindViewHolder(@NonNull ItensCompraHolder holder, int position) {
         int produtoId =Integer.parseInt(lista.get(position).getProdutoId().toString());
-        double qtdItemV = lista.get(position).getQtdItemC();
-        double valorIvendaV = lista.get(position).getValorItemC();
-        String produto = "";
+        double qtdItemC = lista.get(position).getQtdItemC();
+        double valorIvendaC = lista.get(position).getValorItemC();
+        String produtoNome = "";
         if(position%2 == 0) {
             Drawable d = context.getResources().getDrawable(R.drawable.lista);
             holder.produto.setBackground(d);
@@ -58,20 +66,18 @@ public class ItensCompraAdapter extends RecyclerView.Adapter<ItensCompraAdapter.
             holder.valor.setBackground(d);
         }
 
-        switch (produtoId){
-            case 1: produto= "Areia media";
-                    break;
-            case 2: produto = "Areia fina";
-                break;
-            case 3: produto = "Brita 1";
-                break;
-            case 4: produto = "Brita 0";
-                break;
-        }
+        listaDeProdutos=((CadastroPedidoDeCompraActivity) getContext()).getListaDeProdutos();
 
-        holder.produto.setText(produto);
-        holder.qtd.setText(" "+qtdItemV+"m³");
-        holder.valor.setText("R$ "+valorIvendaV);
+        List<ProdutoDTO> listaDeProdutos = ((CadastroPedidoDeCompraActivity) getContext()).getListaDeProdutos();
+
+        for (ProdutoDTO idProduto:listaDeProdutos) {
+            if(idProduto.getId() == produtoId){
+              produtoNome = idProduto.getNome();
+            }
+        }
+        holder.produto.setText(produtoNome);
+        holder.qtd.setText(" "+qtdItemC+"m³");
+        holder.valor.setText("R$ "+valorIvendaC);
     }
 
     @Override
@@ -106,7 +112,7 @@ public class ItensCompraAdapter extends RecyclerView.Adapter<ItensCompraAdapter.
         recentlyDeletedItem = lista.get(position);
         recentlyDeletedItemPosition = position;
         lista.remove(position);
-        singleton.setListaDeItemCompra(lista);
+       // singleton.setListaDeItemCompra(lista);
         notifyItemRemoved(position);
         showUndoDialog();
     }
@@ -121,6 +127,7 @@ public class ItensCompraAdapter extends RecyclerView.Adapter<ItensCompraAdapter.
                 "Sim",
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
+                        ((CadastroPedidoDeCompraActivity) getContext()).calcularValorTotalCompra();
                         callAPIServiceDelete();
                     }
                 });

@@ -11,7 +11,7 @@ public class ItemVendaDTO{
     private String produto;
     private String cliente;
 
-    public ItemVendaDTO(Long id, Double qtdItemV, Double valorItemV, Long produtoId, Long vendaId, String conferido, String produto, String cliente) {
+    public ItemVendaDTO() {
         this.qtdItemV = qtdItemV;
         this.valorItemV = valorItemV;
         this.produtoId = produtoId;

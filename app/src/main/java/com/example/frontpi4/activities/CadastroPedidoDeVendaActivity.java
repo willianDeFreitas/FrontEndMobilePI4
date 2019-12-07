@@ -59,6 +59,7 @@ public class CadastroPedidoDeVendaActivity extends AppCompatActivity implements 
     Double totalVenda = 0.00;
     private ItensVendaAdapter vendaAdapter;
     private ItensVendaAdapter mAdapter;
+    private  String produto ="";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -115,46 +116,23 @@ public class CadastroPedidoDeVendaActivity extends AppCompatActivity implements 
         itemTouchHelper.attachToRecyclerView(mRecyclerView);
 
     }
-    public void buscaDadosSpinners(){
+
+    public List<ProdutoDTO> getListaDeProdutos() {
+
         //# Rercuperando token salvo na activity de login
         SharedPreferences sp = getSharedPreferences("dados", 0);
-        String token = sp.getString("token",null);
+        final String token = sp.getString("token",null);
         //#
 
-        RetrofitService.getServico().buscaClientes("Bearer "+token).enqueue(new Callback<List<ClienteDTO>>() {
-            @Override
-            public void onResponse(Call<List<ClienteDTO>> call, Response<List<ClienteDTO>> response) {
-                if (response.isSuccessful()) {
-                    listaDeClientes = response.body();
-                    List<String> listaNomesDeClientes = new ArrayList<>();
-                    listaNomesDeClientes.add("-Selecione o cliente-");
-                    for (ClienteDTO cliente : listaDeClientes) {
-                        listaNomesDeClientes.add(cliente.getNome());
-                    }
-
-                    ArrayAdapter<String> adapter = new ArrayAdapter<>(
-                            CadastroPedidoDeVendaActivity.this,
-                            R.layout.spinner_item,
-                            listaNomesDeClientes);
-
-                    spin_cliente.setAdapter(adapter);
-                } else {
-                    Toast.makeText(CadastroPedidoDeVendaActivity.this, "Nenhum Cliente encontrado", Toast.LENGTH_LONG).show();
-                    pbCarregando.setVisibility(View.INVISIBLE);
-                }
-            }
-
-            @Override
-            public void onFailure(Call<List<ClienteDTO>> call, Throwable t) {
-                Log.e("Cliente: ", t.getMessage());
-            }
-        });
 
         RetrofitService.getServico().buscaProdutos("Bearer "+token).enqueue(new Callback<List<ProdutoDTO>>() {
             @Override
             public void onResponse(Call<List<ProdutoDTO>> call, Response<List<ProdutoDTO>> response) {
+
                 if (response.isSuccessful()) {
                     listaDeProdutos = response.body();
+
+
                     List<String> listaNomeDeProdutos = new ArrayList<>();
                     listaNomeDeProdutos.add("-Selecione o produto-");
 
@@ -179,12 +157,57 @@ public class CadastroPedidoDeVendaActivity extends AppCompatActivity implements 
                 Log.e("Produto: ", t.getMessage());
             }
         });
+
+        return listaDeProdutos;
+    }
+
+    public void buscaDadosSpinners(){
+        //# Rercuperando token salvo na activity de login
+        SharedPreferences sp = getSharedPreferences("dados", 0);
+        String token = sp.getString("token",null);
+        //#
+
+        RetrofitService.getServico().buscaClientes("Bearer "+token).enqueue(new Callback<List<ClienteDTO>>() {
+            @Override
+            public void onResponse(Call<List<ClienteDTO>> call, Response<List<ClienteDTO>> response) {
+                if (response.isSuccessful()) {
+                    listaDeClientes = response.body();
+                    List<String> listaNomesDeClientes = new ArrayList<>();
+                    listaNomesDeClientes.add("-Selecione o cliente-");
+                    for (ClienteDTO cliente : listaDeClientes) {
+                        listaNomesDeClientes.add(cliente.getNome());
+                    }
+
+                    ArrayAdapter<String> adapter = new ArrayAdapter<>(
+                            CadastroPedidoDeVendaActivity.this,
+                            R.layout.spinner_item,
+                            listaNomesDeClientes);
+
+                    spin_cliente.setAdapter(adapter);
+
+                } else {
+                    Toast.makeText(CadastroPedidoDeVendaActivity.this, "Nenhum Cliente encontrado", Toast.LENGTH_LONG).show();
+                    pbCarregando.setVisibility(View.INVISIBLE);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<ClienteDTO>> call, Throwable t) {
+                Log.e("Cliente: ", t.getMessage());
+            }
+        });
+
+        getListaDeProdutos();
+
     }
 
     public void registraItemVenda (View view) {
         String conferido = "N";
         int clienteSelct = spin_cliente.getSelectedItemPosition();
         int produtoSelct = spin_produto.getSelectedItemPosition();
+
+        produto =String.valueOf( spin_produto.getSelectedItem());
+
         String qtdItemVStr = ((EditText)findViewById(R.id.et_cadastro_pedido_venda_quantidade)).getText().toString();
         String precoProduto = ((EditText)findViewById(R.id.et_cadastro_pedido_venda_valor_produto)).getText().toString();
 
@@ -203,6 +226,7 @@ public class CadastroPedidoDeVendaActivity extends AppCompatActivity implements 
 
         Long idProd = listaDeProdutos.get(produtoSelct).getId();
         singleton.setNomeProduto(listaDeProdutos.get(produtoSelct).getNome());
+
         if ("".equals(qtdItemVStr.trim())) {
             Toast.makeText(CadastroPedidoDeVendaActivity.this, "Insira uma QUANTIDADE", Toast.LENGTH_LONG).show();
             return;
@@ -238,10 +262,28 @@ public class CadastroPedidoDeVendaActivity extends AppCompatActivity implements 
         }
         Double valorItemV = (Double.parseDouble(precoProduto)*qtdItemV);
 
-        ItemVendaDTO itemVendaDTO = new ItemVendaDTO(null, qtdItemV, valorItemV, idProd, null, conferido);
+        boolean testeItem = false;
+        if(!listaDeItemVenda.isEmpty()) {
+            for (ItemVendaDTO itemVendaDTO : listaDeItemVenda) {
+                if (itemVendaDTO.getProdutoId() == idProd) {
+                    itemVendaDTO.setQtdItemV(qtdItemV + itemVendaDTO.getQtdItemV());
+                    itemVendaDTO.setValorItemV(valorItemV + itemVendaDTO.getValorItemV());
+                    testeItem = true;
+                }
+            }
+            if(testeItem == false){
+                ItemVendaDTO itemVendaDTO = new ItemVendaDTO(null, qtdItemV, valorItemV, idProd, null, conferido);
+                listaDeItemVenda.add(itemVendaDTO);
+            }
+
+        }else {
+            ItemVendaDTO itemVendaDTO = new ItemVendaDTO(null, qtdItemV, valorItemV, idProd, null, conferido);
+            listaDeItemVenda.add(itemVendaDTO);
+
+        }
+
 
         totalVenda= 0.00;
-        listaDeItemVenda.add(itemVendaDTO);
         singleton.setListaDeItemVenda(listaDeItemVenda);
         preencheRecyclerview(listaDeItemVenda);
         tv_totalV.setTag(calcularValorTotalVenda());
