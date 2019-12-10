@@ -4,12 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#80000000"
+    android:background="@drawable/gradient2"
     tools:context=".activities.AlteracaoClienteActivity">
 
     <EditText
         android:id="@+id/et_altera_cliente_nome"
-
         style="@style/AppEtxt"
         android:hint="Nome"
         android:inputType="textPersonName"

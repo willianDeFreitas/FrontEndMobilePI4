@@ -8,7 +8,8 @@
 
         <!-- normal-->
         <item android:drawable="@color/padrao"
-            android:textColor="@color/preto"/>
+            android:textColor="@color/preto"
+            />
 
 </selector>
 

@@ -4,13 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/telaprincipal"
+    android:background="@drawable/gradient"
     tools:context="com.example.frontpi4.activities.TelaPrincipalActivity">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/gradient"
+        android:background="@color/padrao"
         android:contextClickable="false"
         android:theme="@style/AppTheme.AppBarOverlay"
         app:title="Areia e Brita"
@@ -22,7 +22,7 @@
             android:layout_height="?attr/actionBarSize"
             app:popupTheme="@style/AppTheme.PopupOverlay"
             app:title="Areia e Brita"
-            app:titleTextColor="#0000" />
+            app:titleTextColor="@color/preto" />
 
     </com.google.android.material.appbar.AppBarLayout>
 
@@ -189,5 +189,17 @@
         app:layout_constraintStart_toStartOf="@+id/im_tela_principal_produtos"
         app:layout_constraintTop_toBottomOf="@+id/im_tela_principal_produtos"
         app:layout_constraintVertical_bias="0.0" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="0dp"
+        android:layout_height="151dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/telaprincipal" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
