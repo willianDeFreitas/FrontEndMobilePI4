@@ -8,12 +8,14 @@
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:paddingLeft="10dp"
+        android:fontFamily="sans-serif-black"
         android:textSize="18sp" />
 
     <TextView
         android:id="@+id/tv_recyclerview_telefone_clientes"
         android:layout_width="200dp"
         android:layout_height="match_parent"
+        android:fontFamily="sans-serif-black"
         android:textSize="18sp" />
 
 </LinearLayout>

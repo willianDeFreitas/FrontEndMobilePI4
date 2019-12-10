@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+       <!-- pressionado -->
+        <item android:drawable="@color/colorAccent"
+            android:textColor="@color/padrao"
+            android:state_pressed="true"/>
+
+        <!-- normal-->
+        <item android:drawable="@color/padrao"
+            android:textColor="@color/preto"/>
+
+</selector>
+

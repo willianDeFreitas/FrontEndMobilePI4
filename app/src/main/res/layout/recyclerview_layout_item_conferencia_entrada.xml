@@ -8,5 +8,6 @@
         android:id="@+id/tv_recyclerview_conferencia_entrada"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-black"
         android:textSize="18sp" />
 </LinearLayout>

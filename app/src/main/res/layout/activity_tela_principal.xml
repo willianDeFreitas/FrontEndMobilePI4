@@ -4,22 +4,27 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/telaprincipal"
     tools:context="com.example.frontpi4.activities.TelaPrincipalActivity">
 
-        <com.google.android.material.appbar.AppBarLayout
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/gradient"
+        android:contextClickable="false"
+        android:theme="@style/AppTheme.AppBarOverlay"
+        app:title="Areia e Brita"
+        tools:ignore="MissingConstraints">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:theme="@style/AppTheme.AppBarOverlay"
-            tools:ignore="MissingConstraints">
+            android:layout_height="?attr/actionBarSize"
+            app:popupTheme="@style/AppTheme.PopupOverlay"
+            app:title="Areia e Brita"
+            app:titleTextColor="#0000" />
 
-            <androidx.appcompat.widget.Toolbar
-                android:id="@+id/toolbar"
-                android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize"
-                android:background="?attr/colorPrimary"
-                app:popupTheme="@style/AppTheme.PopupOverlay" />
-
-        </com.google.android.material.appbar.AppBarLayout>
+    </com.google.android.material.appbar.AppBarLayout>
 
     <ImageView
         android:id="@+id/im_tela_principal_clientes"
@@ -34,12 +39,12 @@
 
     <TextView
         android:id="@+id/tv_tela_principal_clientes"
+        style="@style/AppTextV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:onClick="clientes"
         android:text="Clientes"
-        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="@+id/im_tela_principal_clientes"
         app:layout_constraintStart_toStartOf="@+id/im_tela_principal_clientes"
         app:layout_constraintTop_toBottomOf="@+id/im_tela_principal_clientes" />
@@ -62,7 +67,7 @@
         android:layout_marginTop="8dp"
         android:onClick="fornecedores"
         android:text="Fornecedores"
-        android:textSize="16sp"
+        style="@style/AppTextV"
         app:layout_constraintEnd_toEndOf="@+id/im_tela_principal_fornecedores"
         app:layout_constraintStart_toStartOf="@+id/im_tela_principal_fornecedores"
         app:layout_constraintTop_toBottomOf="@+id/im_tela_principal_fornecedores" />
@@ -85,7 +90,7 @@
         android:layout_marginTop="8dp"
         android:onClick="vendas"
         android:text="Vendas"
-        android:textSize="16sp"
+        style="@style/AppTextV"
         app:layout_constraintEnd_toEndOf="@+id/im_tela_principal_vendas"
         app:layout_constraintStart_toStartOf="@+id/im_tela_principal_vendas"
         app:layout_constraintTop_toBottomOf="@+id/im_tela_principal_vendas" />
@@ -108,7 +113,7 @@
         android:layout_marginTop="8dp"
         android:onClick="compras"
         android:text="Compras"
-        android:textSize="16sp"
+        style="@style/AppTextV"
         app:layout_constraintEnd_toEndOf="@+id/im_tela_principal_compras"
         app:layout_constraintStart_toStartOf="@+id/im_tela_principal_compras"
         app:layout_constraintTop_toBottomOf="@+id/im_tela_principal_compras" />
@@ -131,7 +136,7 @@
         android:layout_marginTop="8dp"
         android:onClick="confSaida"
         android:text="Conf. Saída"
-        android:textSize="16sp"
+        style="@style/AppTextV"
         app:layout_constraintEnd_toEndOf="@+id/im_tela_principal_confsaida"
         app:layout_constraintStart_toStartOf="@+id/im_tela_principal_confsaida"
         app:layout_constraintTop_toBottomOf="@+id/im_tela_principal_confsaida" />
@@ -154,7 +159,7 @@
         android:layout_marginTop="8dp"
         android:onClick="confEntrada"
         android:text="Conf. Entrada"
-        android:textSize="16sp"
+        style="@style/AppTextV"
         app:layout_constraintEnd_toEndOf="@+id/im_tela_principal_confentrada"
         app:layout_constraintStart_toStartOf="@+id/im_tela_principal_confentrada"
         app:layout_constraintTop_toBottomOf="@+id/im_tela_principal_confentrada" />
@@ -178,7 +183,7 @@
         android:layout_marginTop="8dp"
         android:onClick="produtos"
         android:text="Produtos"
-        android:textSize="16sp"
+        style="@style/AppTextV"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/im_tela_principal_produtos"
         app:layout_constraintStart_toStartOf="@+id/im_tela_principal_produtos"

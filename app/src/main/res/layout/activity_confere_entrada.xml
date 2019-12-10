@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#80000000"
     tools:context="com.example.frontpi4.activities.ConfereEntradaActivity">
 
     <TextView
@@ -13,7 +14,9 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="150dp"
         android:layout_marginEnd="8dp"
-        android:textSize="22sp"
+        android:fontFamily="sans-serif-black"
+        android:textColor="#000000"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -25,7 +28,9 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
-        android:textSize="22sp"
+        android:fontFamily="sans-serif-black"
+        android:textColor="#000000"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_confere_entrada_idcompra" />
@@ -37,7 +42,11 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
-        android:textSize="22sp"
+        android:fontFamily="sans-serif-black"
+        android:textAlignment="textStart"
+        android:textAllCaps="false"
+        android:textColor="#000000"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_confere_entrada_iditemcompra" />
@@ -49,21 +58,21 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
-        android:textSize="22sp"
+        android:fontFamily="sans-serif-black"
+        android:textColor="#000000"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_confere_entrada_idproduto" />
 
     <EditText
         android:id="@+id/et_confere_entrada_qtd"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        style="@style/AppEtxt"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="5dp"
         android:layout_marginEnd="8dp"
         android:hint="@string/Quantidade"
         android:inputType="numberDecimal"
-        android:textSize="22sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_confere_entrada_fornecedor" />
@@ -75,6 +84,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="24dp"
         android:layout_marginEnd="8dp"
+        android:background="@drawable/selector_bt"
         android:onClick="conferirCompra"
         android:text="Conferir"
         app:layout_constraintEnd_toEndOf="parent"

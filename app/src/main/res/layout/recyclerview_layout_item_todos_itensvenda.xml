@@ -10,7 +10,9 @@
         android:layout_height="wrap_content"
         android:background="#00DBD5D5"
         android:paddingLeft="10dp"
-        android:textSize="18sp" />
+        android:fontFamily="sans-serif-black"
+        android:textSize="18sp"
+        />
 
     <TextView
         android:id="@+id/tv_recyclerview_itemvenda_qtd"
@@ -18,6 +20,7 @@
         android:layout_height="match_parent"
         android:background="#00F7F2F2"
         android:textAlignment="center"
+        android:fontFamily="sans-serif-black"
         android:textSize="18sp" />
 
     <TextView
@@ -26,6 +29,7 @@
         android:layout_height="match_parent"
         android:background="#00DBD5D5"
         android:textAlignment="center"
+        android:fontFamily="sans-serif-black"
         android:textSize="18sp"
         />
 

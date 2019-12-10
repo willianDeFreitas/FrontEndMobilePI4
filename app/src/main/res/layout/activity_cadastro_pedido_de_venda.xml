@@ -4,213 +4,216 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#80000000"
     tools:context=".activities.CadastroPedidoDeVendaActivity">
 
-    <TextView
-        android:id="@+id/tv_cadastro_pedido_venda_cliente"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="1dp"
-        android:layout_marginBottom="1dp"
-        android:text="@string/cliente_dois_pontos"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/spin_cadastro_pedido_venda_cliente"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-    <Spinner
-        android:id="@+id/spin_cadastro_pedido_venda_cliente"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        android:ems="10"
-        app:layout_constraintBottom_toTopOf="@+id/tv_cadastro_pedido_venda_produto"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_cadastro_pedido_venda_cliente" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:context=".activities.CadastroPedidoDeVendaActivity">
 
-    <TextView
-        android:id="@+id/tv_cadastro_pedido_venda_produto"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginBottom="1dp"
-        android:text="@string/produto_dois_pontos"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/spin_cadastro_pedido_venda_produto"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spin_cadastro_pedido_venda_cliente" />
+            <Button
+                android:id="@+id/bt_cadastro_pedido_venda_lancar_pedido"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:background="@drawable/selector_bt"
+                android:onClick="registraItemVenda"
+                android:text="Registra item de venda"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/et_cadastro_pedido_venda_valor_produto" />
 
-    <Spinner
-        android:id="@+id/spin_cadastro_pedido_venda_produto"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        android:ems="10"
-        app:layout_constraintBottom_toTopOf="@+id/et_cadastro_pedido_venda_quantidade"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_cadastro_pedido_venda_produto" />
+            <Button
+                android:id="@+id/bt_cadastro_pedido_venda_confirma_pedido"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="8dp"
+                android:background="@drawable/selector_bt"
+                android:onClick="confirmarPedidoVenda"
+                android:text="Confirma pedido"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_lab_cadastro_venda_total" />
 
-    <TextView
-        android:id="@+id/tv_cadastro_pedido_venda_quantidade"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginBottom="1dp"
-        android:text="@string/quandidade_dois_pontos"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/et_cadastro_pedido_venda_quantidade"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spin_cadastro_pedido_venda_produto" />
+            <Button
+                android:id="@+id/bt_cadastro_pedido_venda_limpa_lista_itens"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/selector_bt"
+                android:onClick="limpaListaDeItensDeVenda"
+                android:text="Limpa Lista de itens"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/bt_cadastro_pedido_venda_lancar_pedido" />
 
-    <EditText
-        android:id="@+id/et_cadastro_pedido_venda_quantidade"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="1dp"
-        android:layout_marginEnd="8dp"
-        android:ems="10"
-        android:hint="@string/Quantidade"
-        android:inputType="numberDecimal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_cadastro_pedido_venda_quantidade" />
+            <Button
+                android:id="@+id/bt_cadastro_pedido_venda_cancelar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:background="@drawable/selector_bt"
+                android:onClick="cancelaPedidoDeVenda"
+                android:text="Cancelar"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/bt_cadastro_pedido_venda_limpa_lista_itens"
+                app:layout_constraintTop_toBottomOf="@+id/bt_cadastro_pedido_venda_lancar_pedido" />
 
-    <TextView
-        android:id="@+id/tv_cadastro_pedido_venda_valor_produto"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginBottom="1dp"
-        android:text="@string/preco_do_produto"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/et_cadastro_pedido_venda_valor_produto"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_cadastro_pedido_venda_quantidade" />
+            <EditText
+                android:id="@+id/et_cadastro_pedido_venda_quantidade"
+                style="@style/AppEtxt"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:hint="@string/Quantidade"
+                android:inputType="numberDecimal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_cadastro_pedido_venda_quantidade" />
 
-    <EditText
-        android:id="@+id/et_cadastro_pedido_venda_valor_produto"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="1dp"
-        android:layout_marginEnd="8dp"
-        android:ems="10"
-        android:inputType="number"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_cadastro_pedido_venda_valor_produto" />
+            <EditText
+                android:id="@+id/et_cadastro_pedido_venda_valor_produto"
+                style="@style/AppEtxt"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:inputType="number"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_cadastro_pedido_venda_valor_produto" />
 
-    <Button
-        android:id="@+id/bt_cadastro_pedido_venda_lancar_pedido"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="8dp"
-        android:onClick="registraItemVenda"
-        android:text="Registra item de venda"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_cadastro_pedido_venda_valor_produto" />
+            <ProgressBar
+                android:id="@+id/pb_cadastro_pedido_venda_carregando"
+                style="?android:attr/progressBarStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:indeterminate="false"
+                android:progressTint="#F50202"
+                android:translationZ="2dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.476"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.468"
+                tools:ignore="MissingConstraints"
+                tools:visibility="invisible" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_todos_itensVenda"
-        android:layout_width="0dp"
-        android:layout_height="110dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.451"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/bt_cadastro_pedido_venda_limpa_lista_itens" />
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
 
-    <Button
-        android:id="@+id/bt_cadastro_pedido_venda_confirma_pedido"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:onClick="confirmarPedidoVenda"
-        android:text="Confirma pedido"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_lab_cadastro_venda_total" />
+            <Spinner
+                android:id="@+id/spin_cadastro_pedido_venda_cliente"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="1dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="8dp"
+                android:ems="10"
+                app:layout_constraintBottom_toTopOf="@+id/tv_cadastro_pedido_venda_produto"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_cadastro_pedido_venda_cliente" />
 
-    <Button
-        android:id="@+id/bt_cadastro_pedido_venda_limpa_lista_itens"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:text="Limpa Lista de itens"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/bt_cadastro_pedido_venda_lancar_pedido"
-        android:onClick="limpaListaDeItensDeVenda"/>
+            <Spinner
+                android:id="@+id/spin_cadastro_pedido_venda_produto"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="1dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="8dp"
+                android:ems="10"
+                app:layout_constraintBottom_toTopOf="@+id/et_cadastro_pedido_venda_quantidade"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_cadastro_pedido_venda_produto" />
 
-    <Button
-        android:id="@+id/bt_cadastro_pedido_venda_cancelar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:onClick="cancelaPedidoDeVenda"
-        android:text="Cancelar"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/bt_cadastro_pedido_venda_limpa_lista_itens"
-        app:layout_constraintTop_toBottomOf="@+id/bt_cadastro_pedido_venda_lancar_pedido" />
+            <TextView
+                android:id="@+id/tv_cadastro_pedido_venda_cliente"
+                style="@style/AppTextV"
+                android:text="@string/cliente_dois_pontos"
+                app:layout_constraintBottom_toTopOf="@+id/spin_cadastro_pedido_venda_cliente"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                 />
 
-    <ProgressBar
-        android:id="@+id/pb_cadastro_pedido_venda_carregando"
-        style="?android:attr/progressBarStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:indeterminate="false"
-        android:progressTint="#F50202"
-        android:translationZ="2dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="MissingConstraints"
-        tools:visibility="invisible" />
+            <TextView
+                android:id="@+id/tv_cadastro_pedido_venda_produto"
+                style="@style/AppTextV"
+                android:text="@string/produto_dois_pontos"
+                app:layout_constraintBottom_toTopOf="@+id/spin_cadastro_pedido_venda_produto"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/spin_cadastro_pedido_venda_cliente" />
 
-    <TextView
-        android:id="@+id/tv_lab_cadastro_venda_total"
-        android:layout_width="0dp"
-        android:layout_height="30dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="1dp"
-        android:background="@android:color/darker_gray"
-        android:text="Total"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/tv_cadastro_pedido_venda_total"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/rv_todos_itensVenda" />
+            <TextView
+                android:id="@+id/tv_cadastro_pedido_venda_quantidade"
+                style="@style/AppTextV"
+                android:text="@string/quandidade_dois_pontos"
+                app:layout_constraintBottom_toTopOf="@+id/et_cadastro_pedido_venda_quantidade"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/spin_cadastro_pedido_venda_produto" />
 
-    <TextView
-            android:id="@+id/tv_cadastro_pedido_venda_total"
-        android:layout_width="231dp"
-        android:layout_height="30dp"
-        android:layout_marginEnd="8dp"
-        android:background="@android:color/darker_gray"
-        android:textAlignment="viewEnd"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/tv_lab_cadastro_venda_total"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/tv_lab_cadastro_venda_total"
-        app:layout_constraintTop_toTopOf="@+id/tv_lab_cadastro_venda_total" />
+            <TextView
+                android:id="@+id/tv_cadastro_pedido_venda_valor_produto"
+                style="@style/AppTextV"
+                android:text="@string/preco_do_produto"
+                app:layout_constraintBottom_toTopOf="@+id/et_cadastro_pedido_venda_valor_produto"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/et_cadastro_pedido_venda_quantidade" />
+
+            <TextView
+                android:id="@+id/tv_lab_cadastro_venda_total"
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="1dp"
+                android:background="@android:color/darker_gray"
+                android:fontFamily="sans-serif-black"
+                android:text="Total"
+                android:textColor="#000000"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toStartOf="@+id/tv_cadastro_pedido_venda_total"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/rv_todos_itensVenda" />
+
+            <TextView
+                android:id="@+id/tv_cadastro_pedido_venda_total"
+                android:layout_width="231dp"
+                android:layout_height="30dp"
+                android:layout_marginEnd="8dp"
+                android:background="@android:color/darker_gray"
+                android:textAlignment="viewEnd"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_lab_cadastro_venda_total"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/tv_lab_cadastro_venda_total"
+                app:layout_constraintTop_toTopOf="@+id/tv_lab_cadastro_venda_total" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_todos_itensVenda"
+                android:layout_width="0dp"
+                android:layout_height="110dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.451"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/bt_cadastro_pedido_venda_limpa_lista_itens" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -4,30 +4,22 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#80000000"
     tools:context=".activities.AlteracaoClienteActivity">
 
     <EditText
         android:id="@+id/et_altera_cliente_nome"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="8dp"
-        android:ems="10"
+
+        style="@style/AppEtxt"
         android:hint="Nome"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/et_altera_cliente_email"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:ems="10"
+        style="@style/AppEtxt"
         android:hint="@string/email"
         android:inputType="textEmailAddress"
         app:layout_constraintEnd_toEndOf="parent"
@@ -36,12 +28,7 @@
 
     <EditText
         android:id="@+id/et_altera_cliente_cpf"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:ems="10"
+        style="@style/AppEtxt"
         android:hint="CPF"
         android:inputType="number"
         app:layout_constraintEnd_toEndOf="parent"
@@ -50,12 +37,7 @@
 
     <EditText
         android:id="@+id/et_altera_cliente_end"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:ems="10"
+        style="@style/AppEtxt"
         android:hint="@string/endereco"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -63,12 +45,7 @@
 
     <EditText
         android:id="@+id/et_altera_cliente_telefone"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:ems="10"
+        style="@style/AppEtxt"
         android:hint="Telefone"
         android:inputType="phone"
         app:layout_constraintEnd_toEndOf="parent"
@@ -82,6 +59,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
+        android:background="@drawable/selector_bt"
         android:onClick="alterarCliente"
         android:text="Alterar"
         app:layout_constraintEnd_toEndOf="parent"
