@@ -39,7 +39,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="8dp"
                 android:layout_marginEnd="8dp"
                 android:background="@drawable/selector_bt"
                 android:onClick="registraItemCompra"
@@ -97,10 +97,12 @@
                 android:id="@+id/et_cadastro_pedido_compra_quantidade"
                 style="@style/AppEtxt"
                 android:layout_marginStart="8dp"
+                android:layout_marginTop="24dp"
                 android:layout_marginEnd="8dp"
                 android:hint="@string/Quantidade"
                 android:inputType="number"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/spin_cadastro_pedido_compra_produto" />
 
@@ -112,8 +114,9 @@
                 android:hint="@string/valor_da_compra"
                 android:inputType="number"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/et_cadastro_pedido_compra_quantidade" />
+                app:layout_constraintTop_toBottomOf="@+id/tv_cadastro_pedido_compra_valor_compra" />
 
             <ScrollView
                 android:layout_width="match_parent"
@@ -163,6 +166,25 @@
                 app:layout_constraintBottom_toTopOf="@+id/spin_cadastro_pedido_compra_produto"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/spin_cadastro_pedido_compra_fornecedor" />
+
+            <TextView
+                android:id="@+id/tv_cadastro_pedido_compra_quantidade"
+                style="@style/AppTextV"
+                android:layout_marginStart="8dp"
+                android:text="@string/quandidade_dois_pontos"
+                app:layout_constraintBottom_toTopOf="@+id/et_cadastro_pedido_compra_quantidade"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_cadastro_pedido_compra_valor_compra"
+                style="@style/AppTextV"
+                android:layout_width="146dp"
+                android:layout_height="23dp"
+                android:layout_marginStart="8dp"
+                android:text="@string/valor_da_compra"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/et_cadastro_pedido_compra_quantidade" />
+
 
             <TextView
                 android:id="@+id/tv_lab_cadastro_compra_total"

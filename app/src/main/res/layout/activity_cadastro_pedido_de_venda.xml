@@ -99,7 +99,7 @@
                 android:inputType="numberDecimal"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv_cadastro_pedido_venda_quantidade" />
+                app:layout_constraintTop_toBottomOf="@+id/tv_cadastro_pedido_compra_quantidade" />
 
             <EditText
                 android:id="@+id/et_cadastro_pedido_venda_valor_produto"
@@ -109,7 +109,7 @@
                 android:inputType="number"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv_cadastro_pedido_venda_valor_produto" />
+                app:layout_constraintTop_toBottomOf="@+id/tv_cadastro_pedido_compra_valor_compra" />
 
             <ScrollView
                 android:layout_width="match_parent"
@@ -160,7 +160,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/spin_cadastro_pedido_venda_cliente" />
 
             <TextView
-                android:id="@+id/tv_cadastro_pedido_venda_quantidade"
+                android:id="@+id/tv_cadastro_pedido_compra_quantidade"
                 style="@style/AppTextV"
                 android:text="@string/quandidade_dois_pontos"
                 app:layout_constraintBottom_toTopOf="@+id/et_cadastro_pedido_venda_quantidade"
@@ -168,7 +168,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/spin_cadastro_pedido_venda_produto" />
 
             <TextView
-                android:id="@+id/tv_cadastro_pedido_venda_valor_produto"
+                android:id="@+id/tv_cadastro_pedido_compra_valor_compra"
                 style="@style/AppTextV"
                 android:text="@string/preco_do_produto"
                 app:layout_constraintBottom_toTopOf="@+id/et_cadastro_pedido_venda_valor_produto"
